@@ -9,3 +9,11 @@ export { useCardAnimation } from './useCardAnimation'
 export { useShapeMorph } from './useShapeMorph'
 export { usePageTransition } from './usePageTransition'
 export { useButtonPulse } from './useButtonPulse'
+
+// Delight hooks
+export { useTextReveal } from './useTextReveal'
+export { useRipple } from './useRipple'
+export { useCountUp } from './useCountUp'
+export { useMagneticHover } from './useMagneticHover'
+export { useStaggerList } from './useStaggerList'
+export { useSuccessBounce, useShake, usePulse } from './useSuccessBounce'
