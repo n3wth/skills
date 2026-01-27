@@ -109,7 +109,7 @@ export function Nav() {
 
   return (
     <>
-      <nav className="glass-nav fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-3 md:py-4 flex items-center justify-between">
+      <nav className="glass-nav fixed top-0 left-0 right-0 z-[60] px-6 md:px-12 py-3 md:py-4 flex items-center justify-between">
         <Link
           to="/"
           className="text-base md:text-lg font-semibold hover:opacity-70 transition-opacity"
@@ -150,7 +150,7 @@ export function Nav() {
       </nav>
 
       <div
-        className={`mobile-menu-overlay md:hidden fixed inset-0 z-40 transition-opacity duration-300 ${
+        className={`mobile-menu-overlay md:hidden fixed inset-0 z-[55] transition-opacity duration-300 ${
           isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
