@@ -81,7 +81,7 @@ export function Home() {
 
   useEffect(() => {
     setSelectedIndex(-1)
-  }, [activeCategory, searchQuery, setSelectedIndex])
+  }, [activeCategory, searchQuery, showFavoritesOnly, setSelectedIndex])
 
   useLayoutEffect(() => {
     ScrollTrigger.refresh()
