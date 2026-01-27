@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { skills, type Skill } from '../data/skills'
 import { CategoryShape } from '../components/CategoryShape'
+import { CommandBox } from '../components/CommandBox'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
 import { SkillCard } from '../components/SkillCard'
@@ -228,14 +229,12 @@ export function SkillDetail() {
 
           <div className="glass-card p-6 md:p-8">
             <h2 className="text-lg font-medium text-white mb-4">Install this skill</h2>
-            <div className="command-box p-4">
-              <code
-                className="text-sm font-mono"
-                style={{ color: 'var(--color-grey-200)' }}
-              >
-                curl -fsSL https://skills.newth.ai/install.sh | bash -s -- {skill.id}
-              </code>
-            </div>
+            <CommandBox
+              name="Install"
+              command={`curl -fsSL https://skills.newth.ai/install.sh | bash -s -- ${skill.id}`}
+              primary={true}
+              skillId={skill.id}
+            />
           </div>
 
           {(() => {
