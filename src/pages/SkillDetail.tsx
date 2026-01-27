@@ -3,6 +3,7 @@ import { skills } from '../data/skills'
 import { CategoryShape } from '../components/CategoryShape'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
+import { SkillDemo } from '../components/SkillDemo'
 import { categoryConfig } from '../config/categories'
 
 export function SkillDetail() {
@@ -128,6 +129,10 @@ export function SkillDetail() {
               </span>
             ))}
           </div>
+
+          {skill.demo && (
+            <SkillDemo demo={skill.demo} categoryColor={config?.color} />
+          )}
 
           {(skill.features || skill.useCases) && (
             <div className="grid md:grid-cols-2 gap-6 mb-12">

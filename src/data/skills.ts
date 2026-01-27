@@ -1,3 +1,9 @@
+export interface SkillDemo {
+  type: 'video' | 'gif' | 'image'
+  url: string
+  alt: string
+}
+
 export interface Skill {
   id: string
   name: string
@@ -11,6 +17,7 @@ export interface Skill {
   features?: string[]
   useCases?: string[]
   compatibility?: ('gemini' | 'claude')[]
+  demo?: SkillDemo
 }
 
 export const skills: Skill[] = [
@@ -38,7 +45,12 @@ export const skills: Skill[] = [
       'Micro-interactions',
       'Loading animations'
     ],
-    compatibility: ['gemini', 'claude']
+    compatibility: ['gemini', 'claude'],
+    demo: {
+      type: 'gif',
+      url: 'https://greensock.com/uploads/monthly_2020_05/scrolltrigger-featured.gif',
+      alt: 'GSAP ScrollTrigger animation demonstration showing scroll-based effects'
+    }
   },
   {
     id: 'mcp-builder',
@@ -116,7 +128,12 @@ export const skills: Skill[] = [
       'NFT artwork creation',
       'Interactive installations'
     ],
-    compatibility: ['gemini', 'claude']
+    compatibility: ['gemini', 'claude'],
+    demo: {
+      type: 'image',
+      url: 'https://p5js.org/assets/img/p5js.svg',
+      alt: 'Example of algorithmic art created with p5.js showing generative patterns'
+    }
   },
   {
     id: 'business-panel',
