@@ -6,71 +6,240 @@ import { skills, categories, type Skill } from './data/skills'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function SkillCard({ skill, index }: { skill: Skill; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
+const categoryConfig: Record<string, { color: string; glow: string; shape: 'circle' | 'square' | 'triangle' | 'diamond' }> = {
+  development: { color: '#30d158', glow: 'rgba(48, 209, 88, 0.3)', shape: 'circle' },
+  documents: { color: '#ff6961', glow: 'rgba(255, 105, 97, 0.3)', shape: 'square' },
+  creative: { color: '#64d2ff', glow: 'rgba(100, 210, 255, 0.3)', shape: 'triangle' },
+  business: { color: '#ffd60a', glow: 'rgba(255, 214, 10, 0.3)', shape: 'diamond' },
+}
 
-  useGSAP(() => {
-    if (!cardRef.current) return
+function CategoryShape({ category, size = 12 }: { category: string; size?: number }) {
+  const config = categoryConfig[category] || categoryConfig.development
 
-    gsap.from(cardRef.current, {
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      delay: index * 0.05,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: cardRef.current,
-        start: 'top bottom-=100',
-        toggleActions: 'play none none reverse'
-      }
-    })
-  }, [index])
+  const shapes = {
+    circle: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" fill={config.color} />
+      </svg>
+    ),
+    square: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="3" width="18" height="18" rx="0" fill={config.color} />
+      </svg>
+    ),
+    triangle: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+        <path d="M12 3L22 21H2L12 3Z" fill={config.color} />
+      </svg>
+    ),
+    diamond: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L22 12L12 22L2 12L12 2Z" fill={config.color} />
+      </svg>
+    ),
+  }
 
   return (
-    <div
-      ref={cardRef}
-      className="card-glow group relative overflow-hidden rounded-2xl p-6 cursor-pointer"
-      style={{ background: 'var(--color-surface-elevated)' }}
-    >
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
-        style={{ background: `radial-gradient(circle at 50% 0%, ${skill.color}, transparent 70%)` }}
-      />
+    <div style={{ filter: `drop-shadow(0 0 8px ${config.glow})` }}>
+      {shapes[config.shape]}
+    </div>
+  )
+}
 
-      <div className="relative z-10">
-        <div className="flex items-start justify-between mb-4">
-          <span
-            className="text-2xl font-light"
-            style={{ color: skill.color }}
+function FloatingShapes() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    if (!containerRef.current) return
+
+    const shapes = containerRef.current.querySelectorAll('.floating-shape')
+
+    shapes.forEach((shape, i) => {
+      gsap.set(shape, {
+        opacity: 0,
+        scale: 0.3,
+        rotation: Math.random() * 30 - 15,
+      })
+
+      gsap.to(shape, {
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 1.5,
+        delay: 0.2 + i * 0.1,
+        ease: 'elastic.out(1, 0.5)',
+      })
+
+      gsap.to(shape, {
+        x: `random(-80, 80)`,
+        y: `random(-60, 60)`,
+        rotation: `random(-25, 25)`,
+        duration: `random(6, 10)`,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: i * 0.3,
+      })
+
+      gsap.to(shape, {
+        scale: `random(0.85, 1.15)`,
+        duration: `random(3, 5)`,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      })
+    })
+  }, { scope: containerRef })
+
+  const floatingShapes = [
+    { category: 'development', size: 140, top: '10%', right: '8%' },
+    { category: 'documents', size: 100, top: '50%', right: '15%' },
+    { category: 'creative', size: 120, top: '25%', right: '28%' },
+    { category: 'business', size: 80, top: '65%', right: '5%' },
+    { category: 'development', size: 60, top: '75%', right: '35%' },
+    { category: 'creative', size: 50, top: '5%', right: '40%' },
+  ]
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+      {floatingShapes.map((shape, i) => {
+        const config = categoryConfig[shape.category]
+        return (
+          <div
+            key={i}
+            className="floating-shape absolute hidden md:block"
+            style={{ top: shape.top, right: shape.right }}
           >
-            {skill.icon}
-          </span>
-          {skill.featured && (
-            <span className="text-xs px-2 py-1 rounded-full" style={{ background: 'var(--color-surface-hover)', color: 'var(--color-text-muted)' }}>
-              Featured
-            </span>
-          )}
-        </div>
+            {config.shape === 'circle' && (
+              <svg width={shape.size} height={shape.size} viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill={config.color} />
+              </svg>
+            )}
+            {config.shape === 'square' && (
+              <svg width={shape.size} height={shape.size} viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="0" fill={config.color} />
+              </svg>
+            )}
+            {config.shape === 'triangle' && (
+              <svg width={shape.size} height={shape.size} viewBox="0 0 24 24" fill="none">
+                <path d="M12 3L22 21H2L12 3Z" fill={config.color} />
+              </svg>
+            )}
+            {config.shape === 'diamond' && (
+              <svg width={shape.size} height={shape.size} viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L22 12L12 22L2 12L12 2Z" fill={config.color} />
+              </svg>
+            )}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
 
-        <h3 className="text-lg font-medium mb-2" style={{ color: 'var(--color-text)' }}>
-          {skill.name}
-        </h3>
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false)
 
-        <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--color-text-muted)' }}>
-          {skill.description}
-        </p>
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
-        <div className="flex flex-wrap gap-2">
-          {skill.tags.slice(0, 3).map(tag => (
+  return (
+    <button
+      onClick={handleCopy}
+      className={`copy-btn label px-3 py-1.5 rounded-lg ${copied ? 'copied' : ''}`}
+    >
+      {copied ? 'Copied!' : 'Copy'}
+    </button>
+  )
+}
+
+function InstallSection() {
+
+  const commands = [
+    {
+      name: 'Gemini CLI',
+      command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- gemini',
+      primary: true,
+    },
+    {
+      name: 'Claude Code',
+      command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- claude',
+      primary: false,
+    },
+    {
+      name: 'All Skills',
+      command: 'curl -fsSL https://skills.newth.ai/install.sh | bash',
+      primary: false,
+    },
+  ]
+
+  return (
+    <div className="mb-16 md:mb-24">
+      <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
+        Install
+      </h2>
+      <p className="label mb-6 md:mb-8">One command. All skills.</p>
+
+      <div className="space-y-3">
+        {commands.map((cmd) => (
+          <div
+            key={cmd.name}
+            className={`command-box flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 p-4 ${cmd.primary ? 'primary' : ''}`}
+          >
             <span
-              key={tag}
-              className="text-xs px-2 py-1 rounded-md"
-              style={{ background: 'var(--color-surface-hover)', color: 'var(--color-text-subtle)' }}
+              className="label shrink-0 sm:w-24"
+              style={{ color: cmd.primary ? 'var(--color-accent)' : 'var(--color-grey-600)' }}
             >
-              {tag}
+              {cmd.name}
             </span>
-          ))}
-        </div>
+            <code
+              className="flex-1 text-xs sm:text-sm overflow-x-auto whitespace-nowrap"
+              style={{ color: 'var(--color-grey-200)' }}
+            >
+              {cmd.command}
+            </code>
+            <CopyButton text={cmd.command} />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function SkillCard({ skill, index }: { skill: Skill; index: number }) {
+  return (
+    <div className="glass-card group cursor-pointer p-5 md:p-6">
+      <div className="flex items-center justify-between mb-3 md:mb-4">
+        <CategoryShape category={skill.category} size={12} />
+        <span className="index-num">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+      </div>
+
+      <h3 className="text-sm md:text-base font-semibold mb-2 text-white group-hover:opacity-70 transition-opacity">
+        {skill.name}
+      </h3>
+
+      <p
+        className="text-xs md:text-sm leading-relaxed mb-3 md:mb-4"
+        style={{ color: 'var(--color-grey-400)' }}
+      >
+        {skill.description}
+      </p>
+
+      <div className="flex flex-wrap gap-2">
+        {skill.tags.slice(0, 3).map(tag => (
+          <span
+            key={tag}
+            className="text-[9px] md:text-[10px] uppercase tracking-wider"
+            style={{ color: 'var(--color-grey-600)' }}
+          >
+            {tag}
+          </span>
+        ))}
       </div>
     </div>
   )
@@ -78,58 +247,36 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
 
 function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const subtitleRef = useRef<HTMLParagraphElement>(null)
-
-  useGSAP(() => {
-    const tl = gsap.timeline()
-
-    tl.from(titleRef.current, {
-      y: 100,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'power4.out'
-    })
-    .from(subtitleRef.current, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power3.out'
-    }, '-=0.6')
-  }, { scope: heroRef })
 
   return (
-    <div ref={heroRef} className="relative min-h-[60vh] flex items-center justify-center px-6 py-24">
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] opacity-20"
-          style={{ background: 'var(--color-brand)' }}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-[100px] opacity-15"
-          style={{ background: 'var(--color-accent)' }}
-        />
-      </div>
+    <div ref={heroRef} className="relative min-h-[70vh] md:min-h-[85vh] flex items-center px-6 md:px-12 pt-24 md:pt-0">
+      <FloatingShapes />
+      <div className="relative z-10 w-full">
+        <div className="max-w-5xl">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] font-semibold tracking-tighter leading-[0.85] mb-6 md:mb-8">
+            <span className="text-white">Extend</span>
+            <br />
+            <span className="text-white">Your AI</span>
+          </h1>
 
-      <div className="relative z-10 text-center max-w-3xl">
-        <h1
-          ref={titleRef}
-          className="text-5xl md:text-7xl font-semibold tracking-tight mb-6"
-        >
-          <span className="gradient-text">Claude Code</span>
-          <br />
-          <span style={{ color: 'var(--color-text)' }}>Skills</span>
-        </h1>
+          <div className="flex flex-col gap-6 md:gap-8">
+            <p
+              className="text-base md:text-xl leading-relaxed max-w-md"
+              style={{ color: 'var(--color-grey-400)' }}
+            >
+              Skills for Gemini CLI, Claude Code, and other AI assistants. Install with one command.
+            </p>
 
-        <p
-          ref={subtitleRef}
-          className="text-xl md:text-2xl leading-relaxed"
-          style={{ color: 'var(--color-text-muted)' }}
-        >
-          Extend Claude Code with specialized capabilities.
-          <br />
-          Skills add domain knowledge, workflows, and tool integrations.
-        </p>
+            <div className="flex flex-wrap items-center gap-4 md:gap-6">
+              {Object.entries(categoryConfig).map(([key, config]) => (
+                <div key={key} className="flex items-center gap-2">
+                  <CategoryShape category={key} size={14} />
+                  <span className="label capitalize text-[10px] md:text-[11px]">{key}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -142,55 +289,92 @@ function CategoryFilter({
   activeCategory: string
   onCategoryChange: (id: string) => void
 }) {
-  const filterRef = useRef<HTMLDivElement>(null)
-
-  useGSAP(() => {
-    gsap.from(filterRef.current?.children || [], {
-      y: 20,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.05,
-      ease: 'power2.out',
-      delay: 0.8
-    })
-  }, { scope: filterRef })
-
   return (
-    <div ref={filterRef} className="flex flex-wrap justify-center gap-3 mb-12">
+    <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
       {categories.map(cat => (
         <button
           key={cat.id}
           onClick={() => onCategoryChange(cat.id)}
-          className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
-          style={{
-            background: activeCategory === cat.id ? 'var(--color-brand)' : 'var(--color-surface-elevated)',
-            color: activeCategory === cat.id ? 'var(--color-surface)' : 'var(--color-text-muted)'
-          }}
+          className={`glass-pill px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium ${
+            activeCategory === cat.id ? 'active' : ''
+          }`}
         >
           {cat.name}
-          <span className="ml-2 opacity-60">{cat.count}</span>
         </button>
       ))}
     </div>
   )
 }
 
-function Footer() {
+function Nav() {
   return (
-    <footer className="py-16 px-6 text-center" style={{ borderTop: '1px solid var(--color-surface-elevated)' }}>
-      <p className="text-sm" style={{ color: 'var(--color-text-subtle)' }}>
-        Built by{' '}
+    <nav className="glass-nav fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-3 md:py-4 flex items-center justify-between">
+      <div
+        className="text-base md:text-lg font-semibold"
+        style={{ color: 'var(--color-accent)' }}
+      >
+        skills.newth.ai
+      </div>
+      <div className="flex items-center gap-4 md:gap-6">
         <a
           href="https://newth.ai"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline"
-          style={{ color: 'var(--color-text-muted)' }}
+          className="text-sm link-hover"
+          style={{ color: 'var(--color-grey-400)' }}
         >
-          Oliver Newth
+          About
         </a>
-        {' '}for the Claude Code community
-      </p>
+        <a
+          href="https://github.com/n3wth/newth-skills"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm link-hover"
+          style={{ color: 'var(--color-grey-400)' }}
+        >
+          GitHub
+        </a>
+      </div>
+    </nav>
+  )
+}
+
+function Footer() {
+  return (
+    <footer className="py-12 md:py-20 px-6 md:px-12">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <p className="text-lg md:text-xl font-semibold text-white mb-2">
+            skills.newth.ai
+          </p>
+          <p className="text-sm" style={{ color: 'var(--color-grey-400)' }}>
+            Built by Oliver Newth
+          </p>
+        </div>
+        <div className="flex items-center gap-6">
+          <a
+            href="https://newth.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm link-hover"
+            style={{ color: 'var(--color-grey-400)' }}
+          >
+            About
+          </a>
+          <a
+            href="https://github.com/n3wth/newth-skills"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm link-hover"
+            style={{ color: 'var(--color-grey-400)' }}
+          >
+            GitHub
+          </a>
+          <span className="text-sm" style={{ color: 'var(--color-grey-600)' }}>
+            {new Date().getFullYear()}
+          </span>
+        </div>
+      </div>
     </footer>
   )
 }
@@ -207,25 +391,38 @@ function App() {
   }, [activeCategory])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <div className="mesh-gradient" />
       <div className="noise-overlay" />
 
+      <Nav />
       <Hero />
 
-      <main className="max-w-6xl mx-auto px-6 pb-24">
+      <main className="px-6 md:px-12 pb-24">
+        <InstallSection />
+
+        <div className="mb-6 md:mb-8">
+          <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
+            Browse Skills
+          </h2>
+          <p className="label">
+            {skills.length} skills across {categories.length - 1} categories
+          </p>
+        </div>
+
         <CategoryFilter
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredSkills.map((skill, i) => (
             <SkillCard key={skill.id} skill={skill} index={i} />
           ))}
         </div>
 
         {filteredSkills.length === 0 && (
-          <div className="text-center py-24" style={{ color: 'var(--color-text-muted)' }}>
+          <div className="text-center py-24 label">
             No skills in this category yet.
           </div>
         )}
