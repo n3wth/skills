@@ -650,6 +650,49 @@ export const skills: Skill[] = [
     compatibility: ['claude'],
     version: '1.0.0',
     lastUpdated: '2026-01-26'
+  },
+  {
+    id: 'vscode-cursor-sync',
+    name: 'VSCode ↔ Cursor Sync',
+    description: 'Mirror VSCode keybindings, extensions, and settings to Cursor to maintain a consistent development environment between editors.',
+    longDescription: 'A comprehensive synchronization skill that helps you maintain consistent development environments between VSCode and Cursor editors. This skill provides workflows for syncing keybindings, extensions, settings, themes, and snippets across both editors, with support for manual, automated, and real-time synchronization strategies.',
+    category: 'development',
+    tags: ['vscode', 'cursor', 'sync', 'settings', 'extensions'],
+    featured: false,
+    icon: '⇄',
+    color: 'oklch(0.72 0.16 200)',
+    skillFile: `${GITHUB_RAW_BASE}/vscode-cursor-sync.md`,
+    features: [
+      'Keybindings synchronization',
+      'Extension mirroring across editors',
+      'Settings and workspace sync',
+      'Theme and color scheme sharing',
+      'Custom snippets transfer',
+      'Automated sync scripts'
+    ],
+    useCases: [
+      'Migrating from VSCode to Cursor',
+      'Maintaining consistent editor config',
+      'Syncing custom keybindings',
+      'Transferring extensions between editors',
+      'Setting up team development environments'
+    ],
+    compatibility: ['claude', 'cursor', 'copilot'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    contributor: {
+      name: 'newth.ai'
+    },
+    samplePrompts: [
+      {
+        prompt: "Help me sync my VSCode settings to Cursor",
+        output: "I'll help you sync your VSCode settings to Cursor. Here's the process:\n\n1. First, let's copy your settings file:\n```bash\ncp ~/Library/Application\\ Support/Code/User/settings.json \\\n   ~/Library/Application\\ Support/Cursor/User/settings.json\n```\n\n2. Next, copy your keybindings:\n```bash\ncp ~/Library/Application\\ Support/Code/User/keybindings.json \\\n   ~/Library/Application\\ Support/Cursor/User/keybindings.json\n```\n\n3. Finally, sync your extensions:\n```bash\ncode --list-extensions | xargs -L 1 cursor --install-extension\n```\n\nRestart Cursor to see your VSCode settings applied!"
+      },
+      {
+        prompt: "Create a script to automatically sync my editors",
+        output: "Here's an automated sync script for macOS/Linux:\n\n```bash\n#!/bin/bash\nVSCODE_DIR=\"$HOME/Library/Application Support/Code/User\"\nCURSOR_DIR=\"$HOME/Library/Application Support/Cursor/User\"\n\necho \"Syncing VSCode → Cursor...\"\n\n# Backup existing settings\ntimestamp=$(date +%Y%m%d_%H%M%S)\nmkdir -p \"$CURSOR_DIR/backups/$timestamp\"\ncp \"$CURSOR_DIR\"/*.json \"$CURSOR_DIR/backups/$timestamp/\" 2>/dev/null || true\n\n# Copy settings and keybindings\ncp \"$VSCODE_DIR/settings.json\" \"$CURSOR_DIR/settings.json\"\ncp \"$VSCODE_DIR/keybindings.json\" \"$CURSOR_DIR/keybindings.json\"\n\n# Sync extensions\ncode --list-extensions | while read ext; do\n  cursor --install-extension \"$ext\" --force\ndone\n\necho \"✓ Sync complete!\"\n```\n\nSave this as `sync-editors.sh`, make it executable with `chmod +x sync-editors.sh`, and run it whenever you want to sync!"
+      }
+    ]
   }
 ]
 

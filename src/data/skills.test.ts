@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { skills, categories, type Skill } from './skills'
+import { assistantIds } from '../config/assistants'
 
 describe('skills data', () => {
   it('should have skills array with items', () => {
@@ -59,7 +60,7 @@ describe('skills data', () => {
       if (skill.compatibility !== undefined) {
         expect(Array.isArray(skill.compatibility)).toBe(true)
         skill.compatibility.forEach(compat => {
-          expect(['gemini', 'claude']).toContain(compat)
+          expect(assistantIds).toContain(compat)
         })
       }
     })
