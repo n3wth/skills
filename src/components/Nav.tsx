@@ -120,6 +120,13 @@ export function Nav() {
 
         <div className="hidden md:flex items-center gap-6">
           <Link
+            to="/submit"
+            className="text-sm link-hover"
+            style={{ color: 'var(--color-grey-400)' }}
+          >
+            Submit
+          </Link>
+          <Link
             to="/about"
             className="text-sm link-hover"
             style={{ color: 'var(--color-grey-400)' }}
@@ -159,7 +166,7 @@ export function Nav() {
       />
 
       <div
-        className={`mobile-menu-drawer md:hidden fixed top-0 right-0 z-50 h-full w-[280px] max-w-[80vw] transition-transform duration-300 ease-out ${
+        className={`mobile-menu-drawer md:hidden fixed top-0 right-0 z-[56] h-full w-[280px] max-w-[80vw] transition-transform duration-300 ease-out ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
@@ -177,6 +184,14 @@ export function Nav() {
               style={{ color: 'var(--color-white)' }}
             >
               Home
+            </Link>
+            <Link
+              to="/submit"
+              onClick={closeMenu}
+              className="mobile-nav-link text-lg py-4 px-4 rounded-xl transition-all duration-200 min-h-[52px] flex items-center"
+              style={{ color: 'var(--color-white)' }}
+            >
+              Submit
             </Link>
             <Link
               to="/about"
