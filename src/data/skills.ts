@@ -650,6 +650,37 @@ export const skills: Skill[] = [
     compatibility: ['claude'],
     version: '1.0.0',
     lastUpdated: '2026-01-26'
+  },
+  {
+    id: 'settings-distribution-manager',
+    name: 'Settings Distribution Manager',
+    description: 'Deploy Cursor settings and rules to entire team with version management. Standardize Cursor configuration across development teams with managed rollouts and automated updates.',
+    longDescription: 'A comprehensive solution for managing and deploying Cursor IDE settings across development teams. This skill provides scripts and workflows for centralized settings management, version control, automated deployment, deprecation tracking, and compliance monitoring to ensure consistent development environments.',
+    category: 'development',
+    tags: ['cursor', 'settings', 'configuration', 'team', 'deployment'],
+    featured: false,
+    icon: '⚙',
+    color: 'oklch(0.70 0.15 280)',
+    skillFile: `${GITHUB_RAW_BASE}/settings-distribution-manager.md`,
+    features: [
+      'Centralized settings repository with Git version control',
+      'Automated deployment scripts for team machines',
+      'Version management with rollback capability',
+      'Auto-detect and update deprecated rules',
+      'Adoption tracking and compliance monitoring',
+      'Multi-environment support'
+    ],
+    useCases: [
+      'Standardizing IDE configuration across team',
+      'Deploying consistent Cursor settings',
+      'Managing rule versions and updates',
+      'Tracking team adoption of standards',
+      'Enforcing development environment compliance',
+      'Rolling back problematic settings changes'
+    ],
+    compatibility: ['claude', 'cursor'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
   }
 ]
 
