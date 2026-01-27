@@ -5,6 +5,7 @@ import { CommandBox } from '../components/CommandBox'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
 import { KeyboardShortcutsHelp } from '../components/KeyboardShortcutsHelp'
+import { SEO } from '../components/SEO'
 import { SkillCard } from '../components/SkillCard'
 import { categoryConfig } from '../config/categories'
 import { useKeyboardShortcuts } from '../hooks'
@@ -38,6 +39,11 @@ export function SkillDetail() {
   if (!skill) {
     return (
       <div className="min-h-screen relative">
+        <SEO
+          title="Skill Not Found - newth.ai skills"
+          description="The skill you're looking for doesn't exist."
+          canonicalUrl="/"
+        />
         <div className="mesh-gradient" />
         <div className="noise-overlay" />
         <Nav />
@@ -64,8 +70,17 @@ export function SkillDetail() {
 
   const config = categoryConfig[skill.category]
 
+  const seoDescription = skill.longDescription || skill.description
+
   return (
     <div className="min-h-screen relative content-loaded">
+      <SEO
+        title={`${skill.name} - newth.ai skills`}
+        description={seoDescription}
+        canonicalUrl={`/skill/${skill.id}`}
+        keywords={skill.tags}
+        ogType="article"
+      />
       <div className="mesh-gradient" />
       <div className="noise-overlay" />
       <Nav />

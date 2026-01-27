@@ -18,7 +18,7 @@ export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
       <Link
         ref={ref}
         to={`/skill/${skill.id}`}
-        className={`glass-card group cursor-pointer p-5 md:p-6 block ${isSelected ? 'ring-2 ring-white/40' : ''}`}
+        className={`skill-card glass-card group cursor-pointer p-5 md:p-6 block ${isSelected ? 'ring-2 ring-white/40' : ''}`}
         aria-current={isSelected ? 'true' : undefined}
       >
         <div className="flex items-start justify-between mb-3 md:mb-4">
