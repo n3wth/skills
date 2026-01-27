@@ -649,6 +649,231 @@ export const skills: Skill[] = [
     lastUpdated: '2026-01-27'
   },
   {
+    id: 'api-docs-generator',
+    name: 'API Docs Generator',
+    description: 'Generate comprehensive API documentation from code. Create OpenAPI/Swagger specs, markdown docs, and SDK references for REST APIs.',
+    longDescription: 'A comprehensive skill for generating API documentation from your codebase. Automatically create OpenAPI/Swagger specifications, generate markdown API documentation, document REST endpoints, and create client SDK references. Supports multiple programming languages including TypeScript, Python, and Go.',
+    category: 'development',
+    tags: ['api', 'documentation', 'openapi', 'swagger'],
+    featured: false,
+    icon: '◇',
+    color: 'oklch(0.73 0.16 160)',
+    skillFile: `${GITHUB_RAW_BASE}/api-docs-generator.md`,
+    features: [
+      'Generate OpenAPI/Swagger specs from code',
+      'Create markdown API documentation',
+      'Document REST endpoints automatically',
+      'Generate client SDK documentation',
+      'Support for multiple languages (TypeScript, Python, Go)'
+    ],
+    useCases: [
+      'Documenting REST APIs',
+      'Creating API reference guides',
+      'Generating SDK documentation',
+      'Maintaining up-to-date API specs',
+      'Auto-generating API documentation from code'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
+  },
+  {
+    id: 'cicd-builder',
+    name: 'CI/CD Builder',
+    description: 'Create CI/CD pipelines and automation workflows for GitHub Actions, GitLab CI, and more. Build multi-stage pipelines, deployment automation, and code quality checks.',
+    longDescription: 'A comprehensive skill for creating continuous integration and deployment pipelines. This skill guides you through building GitHub Actions workflows, GitLab CI configurations, and other automation pipelines with best practices for testing, building, and deploying your applications.',
+    category: 'development',
+    tags: ['cicd', 'github-actions', 'automation', 'devops'],
+    icon: '⚙',
+    color: 'oklch(0.72 0.16 180)',
+    skillFile: `${GITHUB_RAW_BASE}/cicd-builder.md`,
+    features: [
+      'GitHub Actions workflow templates',
+      'GitLab CI/CD configuration',
+      'Multi-stage build pipelines',
+      'Deployment automation workflows',
+      'Testing and linting integration',
+      'Environment and secrets management'
+    ],
+    useCases: [
+      'Setting up automated testing pipelines',
+      'Creating deployment workflows',
+      'Building release automation',
+      'Automating code quality checks',
+      'Configuring multi-environment deployments'
+    ],
+    compatibility: ['gemini', 'claude', 'cursor', 'windsurf', 'copilot'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    samplePrompts: [
+      {
+        prompt: "Create a GitHub Actions workflow for a Node.js app with testing and deployment",
+        output: "Here's a comprehensive GitHub Actions workflow for Node.js:\n\n```yaml\nname: CI/CD Pipeline\n\non:\n  push:\n    branches: [main, develop]\n  pull_request:\n    branches: [main]\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n          cache: 'npm'\n      - run: npm ci\n      - run: npm test\n      - run: npm run lint\n\n  deploy:\n    needs: test\n    if: github.ref == 'refs/heads/main'\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: Deploy to production\n        env:\n          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}\n        run: npm run deploy\n```\n\nThis workflow runs tests and linting on every push, then deploys to production when merged to main."
+      },
+      {
+        prompt: "Set up a multi-stage Docker build pipeline with caching",
+        output: "Here's a GitHub Actions workflow with optimized Docker builds:\n\n```yaml\nname: Docker Build\n\non:\n  push:\n    branches: [main]\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      \n      - name: Set up Docker Buildx\n        uses: docker/setup-buildx-action@v3\n      \n      - name: Login to Docker Hub\n        uses: docker/login-action@v3\n        with:\n          username: ${{ secrets.DOCKER_USERNAME }}\n          password: ${{ secrets.DOCKER_TOKEN }}\n      \n      - name: Build and push\n        uses: docker/build-push-action@v5\n        with:\n          context: .\n          push: true\n          tags: myapp:latest\n          cache-from: type=registry,ref=myapp:buildcache\n          cache-to: type=registry,ref=myapp:buildcache,mode=max\n```\n\nThis uses layer caching to speed up builds significantly."
+      }
+    ]
+  },
+  {
+    id: 'code-reviewer',
+    name: 'Code Reviewer',
+    description: 'Automated code review with best practices. Identify code smells, suggest refactoring improvements, check for security issues, and enforce coding standards.',
+    longDescription: 'A comprehensive code review skill that helps you maintain high code quality through automated analysis. This skill identifies code smells, suggests refactoring improvements, checks for security vulnerabilities, enforces coding standards, and provides performance optimization recommendations.',
+    category: 'development',
+    tags: ['code-review', 'quality', 'best-practices', 'refactoring'],
+    icon: '◇',
+    color: 'oklch(0.72 0.17 160)',
+    skillFile: `${GITHUB_RAW_BASE}/code-reviewer.md`,
+    features: [
+      'Identify code smells and anti-patterns',
+      'Suggest refactoring improvements',
+      'Check for security vulnerabilities',
+      'Enforce coding standards and conventions',
+      'Performance optimization recommendations'
+    ],
+    useCases: [
+      'Pull request code reviews',
+      'Code quality audits',
+      'Refactoring guidance',
+      'Learning best practices',
+      'Pre-commit quality checks'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    samplePrompts: [
+      {
+        prompt: "Review this React component for best practices",
+        output: "I'll analyze your React component for best practices:\n\n**Code Smells Identified:**\n1. ❌ Missing prop validation\n2. ❌ Inline function creation in render (performance)\n3. ❌ Direct state mutation\n\n**Recommendations:**\n```tsx\n// Before\nfunction UserCard({ user }) {\n  const [count, setCount] = useState(0);\n  return <button onClick={() => setCount(count + 1)}>Click</button>;\n}\n\n// After\ninterface UserCardProps {\n  user: User;\n}\n\nfunction UserCard({ user }: UserCardProps) {\n  const [count, setCount] = useState(0);\n  const handleClick = useCallback(() => {\n    setCount(prev => prev + 1);\n  }, []);\n  \n  return <button onClick={handleClick}>Click {count}</button>;\n}\n```\n\n**Improvements:**\n✅ Added TypeScript interface for props\n✅ Used useCallback to prevent function recreation\n✅ Used functional setState to avoid stale closures"
+      },
+      {
+        prompt: "Check this API endpoint for security issues",
+        output: "Security review of your API endpoint:\n\n**Security Issues Found:**\n\n1. 🔴 **SQL Injection Risk** (Critical)\n```javascript\n// Vulnerable\nconst query = `SELECT * FROM users WHERE id = ${req.params.id}`;\n\n// Secure\nconst query = 'SELECT * FROM users WHERE id = ?';\ndb.query(query, [req.params.id]);\n```\n\n2. 🟡 **Missing Input Validation** (High)\n```javascript\n// Add validation\nconst { error, value } = schema.validate(req.body);\nif (error) return res.status(400).json({ error: error.message });\n```\n\n3. 🟡 **No Rate Limiting** (Medium)\n```javascript\n// Add rate limiting middleware\nconst rateLimit = require('express-rate-limit');\napp.use('/api/', rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));\n```\n\n**Best Practices:**\n✅ Use parameterized queries\n✅ Validate all user input\n✅ Implement rate limiting\n✅ Add authentication checks\n✅ Log security events"
+      }
+    ]
+  },
+  {
+    id: 'data-viz',
+    name: 'Data Viz',
+    description: 'Create charts and data visualizations using D3.js and Chart.js. Build interactive dashboards, analytics displays, and export to SVG/PNG with responsive layouts.',
+    longDescription: 'A comprehensive data visualization skill that enables you to create stunning, interactive charts and graphs using industry-standard libraries like D3.js and Chart.js. Transform raw data into compelling visual stories with responsive layouts that work across all devices.',
+    category: 'creative',
+    tags: ['charts', 'd3js', 'visualization', 'data'],
+    icon: '◬',
+    color: 'oklch(0.70 0.22 200)',
+    features: [
+      'Create charts with D3.js and Chart.js',
+      'Interactive data visualizations',
+      'Dashboard components',
+      'Export to SVG/PNG formats',
+      'Responsive chart layouts'
+    ],
+    useCases: [
+      'Building analytics dashboards',
+      'Creating reports with charts',
+      'Visualizing datasets',
+      'Presenting metrics'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
+  },
+  {
+    id: 'email-drafter',
+    name: 'Email Drafter',
+    description: 'Draft professional emails for business correspondence, sales outreach, customer support, and internal communications with tone adjustment and templates.',
+    longDescription: 'A professional email writing skill that helps you craft effective emails for any business context. This skill provides templates for various scenarios, tone adjustment capabilities (formal to casual), follow-up email sequences, cold outreach templates, and response drafting assistance to ensure your email communications are clear, professional, and effective.',
+    category: 'business',
+    tags: ['email', 'communication', 'professional', 'writing'],
+    icon: '✉',
+    color: 'oklch(0.66 0.13 85)',
+    skillFile: `${GITHUB_RAW_BASE}/email-drafter.md`,
+    features: [
+      'Professional email templates',
+      'Tone adjustment (formal/casual)',
+      'Follow-up email sequences',
+      'Cold outreach templates',
+      'Response drafting'
+    ],
+    useCases: [
+      'Business correspondence',
+      'Sales outreach',
+      'Customer support replies',
+      'Internal communications'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
+  },
+  {
+    id: 'regex-builder',
+    name: 'Regex Builder',
+    description: 'Build and test regular expressions with multi-language syntax support. Create complex patterns, validate against sample data, and explain regex in plain English.',
+    longDescription: 'A comprehensive skill for building, testing, and understanding regular expressions across multiple programming languages. This skill helps you construct complex regex patterns, test them against sample data, translate patterns into plain English explanations, and provides a common pattern library for frequently used validations.',
+    category: 'development',
+    tags: ['regex', 'patterns', 'validation', 'parsing'],
+    icon: '◇',
+    color: 'oklch(0.72 0.16 140)',
+    skillFile: `${GITHUB_RAW_BASE}/regex-builder.md`,
+    features: [
+      'Build complex regex patterns',
+      'Test against sample data',
+      'Explain regex in plain English',
+      'Common pattern library',
+      'Multi-language syntax support'
+    ],
+    useCases: [
+      'Data validation',
+      'Text parsing and extraction',
+      'Search and replace operations',
+      'Input sanitization',
+      'Log file analysis'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    samplePrompts: [
+      {
+        prompt: "Create a regex pattern to validate email addresses",
+        output: "Here's a regex pattern for email validation:\n\n```regex\n^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n```\n\n**Explanation:**\n- `^` - Start of string\n- `[a-zA-Z0-9._%+-]+` - One or more letters, numbers, or special chars (., _, %, +, -)\n- `@` - Literal @ symbol\n- `[a-zA-Z0-9.-]+` - Domain name with letters, numbers, dots, hyphens\n- `\\.` - Literal dot\n- `[a-zA-Z]{2,}` - Top-level domain (2+ letters)\n- `$` - End of string\n\n**Test cases:**\n✓ user@example.com\n✓ john.doe+filter@company.co.uk\n✗ invalid@\n✗ @example.com"
+      },
+      {
+        prompt: "Extract all URLs from text using regex",
+        output: "Pattern to extract URLs:\n\n```regex\nhttps?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&\\/\\/=]*)\n```\n\n**Usage in JavaScript:**\n```javascript\nconst text = \"Visit https://example.com or http://test.org\";\nconst urlRegex = /https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&\\/\\/=]*)/g;\nconst urls = text.match(urlRegex);\nconsole.log(urls); // ['https://example.com', 'http://test.org']\n```\n\n**Python:**\n```python\nimport re\ntext = \"Visit https://example.com or http://test.org\"\npattern = r'https?://(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)'\nurls = re.findall(pattern, text)\nprint(urls)\n```"
+      }
+    ]
+  },
+  {
+    id: 'schema-designer',
+    name: 'Schema Designer',
+    description: 'Design and visualize database schemas with SQL migration generation, ERD diagrams, and normalization support for PostgreSQL, MySQL, and SQLite.',
+    longDescription: 'A comprehensive database schema design skill that helps you create, visualize, and manage database structures. Design schemas visually, generate SQL migrations, create Entity-Relationship Diagrams (ERD), and normalize database structures following best practices. Supports PostgreSQL, MySQL, and SQLite with production-ready migration scripts.',
+    category: 'development',
+    tags: ['database', 'schema', 'sql', 'erd'],
+    icon: '◫',
+    color: 'oklch(0.72 0.16 160)',
+    skillFile: `${GITHUB_RAW_BASE}/schema-designer.md`,
+    features: [
+      'Visual database schema design',
+      'SQL migration generation',
+      'ERD diagram creation',
+      'Database normalization',
+      'PostgreSQL, MySQL, SQLite support'
+    ],
+    useCases: [
+      'Designing new databases',
+      'Refactoring existing schemas',
+      'Creating migration scripts',
+      'Documenting data models',
+      'Schema optimization'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
+  },
+  {
     id: 'imessage',
     name: 'iMessage',
     description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
