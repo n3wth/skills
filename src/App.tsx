@@ -312,10 +312,11 @@ function Hero() {
 
           <div ref={contentRef} className="flex flex-col gap-6 md:gap-8">
             <p
-              className="text-base md:text-xl leading-relaxed max-w-md"
+              className="text-base md:text-xl leading-relaxed max-w-xl"
               style={{ color: 'var(--color-grey-200)' }}
             >
-              Skills for Gemini CLI, Claude Code, and other AI assistants. Install with one command.
+              Skills for Gemini CLI, Claude Code, and other AI assistants.<br />
+              Install with one command.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 md:gap-6">
