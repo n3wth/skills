@@ -648,6 +648,32 @@ export const skills: Skill[] = [
     compatibility: ['claude'],
     version: '1.0.0',
     lastUpdated: '2026-01-26'
+  },
+  {
+    id: 'data-viz',
+    name: 'Data Viz',
+    description: 'Create charts and data visualizations using D3.js and Chart.js. Build interactive dashboards, analytics displays, and export to SVG/PNG with responsive layouts.',
+    longDescription: 'A comprehensive data visualization skill that enables you to create stunning, interactive charts and graphs using industry-standard libraries like D3.js and Chart.js. Transform raw data into compelling visual stories with responsive layouts that work across all devices.',
+    category: 'creative',
+    tags: ['charts', 'd3js', 'visualization', 'data'],
+    icon: '◬',
+    color: 'oklch(0.70 0.22 200)',
+    features: [
+      'Create charts with D3.js and Chart.js',
+      'Interactive data visualizations',
+      'Dashboard components',
+      'Export to SVG/PNG formats',
+      'Responsive chart layouts'
+    ],
+    useCases: [
+      'Building analytics dashboards',
+      'Creating reports with charts',
+      'Visualizing datasets',
+      'Presenting metrics'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
   }
 ]
 
