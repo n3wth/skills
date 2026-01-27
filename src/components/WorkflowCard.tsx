@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { skills } from '../data/skills'
 import type { Workflow } from '../data/workflows'
 import { categoryConfig } from '../config/categories'
+import { CategoryShape } from './CategoryShape'
 
 interface WorkflowCardProps {
   workflow: Workflow
@@ -21,27 +22,21 @@ export function WorkflowCard({ workflow, index = 0 }: WorkflowCardProps) {
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex -space-x-2">
-          {workflowSkills.slice(0, 4).map((skill, i) => {
-            if (!skill) return null
-            const config = categoryConfig[skill.category]
-            return (
+          {workflowSkills.slice(0, 4).map((skill, i) => (
+            skill && (
               <div
                 key={skill.id}
-                className="w-10 h-10 rounded-lg flex items-center justify-center text-base border-2 border-[var(--color-bg)]"
-                style={{
-                  backgroundColor: `color-mix(in oklch, ${config?.color || skill.color} 25%, var(--color-bg))`,
-                  color: config?.color || skill.color,
-                  zIndex: 4 - i
-                }}
+                className="w-6 h-6 flex items-center justify-center border-2 border-[var(--color-bg)] rounded-full bg-[var(--color-bg)]"
+                style={{ zIndex: 4 - i }}
                 title={skill.name}
               >
-                {skill.icon}
+                <CategoryShape category={skill.category} size={14} />
               </div>
             )
-          })}
+          ))}
           {workflowSkills.length > 4 && (
-            <div 
-              className="w-10 h-10 rounded-lg flex items-center justify-center text-xs font-medium border-2 border-[var(--color-bg)] bg-[var(--glass-bg)] text-[var(--color-grey-400)]"
+            <div
+              className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-medium border-2 border-[var(--color-bg)] bg-[var(--glass-bg)] text-[var(--color-grey-400)]"
               style={{ zIndex: 0 }}
             >
               +{workflowSkills.length - 4}
