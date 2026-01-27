@@ -267,30 +267,31 @@ chmod +x .git/hooks/commit-msg
 
 ## Auto-Stash Experimental Changes
 
-### Pre-checkout Hook
+### Pre-commit Hook for Stashing
 
-Automatically stash Cursor experiments when switching branches:
+Use a wrapper script to auto-stash when switching branches:
 
 ```bash
 #!/bin/bash
-# .git/hooks/pre-checkout
+# git-checkout-wrapper.sh
+# Add to your shell profile: alias gco='./git-checkout-wrapper.sh'
 
-current_branch=$(git branch --show-current)
-target_branch=$2
+BRANCH=$1
 
-if [ "$target_branch" != "$current_branch" ]; then
-  # Check if there are uncommitted changes
-  if ! git diff-index --quiet HEAD --; then
-    timestamp=$(date +%Y%m%d_%H%M%S)
-    stash_message="[Cursor] Auto-stash from $current_branch - $timestamp"
-    
-    echo "💾 Auto-stashing changes from $current_branch..."
-    git stash push -m "$stash_message"
-    
-    echo "✓ Changes stashed: $stash_message"
-    echo "To restore: git stash apply"
-  fi
+# Check if there are uncommitted changes
+if ! git diff-index --quiet HEAD --; then
+  current_branch=$(git branch --show-current)
+  timestamp=$(date +%Y%m%d_%H%M%S)
+  stash_message="[Cursor] Auto-stash from $current_branch - $timestamp"
+  
+  echo "💾 Auto-stashing changes from $current_branch..."
+  git stash push -m "$stash_message"
+  
+  echo "✓ Changes stashed: $stash_message"
 fi
+
+# Perform checkout
+git checkout "$BRANCH"
 ```
 
 ### Post-checkout Hook
@@ -527,11 +528,13 @@ ls -la .git/hooks/pre-commit
 ### Stashes Not Auto-Saving
 
 ```bash
-# Enable hooks
-git config core.hooksPath .git/hooks
+# Use the wrapper script
+chmod +x git-checkout-wrapper.sh
 
-# Make checkout hooks executable
-chmod +x .git/hooks/pre-checkout
+# Add alias to your shell profile (~/.bashrc or ~/.zshrc)
+echo "alias gco='./git-checkout-wrapper.sh'" >> ~/.bashrc
+
+# Or use the post-checkout hook for reminders
 chmod +x .git/hooks/post-checkout
 ```
 
