@@ -648,6 +648,35 @@ export const skills: Skill[] = [
     compatibility: ['claude'],
     version: '1.0.0',
     lastUpdated: '2026-01-26'
+  },
+  {
+    id: 'api-docs-generator',
+    name: 'API Docs Generator',
+    description: 'Generate comprehensive API documentation from code. Create OpenAPI/Swagger specs, markdown docs, and SDK references for REST APIs.',
+    longDescription: 'A comprehensive skill for generating API documentation from your codebase. Automatically create OpenAPI/Swagger specifications, generate markdown API documentation, document REST endpoints, and create client SDK references. Supports multiple programming languages including TypeScript, Python, and Go.',
+    category: 'development',
+    tags: ['api', 'documentation', 'openapi', 'swagger'],
+    featured: false,
+    icon: '◇',
+    color: 'oklch(0.73 0.16 160)',
+    skillFile: `${GITHUB_RAW_BASE}/api-docs-generator.md`,
+    features: [
+      'Generate OpenAPI/Swagger specs from code',
+      'Create markdown API documentation',
+      'Document REST endpoints automatically',
+      'Generate client SDK documentation',
+      'Support for multiple languages (TypeScript, Python, Go)'
+    ],
+    useCases: [
+      'Documenting REST APIs',
+      'Creating API reference guides',
+      'Generating SDK documentation',
+      'Maintaining up-to-date API specs',
+      'Auto-generating API documentation from code'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
   }
 ]
 
