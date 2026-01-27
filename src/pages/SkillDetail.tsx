@@ -3,11 +3,14 @@ import { skills } from '../data/skills'
 import { CategoryShape } from '../components/CategoryShape'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
+import { KeyboardShortcutsHelp } from '../components/KeyboardShortcutsHelp'
 import { categoryConfig } from '../config/categories'
+import { useKeyboardShortcuts } from '../hooks'
 
 export function SkillDetail() {
   const { skillId } = useParams<{ skillId: string }>()
   const skill = skills.find(s => s.id === skillId)
+  const { showHelp, setShowHelp } = useKeyboardShortcuts()
 
   if (!skill) {
     return (
@@ -219,6 +222,11 @@ export function SkillDetail() {
       </main>
 
       <Footer />
+
+      <KeyboardShortcutsHelp
+        isOpen={showHelp}
+        onClose={() => setShowHelp(false)}
+      />
     </div>
   )
 }
