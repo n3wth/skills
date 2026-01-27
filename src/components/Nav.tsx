@@ -68,34 +68,39 @@ export function Nav() {
       >
         {siteConfig.name}
       </Link>
-      <div className="flex items-center gap-4 md:gap-6" role="list" aria-label="Navigation links">
-        <Link
-          to="/submit"
-          className="text-sm link-hover"
-          style={{ color: 'var(--color-grey-400)' }}
-          role="listitem"
-        >
-          Submit
-        </Link>
-        <Link
-          to="/about"
-          className="text-sm link-hover"
-          style={{ color: 'var(--color-grey-400)' }}
-          role="listitem"
-        >
-          About
-        </Link>
-        <a
-          href={siteConfig.links.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm link-hover"
-          style={{ color: 'var(--color-grey-400)' }}
-          role="listitem"
-          aria-label="GitHub repository (opens in new tab)"
-        >
-          GitHub
-        </a>
+      <div className="flex items-center gap-4 md:gap-6">
+        <ul className="flex items-center gap-4 md:gap-6 list-none m-0 p-0" aria-label="Navigation links">
+          <li>
+            <Link
+              to="/submit"
+              className="text-sm link-hover"
+              style={{ color: 'var(--color-grey-400)' }}
+            >
+              Submit
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about"
+              className="text-sm link-hover"
+              style={{ color: 'var(--color-grey-400)' }}
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm link-hover"
+              style={{ color: 'var(--color-grey-400)' }}
+              aria-label="GitHub repository (opens in new tab)"
+            >
+              GitHub
+            </a>
+          </li>
+        </ul>
         <ThemeToggle />
       </div>
     </nav>
