@@ -1,6 +1,4 @@
 import { useRef, useEffect, useCallback, useSyncExternalStore } from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
 import { skills } from '../data/skills'
 import { categoryConfig } from '../config/categories'
 
@@ -271,15 +269,6 @@ export function HeroConstellation() {
     }
   }, [prefersReducedMotion])
 
-  useGSAP(() => {
-    if (!canvasRef.current || prefersReducedMotion) return
-
-    gsap.fromTo(
-      canvasRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1.5, delay: 0.5, ease: 'power2.out' }
-    )
-  }, { scope: containerRef, dependencies: [prefersReducedMotion] })
 
   if (prefersReducedMotion) {
     return (
@@ -311,7 +300,7 @@ export function HeroConstellation() {
     >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 opacity-0"
+        className="absolute inset-0"
         style={{ mixBlendMode: 'screen' }}
       />
     </div>

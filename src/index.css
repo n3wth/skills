@@ -431,18 +431,9 @@ body {
   animation-fill-mode: both;
 }
 
-/* Content fade-in transition */
-@keyframes contentFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
+/* Content loaded state - instant display */
 .content-loaded {
-  animation: contentFadeIn 0.3s ease-out forwards;
+  opacity: 1;
 }
 
 /* Page transition animations */
