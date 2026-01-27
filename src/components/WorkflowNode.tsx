@@ -94,35 +94,15 @@ export function WorkflowNodeComponent({
       const newX = e.clientX - parentRect.left + parent.scrollLeft - dragOffsetRef.current.x
       const newY = e.clientY - parentRect.top + parent.scrollTop - dragOffsetRef.current.y
 
-      // Use GSAP for smooth position updates
-      gsap.to(nodeRef.current, {
-        x: Math.max(0, newX) - node.position.x,
-        y: Math.max(0, newY) - node.position.y,
-        duration: 0.1,
-        ease: 'power2.out',
-        overwrite: true
+      // Update position directly so connections follow
+      onUpdatePosition({
+        x: Math.max(0, newX),
+        y: Math.max(0, newY)
       })
     }
 
     const handleMouseUp = () => {
       if (!isDraggingRef.current || !nodeRef.current) return
-
-      const parent = nodeRef.current.parentElement
-      if (parent) {
-        // Get final position from GSAP transform
-        const transform = gsap.getProperty(nodeRef.current, 'x') as number
-        const transformY = gsap.getProperty(nodeRef.current, 'y') as number
-
-        const finalX = node.position.x + transform
-        const finalY = node.position.y + transformY
-
-        // Reset GSAP transform and update actual position
-        gsap.set(nodeRef.current, { x: 0, y: 0 })
-        onUpdatePosition({
-          x: Math.max(0, finalX),
-          y: Math.max(0, finalY)
-        })
-      }
 
       isDraggingRef.current = false
       document.body.style.cursor = ''
@@ -138,7 +118,7 @@ export function WorkflowNodeComponent({
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseup', handleMouseUp)
     }
-  }, [node.position.x, node.position.y, onUpdatePosition])
+  }, [onUpdatePosition])
 
   const renderPort = (port: SkillIO, isOutput: boolean) => {
     const handleClick = (e: React.MouseEvent) => {
@@ -209,8 +189,7 @@ export function WorkflowNodeComponent({
       style={{
         left: node.position.x,
         top: node.position.y,
-        backgroundColor: 'var(--color-bg-secondary)',
-        willChange: 'transform'
+        backgroundColor: 'var(--color-bg-secondary)'
       }}
       onMouseDown={handleMouseDown}
     >
