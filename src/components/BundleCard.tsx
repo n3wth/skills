@@ -7,6 +7,45 @@ interface BundleCardProps {
   index?: number
 }
 
+const personaColors: Record<string, string> = {
+  frontend: 'var(--color-sage)',
+  backend: 'var(--color-coral)',
+  devops: 'var(--color-sky)',
+  creator: 'var(--color-gold)',
+  analyst: 'var(--color-sage)',
+  founder: 'var(--color-coral)',
+}
+
+function BundleIcon({ persona }: { persona: string }) {
+  const color = personaColors[persona] || 'var(--color-grey-400)'
+
+  // Different shapes for different personas
+  switch (persona) {
+    case 'frontend':
+      return <div className="w-10 h-10 rounded-full" style={{ backgroundColor: color, opacity: 0.8 }} />
+    case 'backend':
+      return <div className="w-10 h-10 rounded-lg" style={{ backgroundColor: color, opacity: 0.8 }} />
+    case 'devops':
+      return (
+        <svg className="w-10 h-10" viewBox="0 0 40 40">
+          <polygon points="20,4 36,36 4,36" fill={color} opacity={0.8} />
+        </svg>
+      )
+    case 'creator':
+      return (
+        <svg className="w-10 h-10" viewBox="0 0 40 40">
+          <polygon points="20,2 38,20 20,38 2,20" fill={color} opacity={0.8} />
+        </svg>
+      )
+    case 'analyst':
+      return <div className="w-10 h-10 rounded-full" style={{ backgroundColor: color, opacity: 0.8 }} />
+    case 'founder':
+      return <div className="w-10 h-10 rounded-lg" style={{ backgroundColor: color, opacity: 0.8 }} />
+    default:
+      return <div className="w-10 h-10 rounded-lg" style={{ backgroundColor: color, opacity: 0.8 }} />
+  }
+}
+
 export function BundleCard({ bundle, index = 0 }: BundleCardProps) {
   const bundleSkills = bundle.skillIds
     .map(id => skills.find(s => s.id === id))
@@ -20,12 +59,12 @@ export function BundleCard({ bundle, index = 0 }: BundleCardProps) {
 
   return (
     <Link
-      to={`/bundles/${bundle.id}`}
+      to={`/curated-bundles/${bundle.id}`}
       className="glass-card skill-card block p-6 card-enter hover:border-[var(--glass-highlight)] transition-all"
       style={{ animationDelay: `${index * 0.05}s` }}
     >
       <div className="flex items-start justify-between mb-4">
-        <div className="text-3xl">{bundle.icon}</div>
+        <BundleIcon persona={bundle.persona} />
         <span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${difficultyColor[bundle.difficulty]} bg-opacity-10`}
           style={{
             backgroundColor: difficultyColor[bundle.difficulty].split('-')[1].includes('400')
@@ -68,7 +107,7 @@ export function BundleCard({ bundle, index = 0 }: BundleCardProps) {
 
       <div className="flex items-center justify-between">
         <span className="text-xs text-[var(--color-grey-600)]">
-          ⏱ {bundle.estimatedSetupTime}
+          {bundle.estimatedSetupTime}
         </span>
         <span className="text-xs font-medium text-[var(--color-sage)]">
           For {bundle.persona}s →
