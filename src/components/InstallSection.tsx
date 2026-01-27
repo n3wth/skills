@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { installCommands } from '../config/commands'
 import { assistantList } from '../config/assistants'
 import { CommandBox } from './CommandBox'
