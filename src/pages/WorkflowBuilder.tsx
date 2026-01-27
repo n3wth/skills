@@ -72,10 +72,11 @@ export function WorkflowBuilderPage() {
         <Nav />
         
         <main className="pt-20">
-          <WorkflowBuilderComponent 
-            initialWorkflow={initialWorkflow}
-            onSave={handleSave}
-          />
+                    <WorkflowBuilderComponent 
+                      key={initialWorkflow?.id ?? 'new'}
+                      initialWorkflow={initialWorkflow}
+                      onSave={handleSave}
+                    />
         </main>
       </div>
     </>
