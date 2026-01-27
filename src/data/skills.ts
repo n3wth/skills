@@ -620,6 +620,45 @@ export const skills: Skill[] = [
     }
   },
   {
+    id: 'log-analyzer',
+    name: 'Log Analyzer',
+    description: 'Parse and analyze log files to identify error patterns, extract metrics, reconstruct timelines, and detect anomalies. Essential for debugging and monitoring.',
+    longDescription: 'A comprehensive log analysis skill that helps you parse various log formats, identify error patterns, extract performance metrics, reconstruct event timelines, and detect anomalies. Perfect for debugging production issues, performance analysis, security investigations, and system monitoring.',
+    category: 'development',
+    tags: ['logs', 'debugging', 'analysis', 'monitoring'],
+    icon: '▤',
+    color: 'oklch(0.70 0.15 200)',
+    skillFile: `${GITHUB_RAW_BASE}/log-analyzer.md`,
+    features: [
+      'Multi-format log parsing (Apache, nginx, JSON, syslog)',
+      'Regex pattern matching and extraction',
+      'Error detection and categorization',
+      'Performance metric extraction',
+      'Timeline reconstruction across services',
+      'Statistical anomaly detection'
+    ],
+    useCases: [
+      'Debugging production issues',
+      'Performance analysis and optimization',
+      'Security incident investigation',
+      'System health monitoring',
+      'Root cause analysis'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    samplePrompts: [
+      {
+        prompt: "Find all 500 errors in my nginx access logs from the last hour",
+        output: "I'll help you analyze 500 errors from your nginx logs:\n\n```python\nimport re\nfrom datetime import datetime, timedelta\nfrom collections import Counter\n\ndef analyze_500_errors(log_file, hours=1):\n    cutoff_time = datetime.now() - timedelta(hours=hours)\n    endpoint_errors = Counter()\n    \n    with open(log_file) as f:\n        for line in f:\n            match = re.search(r'\\[(.*?)\\].*?\" (\\d{3})', line)\n            if match:\n                timestamp_str, status = match.groups()\n                timestamp = datetime.strptime(timestamp_str, '%d/%b/%Y:%H:%M:%S %z')\n                \n                if status == '500' and timestamp > cutoff_time:\n                    endpoint_match = re.search(r'\"[A-Z]+ (.*?) HTTP', line)\n                    if endpoint_match:\n                        endpoint_errors[endpoint_match.group(1)] += 1\n    \n    return endpoint_errors\n\nerrors = analyze_500_errors('access.log', 1)\nfor endpoint, count in errors.most_common():\n    print(f'{endpoint}: {count} errors')\n```\n\nThis groups 500 errors by endpoint to help identify problematic routes."
+      },
+      {
+        prompt: "Detect brute force login attempts from my application logs",
+        output: "I'll analyze your logs for potential brute force attacks:\n\n```python\nimport re\nfrom datetime import datetime, timedelta\nfrom collections import defaultdict\n\ndef detect_brute_force(log_file, threshold=10, window_minutes=5):\n    failed_attempts = defaultdict(list)\n    suspicious_ips = set()\n    \n    with open(log_file) as f:\n        for line in f:\n            if 'Failed login' in line or 'authentication failed' in line.lower():\n                ip_match = re.search(r'(\\d+\\.\\d+\\.\\d+\\.\\d+)', line)\n                time_match = re.search(r'(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})', line)\n                \n                if ip_match and time_match:\n                    ip = ip_match.group(1)\n                    timestamp = datetime.strptime(time_match.group(1), '%Y-%m-%d %H:%M:%S')\n                    failed_attempts[ip].append(timestamp)\n                    \n                    recent = [t for t in failed_attempts[ip] \n                             if timestamp - t <= timedelta(minutes=window_minutes)]\n                    if len(recent) >= threshold:\n                        suspicious_ips.add(ip)\n    \n    return suspicious_ips\n\nsuspicious = detect_brute_force('app.log')\nprint(f'Found {len(suspicious)} IPs with potential brute force attempts:')\nfor ip in suspicious:\n    print(f'  - {ip}')\n```\n\nThis identifies IPs with 10+ failed login attempts within 5 minutes."
+      }
+    ]
+  },
+  {
     id: 'imessage',
     name: 'iMessage',
     description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
