@@ -12,7 +12,7 @@ export function SkillCard({ skill, showPopularity = false }: SkillCardProps) {
   const copyCount = showPopularity ? getCopyCount(skill.id) : 0
 
   return (
-    <Link to={`/skill/${skill.id}`} className="glass-card group cursor-pointer p-5 md:p-6 block">
+    <Link to={`/skill/${skill.id}`} className="skill-card glass-card group cursor-pointer p-5 md:p-6 block">
       <div className="flex items-start justify-between mb-3 md:mb-4">
         <CategoryShape category={skill.category} size={12} />
         {showPopularity && copyCount > 0 && (
