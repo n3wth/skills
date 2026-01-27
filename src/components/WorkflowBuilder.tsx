@@ -164,14 +164,14 @@ export function WorkflowBuilder({ initialWorkflow, onSave }: WorkflowBuilderProp
   }, [])
 
   const handleSave = useCallback(() => {
-    const validation = validateWorkflow(workflow)
-    if (!validation.valid) {
-      setValidationErrors(validation.errors)
+    if (!workflow.name.trim()) {
+      setShowSaveModal(true)
       return
     }
     
-    if (!workflow.name.trim()) {
-      setShowSaveModal(true)
+    const validation = validateWorkflow(workflow)
+    if (!validation.valid) {
+      setValidationErrors(validation.errors)
       return
     }
     
