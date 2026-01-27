@@ -226,6 +226,38 @@ export function isSkillPopular(skillId: string, threshold: number = 5): boolean 
   return viewCount >= threshold
 }
 
+// Get badge status for all skills at once (performance optimization)
+// This reads localStorage once and computes all badge statuses
+export interface SkillBadgeStatus {
+  trendingSkillIds: Set<string>
+  popularSkillIds: Set<string>
+}
+
+export function getSkillBadgeStatus(
+  period: TrendingPeriod = 'weekly',
+  trendingThreshold: number = 3,
+  popularThreshold: number = 5
+): SkillBadgeStatus {
+  const data = getStoredData()
+  
+  // Get trending skills (computed once)
+  const trending = getTrendingSkills(period, 10)
+  const trendingSkillIds = new Set(
+    trending
+      .filter(t => t.viewCount >= trendingThreshold)
+      .map(t => t.skillId)
+  )
+  
+  // Get popular skills (computed once)
+  const popularSkillIds = new Set(
+    Object.entries(data.skillViewCounts)
+      .filter(([, count]) => count >= popularThreshold)
+      .map(([skillId]) => skillId)
+  )
+  
+  return { trendingSkillIds, popularSkillIds }
+}
+
 // Get analytics summary for dashboard
 export interface AnalyticsSummary {
   totalViews: number

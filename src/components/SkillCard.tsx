@@ -1,14 +1,15 @@
-import { forwardRef, useMemo } from 'react'
+import { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
 import { type Skill } from '../data/skills'
 import { CategoryShape } from './CategoryShape'
-import { getCopyCount, isSkillTrending, isSkillPopular } from '../lib/analytics'
+import { getCopyCount } from '../lib/analytics'
 
 interface SkillCardProps {
   skill: Skill
   isSelected?: boolean
   showPopularity?: boolean
-  showBadges?: boolean
+  isTrending?: boolean
+  isPopular?: boolean
 }
 
 function isRecentlyUpdated(lastUpdated: string): boolean {
@@ -19,12 +20,9 @@ function isRecentlyUpdated(lastUpdated: string): boolean {
 }
 
 export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
-  function SkillCard({ skill, isSelected = false, showPopularity = false, showBadges = true }, ref) {
+  function SkillCard({ skill, isSelected = false, showPopularity = false, isTrending = false, isPopular = false }, ref) {
     const copyCount = showPopularity ? getCopyCount(skill.id) : 0
     const isNew = isRecentlyUpdated(skill.lastUpdated)
-    
-    const isTrending = useMemo(() => showBadges ? isSkillTrending(skill.id) : false, [skill.id, showBadges])
-    const isPopular = useMemo(() => showBadges ? isSkillPopular(skill.id) : false, [skill.id, showBadges])
 
     return (
       <Link
