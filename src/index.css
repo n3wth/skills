@@ -1,25 +1,49 @@
 @import 'tailwindcss';
 
 @font-face {
-  font-family: 'Saans';
-  src: url('/fonts/saans-regular.woff2') format('woff2');
+  font-family: 'Geist Sans';
+  src: url('/fonts/Geist-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Saans';
-  src: url('/fonts/saans-semibold.woff2') format('woff2');
+  font-family: 'Geist Sans';
+  src: url('/fonts/Geist-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('/fonts/Geist-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-display: 'Saans', system-ui, sans-serif;
-  --font-sans: 'Saans', system-ui, sans-serif;
-  --font-mono: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Code', monospace;
+  --font-display: 'Geist Sans', system-ui, sans-serif;
+  --font-sans: 'Geist Sans', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
 
   /* Dark iOS-inspired palette (default) */
   --color-bg: #000000;
@@ -139,20 +163,12 @@ body {
 
 /* Skill Card with hover effects */
 .skill-card {
-  transform: translateY(0) scale(1);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+  transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skill-card:hover {
-  transform: translateY(-4px) scale(1.02);
   background: var(--glass-bg);
-}
-
-.skill-card:active {
-  transform: translateY(-2px) scale(1.01);
-  transition-duration: 0.1s;
 }
 
 
@@ -173,6 +189,7 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
+  border-radius: 9999px;
   color: var(--color-grey-400);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transform: scale(1);
@@ -430,20 +447,9 @@ body {
   animation-fill-mode: both;
 }
 
-/* Content fade-in transition */
-@keyframes contentFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Content loaded state - instant display */
 .content-loaded {
-  animation: contentFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 1;
 }
 
 /* Page transition animations */

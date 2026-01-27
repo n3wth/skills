@@ -1,11 +1,11 @@
-import { useState, useLayoutEffect, useMemo, useRef, useCallback, useEffect } from 'react'
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { skills, categories } from '../data/skills'
-import { Nav, Footer, Hero, InstallSection, SkillCard, CategoryFilter, SearchInput, KeyboardShortcutsHelp, SEO, SortDropdown, TaskInput, SkillRecommendations } from '../components'
+import { Nav, Footer, Hero, InstallSection, SkillCard, CategoryFilter, SearchInput, KeyboardShortcutsHelp, SEO, SortDropdown, TaskInput, SkillRecommendations, ComparisonBar } from '../components'
 import type { SortOption } from '../components'
 import { useKeyboardShortcuts } from '../hooks'
 import { getRecommendations } from '../lib/recommendations'
+import { getSkillBadgeStatus } from '../lib/analytics'
 
 const SORT_STORAGE_KEY = 'newth-skills-sort-preference'
 
@@ -114,12 +114,26 @@ export function Home() {
     return () => window.removeEventListener('keydown', handleEnterKey)
   }, [selectedIndex, filteredSkills, navigate, showHelp])
 
+  // Only scroll to selected card if using keyboard navigation (j/k/arrows)
+  const isKeyboardNav = useRef(false)
+
   useEffect(() => {
-    if (selectedIndex >= 0 && skillCardRefs.current[selectedIndex]) {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (['j', 'k', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+        isKeyboardNav.current = true
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  useEffect(() => {
+    if (isKeyboardNav.current && selectedIndex >= 0 && skillCardRefs.current[selectedIndex]) {
       skillCardRefs.current[selectedIndex]?.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
       })
+      isKeyboardNav.current = false
     }
   }, [selectedIndex])
 
@@ -127,15 +141,14 @@ export function Home() {
     setSelectedIndex(-1)
   }, [activeCategory, searchQuery, setSelectedIndex])
 
-  useLayoutEffect(() => {
-    ScrollTrigger.refresh()
-  }, [activeCategory, searchQuery])
+  // Compute badge status once for all skills (performance optimization)
+  const badgeStatus = useMemo(() => getSkillBadgeStatus(), [])
 
   return (
     <div className="min-h-screen relative content-loaded">
       <SEO
         title="Skills for AI Coding Assistants - Gemini CLI & Claude Code"
-        description="Give your AI superpowers. Install skills that teach Gemini CLI and Claude Code to build animations, generate documents, create art, and more. One command to install."
+        description="Teach your AI to build animations, generate documents, and create art. Skills for Gemini CLI and Claude Code. One command to install, works offline."
         canonicalUrl="/"
         keywords={['AI skills', 'Gemini CLI', 'Claude Code', 'AI coding assistant', 'developer tools']}
       />
@@ -152,7 +165,7 @@ export function Home() {
               What do you want to build?
             </h2>
             <p className="label">
-              Tell us your goal and we'll find the right skill
+              Describe your project and see which skills can help
             </p>
           </div>
           <TaskInput
@@ -170,10 +183,10 @@ export function Home() {
 
         <div className="mb-6 md:mb-8">
           <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
-            All Skills
+            Browse Skills
           </h2>
           <p className="label">
-            {skills.length} ready-to-use skills in {categories.length - 1} categories
+            {skills.length} skills across {categories.length - 1} categories
           </p>
         </div>
 
@@ -202,6 +215,8 @@ export function Home() {
               ref={(el) => { skillCardRefs.current[index] = el }}
               skill={skill}
               isSelected={selectedIndex === index}
+              isTrending={badgeStatus.trendingSkillIds.has(skill.id)}
+              isPopular={badgeStatus.popularSkillIds.has(skill.id)}
             />
           ))}
         </div>
@@ -210,13 +225,13 @@ export function Home() {
           <div className="text-center py-24">
             <p className="text-lg text-white mb-2">
               {searchQuery.trim()
-                ? 'No matching skills found'
-                : 'This category is empty'}
+                ? 'No matches'
+                : 'Nothing here yet'}
             </p>
             <p className="label mb-4">
               {searchQuery.trim()
-                ? 'Try different keywords or browse all skills'
-                : 'Check back soon for new skills'}
+                ? 'Try broader keywords or clear the filter'
+                : 'This category is coming soon'}
             </p>
             {searchQuery.trim() && (
               <button
@@ -236,6 +251,8 @@ export function Home() {
         isOpen={showHelp}
         onClose={() => setShowHelp(false)}
       />
+
+      <ComparisonBar />
     </div>
   )
 }

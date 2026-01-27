@@ -4,24 +4,28 @@ export interface Contributor {
   url?: string
 }
 
+import type { AssistantId } from '../config/assistants'
+
 export interface SamplePrompt {
   prompt: string
   output: string
 }
+
+export type SkillCategory = 'development' | 'documents' | 'creative' | 'productivity' | 'business'
 
 export interface Skill {
   id: string
   name: string
   description: string
   longDescription?: string
-  category: 'development' | 'documents' | 'creative' | 'productivity' | 'business'
+  category: SkillCategory
   tags: string[]
   featured?: boolean
   icon: string
   color: string
   features?: string[]
   useCases?: string[]
-  compatibility?: ('gemini' | 'claude')[]
+  compatibility?: AssistantId[]
   version: string
   lastUpdated: string
   contributor?: Contributor
@@ -29,7 +33,7 @@ export interface Skill {
   skillFile?: string
 }
 
-const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/onewth/newth-skills/main/skills'
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/n3wth/newth-skills/main/skills'
 
 export const skills: Skill[] = [
   {
@@ -57,7 +61,7 @@ export const skills: Skill[] = [
       'Micro-interactions',
       'Loading animations'
     ],
-    compatibility: ['gemini', 'claude'],
+    compatibility: ['gemini', 'claude', 'cursor', 'windsurf', 'copilot'],
     version: '1.2.0',
     lastUpdated: '2026-01-20',
     samplePrompts: [
@@ -79,7 +83,7 @@ export const skills: Skill[] = [
     category: 'development',
     tags: ['mcp', 'servers', 'api', 'integration'],
     featured: true,
-    icon: '⚡',
+    icon: '◆',
     color: 'oklch(0.78 0.15 65)',
     skillFile: `${GITHUB_RAW_BASE}/mcp-builder.md`,
     features: [
@@ -135,7 +139,7 @@ export const skills: Skill[] = [
       'Team skill sharing',
       'Custom tooling'
     ],
-    compatibility: ['gemini', 'claude'],
+    compatibility: ['gemini', 'claude', 'cursor', 'windsurf', 'copilot'],
     version: '1.1.0',
     lastUpdated: '2026-01-10',
     samplePrompts: [
@@ -155,6 +159,7 @@ export const skills: Skill[] = [
     featured: true,
     icon: '◉',
     color: 'oklch(0.72 0.20 330)',
+    skillFile: `${GITHUB_RAW_BASE}/algorithmic-art.md`,
     features: [
       'Seeded randomness for reproducible outputs',
       'Interactive parameter exploration',
@@ -169,7 +174,7 @@ export const skills: Skill[] = [
       'NFT artwork creation',
       'Interactive installations'
     ],
-    compatibility: ['gemini', 'claude'],
+    compatibility: ['gemini', 'claude', 'cursor', 'windsurf', 'copilot'],
     version: '1.3.0',
     lastUpdated: '2026-01-15',
     samplePrompts: [
@@ -193,6 +198,7 @@ export const skills: Skill[] = [
     featured: true,
     icon: '◆',
     color: 'oklch(0.65 0.12 220)',
+    skillFile: `${GITHUB_RAW_BASE}/business-panel.md`,
     features: [
       'Multi-expert perspective synthesis',
       'Sequential analysis mode',
@@ -282,6 +288,7 @@ export const skills: Skill[] = [
     tags: ['word', 'documents', 'office'],
     icon: '▤',
     color: 'oklch(0.55 0.18 240)',
+    skillFile: `${GITHUB_RAW_BASE}/docx.md`,
     features: [
       'Document creation and editing',
       'Tracked changes support',
@@ -309,6 +316,7 @@ export const skills: Skill[] = [
     tags: ['powerpoint', 'slides', 'presentations'],
     icon: '▥',
     color: 'oklch(0.65 0.18 35)',
+    skillFile: `${GITHUB_RAW_BASE}/pptx.md`,
     features: [
       'Slide creation with layouts',
       'Speaker notes management',
@@ -336,6 +344,7 @@ export const skills: Skill[] = [
     tags: ['excel', 'spreadsheets', 'data'],
     icon: '▦',
     color: 'oklch(0.60 0.20 145)',
+    skillFile: `${GITHUB_RAW_BASE}/xlsx.md`,
     features: [
       'Formula creation and evaluation',
       'Conditional formatting',
@@ -363,6 +372,7 @@ export const skills: Skill[] = [
     tags: ['testing', 'playwright', 'e2e', 'automation'],
     icon: '◇',
     color: 'oklch(0.68 0.12 200)',
+    skillFile: `${GITHUB_RAW_BASE}/webapp-testing.md`,
     features: [
       'Cross-browser testing support',
       'Screenshot and visual comparison',
@@ -390,6 +400,7 @@ export const skills: Skill[] = [
     tags: ['design', 'art', 'visual', 'canvas'],
     icon: '◎',
     color: 'oklch(0.75 0.16 300)',
+    skillFile: `${GITHUB_RAW_BASE}/canvas-design.md`,
     features: [
       'High-resolution PNG export',
       'PDF generation for print',
@@ -417,6 +428,7 @@ export const skills: Skill[] = [
     tags: ['gif', 'slack', 'animation'],
     icon: '◌',
     color: 'oklch(0.70 0.18 350)',
+    skillFile: `${GITHUB_RAW_BASE}/slack-gif-creator.md`,
     features: [
       'Slack-optimized file constraints',
       'GIF validation and testing',
@@ -444,6 +456,7 @@ export const skills: Skill[] = [
     tags: ['themes', 'styling', 'design-system'],
     icon: '◐',
     color: 'oklch(0.72 0.14 100)',
+    skillFile: `${GITHUB_RAW_BASE}/theme-factory.md`,
     features: [
       '10 curated theme presets',
       'Color palette definitions',
@@ -471,6 +484,7 @@ export const skills: Skill[] = [
     tags: ['documentation', 'writing', 'collaboration'],
     icon: '◑',
     color: 'oklch(0.62 0.10 250)',
+    skillFile: `${GITHUB_RAW_BASE}/doc-coauthoring.md`,
     features: [
       'Structured document workflows',
       'Proposal writing frameworks',
@@ -498,6 +512,7 @@ export const skills: Skill[] = [
     tags: ['communication', 'writing', 'enterprise'],
     icon: '◒',
     color: 'oklch(0.58 0.12 200)',
+    skillFile: `${GITHUB_RAW_BASE}/internal-comms.md`,
     features: [
       'Status report templates',
       'Leadership update formats',
@@ -525,6 +540,7 @@ export const skills: Skill[] = [
     tags: ['marketing', 'copy', 'conversion'],
     icon: '◓',
     color: 'oklch(0.68 0.16 45)',
+    skillFile: `${GITHUB_RAW_BASE}/copywriting.md`,
     features: [
       'Headline and tagline writing',
       'Value proposition crafting',
@@ -552,6 +568,7 @@ export const skills: Skill[] = [
     tags: ['fonts', 'typography', 'design'],
     icon: 'Aa',
     color: 'oklch(0.64 0.08 280)',
+    skillFile: `${GITHUB_RAW_BASE}/typography-selector.md`,
     features: [
       'Google Fonts integration',
       'Curated font pairings',
@@ -579,6 +596,7 @@ export const skills: Skill[] = [
     tags: ['git', 'version-control', 'workflow', 'collaboration'],
     icon: '⎇',
     color: 'oklch(0.68 0.16 30)',
+    skillFile: `${GITHUB_RAW_BASE}/git-workflow.md`,
     features: [
       'GitFlow and trunk-based branching',
       'Conventional commit message formatting',
@@ -600,6 +618,36 @@ export const skills: Skill[] = [
       name: 'Community Contributor',
       github: 'example-contributor'
     }
+  },
+  {
+    id: 'imessage',
+    name: 'iMessage',
+    description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
+    longDescription: 'A comprehensive iMessage management skill that provides direct access to the Messages database and AppleScript automation. Find unreplied threads, search contacts with disambiguation, read conversation history from both individual and group chats, and send messages with proper confirmation workflows.',
+    category: 'productivity',
+    tags: ['imessage', 'messaging', 'automation', 'macos'],
+    featured: true,
+    icon: '◈',
+    color: 'oklch(0.65 0.18 220)',
+    skillFile: `${GITHUB_RAW_BASE}/imessage.md`,
+    features: [
+      'Find unreplied message threads',
+      'Search contacts with disambiguation',
+      'Read individual and group chat history',
+      'Send messages via AppleScript',
+      'Filter reactions and tapbacks',
+      'Handle group chat participants'
+    ],
+    useCases: [
+      'Catching up on unreplied messages',
+      'Finding the right contact to message',
+      'Reading conversation context before replying',
+      'Sending messages hands-free',
+      'Managing group chat communications'
+    ],
+    compatibility: ['claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-26'
   }
 ]
 
@@ -608,5 +656,6 @@ export const categories = [
   { id: 'development', name: 'Development', count: skills.filter(s => s.category === 'development').length },
   { id: 'documents', name: 'Documents', count: skills.filter(s => s.category === 'documents').length },
   { id: 'creative', name: 'Creative', count: skills.filter(s => s.category === 'creative').length },
+  { id: 'productivity', name: 'Productivity', count: skills.filter(s => s.category === 'productivity').length },
   { id: 'business', name: 'Business', count: skills.filter(s => s.category === 'business').length },
 ]

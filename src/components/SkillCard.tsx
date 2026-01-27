@@ -2,6 +2,7 @@ import { forwardRef, useState, useRef, useCallback, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { type Skill } from '../data/skills'
 import { CategoryShape } from './CategoryShape'
+import { CompatibilityMatrix } from './CompatibilityMatrix'
 import { getCopyCount } from '../lib/analytics'
 import { HoverPreview } from './HoverPreview'
 
@@ -9,6 +10,8 @@ interface SkillCardProps {
   skill: Skill
   isSelected?: boolean
   showPopularity?: boolean
+  isTrending?: boolean
+  isPopular?: boolean
   showContributor?: boolean
 }
 
@@ -26,7 +29,7 @@ function supportsHover(): boolean {
 }
 
 export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
-  function SkillCard({ skill, isSelected = false, showPopularity = false, showContributor = true }, ref) {
+  function SkillCard({ skill, isSelected = false, showPopularity = false, isTrending = false, isPopular = false, showContributor = true }, ref) {
     const copyCount = showPopularity ? getCopyCount(skill.id) : 0
     const isNew = isRecentlyUpdated(skill.lastUpdated)
     const [showPreview, setShowPreview] = useState(false)
@@ -146,14 +149,45 @@ export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
         <Link
           ref={setRefs}
           to={`/skill/${skill.id}`}
-          className={`skill-card glass-card group cursor-pointer p-5 md:p-6 block ${isSelected ? 'ring-2 ring-white/40' : ''}`}
+          className={`skill-card glass-card group cursor-pointer p-4 sm:p-5 md:p-6 flex flex-col h-full ${isSelected ? 'ring-2 ring-white/40' : ''}`}
           aria-current={isSelected ? 'true' : undefined}
           onTouchStart={handleTouchStart}
         >
-        <div className="flex items-start justify-between mb-3 md:mb-4">
-          <div className="flex items-center gap-2">
+        <div className="flex items-start justify-between mb-2 sm:mb-3 md:mb-4">
+          <div className="flex items-center gap-2 flex-wrap">
             <CategoryShape category={skill.category} size={12} />
-            {isNew && (
+            {isTrending && (
+              <span 
+                className="text-[10px] font-medium px-2 py-0.5 rounded-full flex items-center gap-1"
+                style={{ 
+                  color: '#f97316',
+                  backgroundColor: 'rgba(249, 115, 22, 0.15)',
+                  border: '1px solid rgba(249, 115, 22, 0.3)'
+                }}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13 7.5L10.5 12H14.5L12 16.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+                Trending
+              </span>
+            )}
+            {isPopular && !isTrending && (
+              <span 
+                className="text-[10px] font-medium px-2 py-0.5 rounded-full flex items-center gap-1"
+                style={{ 
+                  color: '#a855f7',
+                  backgroundColor: 'rgba(168, 85, 247, 0.15)',
+                  border: '1px solid rgba(168, 85, 247, 0.3)'
+                }}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+                </svg>
+                Popular
+              </span>
+            )}
+            {isNew && !isTrending && !isPopular && (
               <span 
                 className="text-[10px] font-medium px-2 py-0.5 rounded-full"
                 style={{ 
@@ -180,28 +214,34 @@ export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
           )}
         </div>
 
-        <h3 className="text-sm md:text-base font-semibold mb-2 text-white group-hover:opacity-70 transition-opacity">
+        <h3 className="text-sm md:text-base font-semibold mb-2 text-white">
           {skill.name}
         </h3>
 
         <p
-          className="text-xs md:text-sm leading-relaxed mb-3 md:mb-4"
+          className="text-[11px] sm:text-xs md:text-sm leading-relaxed mb-2 sm:mb-3 md:mb-4 flex-grow"
           style={{ color: 'var(--color-grey-200)' }}
         >
           {skill.description}
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-3">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3">
           {skill.tags.slice(0, 3).map(tag => (
             <span
               key={tag}
-              className="text-[9px] md:text-[10px] uppercase tracking-wider"
+              className="text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-wider"
               style={{ color: 'var(--color-grey-400)' }}
             >
               {tag}
             </span>
           ))}
         </div>
+
+        {skill.compatibility && skill.compatibility.length > 0 && (
+          <div className="mb-3">
+            <CompatibilityMatrix compatibility={skill.compatibility} size="sm" />
+          </div>
+        )}
 
         {showContributor && skill.contributor && (
           <div 

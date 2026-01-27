@@ -10,7 +10,7 @@ function ThemeToggle() {
     <button
       onClick={toggleTheme}
       className="p-3 rounded-full transition-all duration-200 hover:opacity-70 min-w-[44px] min-h-[44px] flex items-center justify-center"
-      style={{ color: 'var(--color-grey-400)' }}
+      style={{ color: 'var(--color-grey-200)' }}
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
@@ -109,7 +109,7 @@ export function Nav() {
 
   return (
     <>
-      <nav className="glass-nav fixed top-0 left-0 right-0 z-[60] px-6 md:px-12 py-3 md:py-4 flex items-center justify-between">
+      <nav className="glass-nav px-6 md:px-12 py-3 md:py-4 flex items-center justify-between">
         <Link
           to="/"
           className="text-base md:text-lg font-semibold hover:opacity-70 transition-opacity"
@@ -122,28 +122,28 @@ export function Nav() {
           <Link
             to="/workflows"
             className="text-sm link-hover"
-            style={{ color: 'var(--color-grey-400)' }}
+            style={{ color: 'var(--color-grey-200)' }}
           >
             Workflows
           </Link>
           <Link
-            to="/playground"
+            to="/analytics"
             className="text-sm link-hover"
-            style={{ color: 'var(--color-grey-400)' }}
+            style={{ color: 'var(--color-grey-200)' }}
           >
-            Playground
+            Analytics
           </Link>
           <Link
             to="/contribute"
             className="text-sm link-hover"
-            style={{ color: 'var(--color-grey-400)' }}
+            style={{ color: 'var(--color-grey-200)' }}
           >
             Contribute
           </Link>
           <Link
             to="/about"
             className="text-sm link-hover"
-            style={{ color: 'var(--color-grey-400)' }}
+            style={{ color: 'var(--color-grey-200)' }}
           >
             About
           </Link>
@@ -152,7 +152,7 @@ export function Nav() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm link-hover"
-            style={{ color: 'var(--color-grey-400)' }}
+            style={{ color: 'var(--color-grey-200)' }}
           >
             GitHub
           </a>
@@ -162,7 +162,7 @@ export function Nav() {
         <button
           onClick={toggleMenu}
           className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg transition-all duration-200 hover:opacity-70"
-          style={{ color: 'var(--color-grey-400)' }}
+          style={{ color: 'var(--color-grey-200)' }}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMenuOpen}
         >
@@ -208,12 +208,12 @@ export function Nav() {
               Workflows
             </Link>
             <Link
-              to="/playground"
+              to="/analytics"
               onClick={closeMenu}
               className="mobile-nav-link text-lg py-4 px-4 rounded-xl transition-all duration-200 min-h-[52px] flex items-center"
               style={{ color: 'var(--color-white)' }}
             >
-              Playground
+              Analytics
             </Link>
             <Link
               to="/contribute"

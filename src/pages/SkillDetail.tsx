@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import { skills, type Skill } from '../data/skills'
 import { CategoryShape } from '../components/CategoryShape'
 import { CommandBox } from '../components/CommandBox'
@@ -7,8 +8,16 @@ import { Footer } from '../components/Footer'
 import { KeyboardShortcutsHelp } from '../components/KeyboardShortcutsHelp'
 import { SEO } from '../components/SEO'
 import { SkillCard } from '../components/SkillCard'
+import { AssistantBadge } from '../components/AssistantBadge'
+import { ShareButtons } from '../components/ShareButtons'
+import { VoteButton } from '../components/VoteButton'
+import { CompareButton } from '../components/CompareButton'
+import { AddToBundleButton } from '../components/AddToBundleButton'
 import { categoryConfig } from '../config/categories'
+import { assistants, type AssistantId } from '../config/assistants'
+import { getSkillInstallCommand } from '../config/commands'
 import { useKeyboardShortcuts } from '../hooks'
+import { trackViewEvent } from '../lib/analytics'
 
 function getRelatedSkills(currentSkill: Skill, allSkills: Skill[], limit: number = 4): Skill[] {
   const otherSkills = allSkills.filter(s => s.id !== currentSkill.id)
@@ -35,6 +44,13 @@ export function SkillDetail() {
   const { skillId } = useParams<{ skillId: string }>()
   const skill = skills.find(s => s.id === skillId)
   const { showHelp, setShowHelp } = useKeyboardShortcuts()
+
+  // Track view when skill page is visited (only for valid skills)
+  useEffect(() => {
+    if (skillId && skill) {
+      trackViewEvent(skillId)
+    }
+  }, [skillId, skill])
 
   if (!skill) {
     return (
@@ -110,28 +126,9 @@ export function SkillDetail() {
               {skill.category.charAt(0).toUpperCase() + skill.category.slice(1)}
             </span>
             {skill.compatibility && skill.compatibility.length > 0 && (
-              <div className="flex items-center gap-2 sm:ml-auto">
-                {skill.compatibility.map(platform => (
-                  <span
-                    key={platform}
-                    className="text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1.5"
-                    style={{
-                      color: platform === 'gemini' ? '#8b5cf6' : '#f97316',
-                      backgroundColor: platform === 'gemini' ? 'rgba(139, 92, 246, 0.15)' : 'rgba(249, 115, 22, 0.15)',
-                      border: `1px solid ${platform === 'gemini' ? 'rgba(139, 92, 246, 0.3)' : 'rgba(249, 115, 22, 0.3)'}`,
-                    }}
-                  >
-                    {platform === 'gemini' ? (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    ) : (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                      </svg>
-                    )}
-                    {platform.charAt(0).toUpperCase() + platform.slice(1)}
-                  </span>
+              <div className="flex items-center gap-2 sm:ml-auto flex-wrap">
+                {skill.compatibility.map(assistantId => (
+                  <AssistantBadge key={assistantId} assistantId={assistantId} size="md" />
                 ))}
               </div>
             )}
@@ -171,6 +168,14 @@ export function SkillDetail() {
                 {tag}
               </span>
             ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <VoteButton skillId={skill.id} />
+            <CompareButton skillId={skill.id} />
+            <AddToBundleButton skillId={skill.id} skillName={skill.name} />
+            <div className="hidden sm:block h-4 w-px mx-1" style={{ backgroundColor: 'var(--glass-border)' }} />
+            <ShareButtons skill={skill} />
           </div>
 
           <div className="flex flex-wrap items-center gap-4 mb-12 text-sm" style={{ color: 'var(--color-grey-400)' }}>
@@ -250,110 +255,147 @@ export function SkillDetail() {
             )}
           </div>
 
-          {(skill.features || skill.useCases) && (
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
-              {skill.features && skill.features.length > 0 && (
-                <div className="glass-card p-6 md:p-8">
-                  <h2 className="text-lg font-medium text-white mb-5 flex items-center gap-2">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke={config?.color || 'var(--color-grey-400)'}
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+          {skill.features && skill.features.length > 0 && (
+            <div className="mb-12">
+              <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={config?.color || 'var(--color-grey-400)'}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M9 9h6" />
+                  <path d="M9 12h6" />
+                  <path d="M9 15h4" />
+                </svg>
+                Capabilities
+              </h2>
+              <div className="grid gap-3">
+                {skill.features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-4 rounded-lg transition-colors"
+                    style={{
+                      backgroundColor: 'var(--glass-bg)',
+                      border: '1px solid var(--glass-border)',
+                    }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-md flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: `${config?.color || '#666'}15` }}
                     >
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                    </svg>
-                    Features
-                  </h2>
-                  <ul className="space-y-3">
-                    {skill.features.map((feature, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-3 text-sm"
-                        style={{ color: 'var(--color-grey-200)' }}
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke={config?.color || 'var(--color-grey-400)'}
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       >
-                        <span
-                          className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
-                          style={{ backgroundColor: config?.color || 'var(--color-grey-400)' }}
-                        />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                        <polyline points="9 11 12 14 22 4" />
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                      </svg>
+                    </div>
+                    <span className="text-sm" style={{ color: 'var(--color-grey-200)' }}>
+                      {feature}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
-              {skill.useCases && skill.useCases.length > 0 && (
-                <div className="glass-card p-6 md:p-8">
-                  <h2 className="text-lg font-medium text-white mb-5 flex items-center gap-2">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke={config?.color || 'var(--color-grey-400)'}
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+          {skill.useCases && skill.useCases.length > 0 && (
+            <div className="mb-12">
+              <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={config?.color || 'var(--color-grey-400)'}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Use Cases
+              </h2>
+              <div className="grid gap-3">
+                {skill.useCases.map((useCase, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-4 rounded-lg transition-colors"
+                    style={{
+                      backgroundColor: 'var(--glass-bg)',
+                      border: '1px solid var(--glass-border)',
+                    }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-md flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: `${config?.color || '#666'}15` }}
                     >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                    Use Cases
-                  </h2>
-                  <ul className="space-y-3">
-                    {skill.useCases.map((useCase, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-3 text-sm"
-                        style={{ color: 'var(--color-grey-200)' }}
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke={config?.color || 'var(--color-grey-400)'}
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       >
-                        <span
-                          className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
-                          style={{ backgroundColor: config?.color || 'var(--color-grey-400)' }}
-                        />
-                        {useCase}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                        <path d="M9 12l2 2 4-4" />
+                      </svg>
+                    </div>
+                    <span className="text-sm" style={{ color: 'var(--color-grey-200)' }}>
+                      {useCase}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
           <div className="glass-card p-6 md:p-8">
             <h2 className="text-lg font-medium text-white mb-2">Add to your AI assistant</h2>
-            <p className="text-sm mb-4" style={{ color: 'var(--color-grey-400)' }}>
-              Run this command in your terminal to install
+            <p className="text-sm mb-6" style={{ color: 'var(--color-grey-400)' }}>
+              Choose your AI assistant and run the command in your terminal
             </p>
-            {skill.skillFile ? (
-              <CommandBox
-                name="Install"
-                command={`curl -fsSL ${skill.skillFile} -o ~/.claude/skills/${skill.id}.md`}
-                primary={true}
-                skillId={skill.id}
-              />
-            ) : (
-              <CommandBox
-                name="Install"
-                command={`curl -fsSL https://skills.newth.ai/install.sh | bash -s -- ${skill.id}`}
-                primary={true}
-                skillId={skill.id}
-              />
-            )}
+            <div className="space-y-3">
+              {(skill.compatibility || ['gemini', 'claude'] as AssistantId[]).map((assistantId, index) => {
+                const assistant = assistants[assistantId]
+                const command = getSkillInstallCommand(assistantId, skill.id, skill.skillFile)
+                return (
+                  <CommandBox
+                    key={assistantId}
+                    name={assistant.shortName}
+                    command={command}
+                    primary={index === 0}
+                    skillId={`${skill.id}-${assistantId}`}
+                  />
+                )
+              })}
+            </div>
           </div>
 
           {(() => {
-            const relatedSkills = getRelatedSkills(skill, skills)
+            const relatedSkills = getRelatedSkills(skill, skills, 2)
             if (relatedSkills.length === 0) return null
             return (
               <div className="mt-16">
                 <h2 className="text-2xl font-semibold text-white mb-8">Related Skills</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {relatedSkills.map(relatedSkill => (
                     <SkillCard key={relatedSkill.id} skill={relatedSkill} />
                   ))}
