@@ -233,7 +233,7 @@ export function WorkflowBuilder({ initialWorkflow, onSave }: WorkflowBuilderProp
   }, [selectedNodeId, removeNode])
 
   return (
-    <div className="flex h-[calc(100vh-80px)] overflow-hidden">
+    <div className="flex h-full overflow-hidden">
       <WorkflowSidebar 
         onAddSkill={addNode}
         workflow={workflow}
