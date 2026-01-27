@@ -76,7 +76,7 @@ install_gemini() {
         print_info "Linking skills from $SOURCE"
 
         for skill in "$SOURCE"/*; do
-            if [ -d "$skill" ]; then
+            if [ -f "$skill" ]; then
                 name=$(basename "$skill")
                 if [ ! -e "$GEMINI_SKILLS/$name" ]; then
                     ln -s "$skill" "$GEMINI_SKILLS/$name"
@@ -131,7 +131,7 @@ install_claude() {
         print_info "Linking skills from $SOURCE"
 
         for skill in "$SOURCE"/*; do
-            if [ -d "$skill" ]; then
+            if [ -f "$skill" ]; then
                 name=$(basename "$skill")
                 if [ ! -e "$CLAUDE_SKILLS/$name" ]; then
                     ln -s "$skill" "$CLAUDE_SKILLS/$name"

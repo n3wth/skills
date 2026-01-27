@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { type Skill } from '../data/skills'
 import { CategoryShape } from './CategoryShape'
+import { AssistantBadge } from './AssistantBadge'
 import { categoryConfig } from '../config/categories'
 import { trackCopyEvent } from '../lib/analytics'
 
@@ -159,6 +160,15 @@ export function HoverPreview({ skill, isVisible, anchorRect, onClose }: HoverPre
             </div>
           </div>
         </div>
+
+        {/* Compatibility badges */}
+        {skill.compatibility && skill.compatibility.length > 0 && (
+          <div className="flex items-center gap-1.5 mb-3 flex-wrap">
+            {skill.compatibility.map(assistantId => (
+              <AssistantBadge key={assistantId} assistantId={assistantId} size="sm" showName={false} />
+            ))}
+          </div>
+        )}
 
         {/* Preview items */}
         {previewItems.length > 0 && (
