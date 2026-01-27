@@ -620,6 +620,44 @@ export const skills: Skill[] = [
     }
   },
   {
+    id: 'regex-builder',
+    name: 'Regex Builder',
+    description: 'Build and test regular expressions with multi-language syntax support. Create complex patterns, validate against sample data, and explain regex in plain English.',
+    longDescription: 'A comprehensive skill for building, testing, and understanding regular expressions across multiple programming languages. This skill helps you construct complex regex patterns, test them against sample data, translate patterns into plain English explanations, and provides a common pattern library for frequently used validations.',
+    category: 'development',
+    tags: ['regex', 'patterns', 'validation', 'parsing'],
+    icon: '◇',
+    color: 'oklch(0.72 0.16 140)',
+    skillFile: `${GITHUB_RAW_BASE}/regex-builder.md`,
+    features: [
+      'Build complex regex patterns',
+      'Test against sample data',
+      'Explain regex in plain English',
+      'Common pattern library',
+      'Multi-language syntax support'
+    ],
+    useCases: [
+      'Data validation',
+      'Text parsing and extraction',
+      'Search and replace operations',
+      'Input sanitization',
+      'Log file analysis'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    samplePrompts: [
+      {
+        prompt: "Create a regex pattern to validate email addresses",
+        output: "Here's a regex pattern for email validation:\n\n```regex\n^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n```\n\n**Explanation:**\n- `^` - Start of string\n- `[a-zA-Z0-9._%+-]+` - One or more letters, numbers, or special chars (., _, %, +, -)\n- `@` - Literal @ symbol\n- `[a-zA-Z0-9.-]+` - Domain name with letters, numbers, dots, hyphens\n- `\\.` - Literal dot\n- `[a-zA-Z]{2,}` - Top-level domain (2+ letters)\n- `$` - End of string\n\n**Test cases:**\n✓ user@example.com\n✓ john.doe+filter@company.co.uk\n✗ invalid@\n✗ @example.com"
+      },
+      {
+        prompt: "Extract all URLs from text using regex",
+        output: "Pattern to extract URLs:\n\n```regex\nhttps?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)\n```\n\n**Usage in JavaScript:**\n```javascript\nconst text = \"Visit https://example.com or http://test.org\";\nconst urlRegex = /https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&\\/\\/=]*)/g;\nconst urls = text.match(urlRegex);\nconsole.log(urls); // ['https://example.com', 'http://test.org']\n```\n\n**Python:**\n```python\nimport re\ntext = \"Visit https://example.com or http://test.org\"\npattern = r'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)'\nurls = re.findall(pattern, text)\nprint(urls)\n```"
+      }
+    ]
+  },
+  {
     id: 'imessage',
     name: 'iMessage',
     description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
