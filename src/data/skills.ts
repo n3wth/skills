@@ -622,6 +622,34 @@ export const skills: Skill[] = [
     }
   },
   {
+    id: 'cursor-linear-bridge',
+    name: 'Cursor ↔ Linear Bridge',
+    description: 'Create Cursor workspaces from Linear issues with bidirectional sync. Connect issue tracking with development context for seamless workflow.',
+    longDescription: 'A workflow automation skill that bridges Linear issue tracking with Cursor development environments. Automatically generate workspaces from Linear issues, create issue-specific .cursor/rules files, and maintain bidirectional sync with smart comments and status updates.',
+    category: 'development',
+    tags: ['cursor', 'linear', 'workflow', 'automation', 'integration'],
+    icon: '↔',
+    color: 'oklch(0.72 0.17 200)',
+    skillFile: `${GITHUB_RAW_BASE}/cursor-linear-bridge.md`,
+    features: [
+      'Workspace generation from Linear issues',
+      'Auto-generated issue-specific rules',
+      'Bidirectional sync between tools',
+      'Smart Linear comments with progress',
+      'Context preservation across platforms'
+    ],
+    useCases: [
+      'Starting work on Linear issues',
+      'Automating workspace setup',
+      'Syncing development progress to Linear',
+      'Maintaining issue context in IDE',
+      'Streamlining issue-to-code workflow'
+    ],
+    compatibility: ['claude', 'cursor'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
+  },
+  {
     id: 'imessage',
     name: 'iMessage',
     description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
