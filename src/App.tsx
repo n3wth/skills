@@ -12,6 +12,7 @@ const About = lazy(() => import('./pages/About').then(m => ({ default: m.About }
 const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })))
 const SubmitSkill = lazy(() => import('./pages/SubmitSkill').then(m => ({ default: m.SubmitSkill })))
 const Playground = lazy(() => import('./pages/Playground').then(m => ({ default: m.Playground })))
+const Analytics = lazy(() => import('./pages/Analytics').then(m => ({ default: m.Analytics })))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -72,6 +73,14 @@ function App() {
           element={
             <Suspense fallback={<HomeSkeleton />}>
               <Playground />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/analytics"
+          element={
+            <Suspense fallback={<HomeSkeleton />}>
+              <Analytics />
             </Suspense>
           }
         />
