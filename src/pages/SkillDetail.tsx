@@ -4,10 +4,12 @@ import { CategoryShape } from '../components/CategoryShape'
 import { CommandBox } from '../components/CommandBox'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
+import { KeyboardShortcutsHelp } from '../components/KeyboardShortcutsHelp'
 import { SEO } from '../components/SEO'
 import { SkillCard } from '../components/SkillCard'
 import { SkipLink } from '../components/SkipLink'
 import { categoryConfig } from '../config/categories'
+import { useKeyboardShortcuts } from '../hooks'
 
 function getRelatedSkills(currentSkill: Skill, allSkills: Skill[], limit: number = 4): Skill[] {
   const otherSkills = allSkills.filter(s => s.id !== currentSkill.id)
@@ -33,6 +35,7 @@ function getRelatedSkills(currentSkill: Skill, allSkills: Skill[], limit: number
 export function SkillDetail() {
   const { skillId } = useParams<{ skillId: string }>()
   const skill = skills.find(s => s.id === skillId)
+  const { showHelp, setShowHelp } = useKeyboardShortcuts()
 
   if (!skill) {
     return (
@@ -273,6 +276,11 @@ export function SkillDetail() {
       </main>
 
       <Footer />
+
+      <KeyboardShortcutsHelp
+        isOpen={showHelp}
+        onClose={() => setShowHelp(false)}
+      />
     </div>
   )
 }
