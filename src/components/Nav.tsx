@@ -56,19 +56,24 @@ function ThemeToggle() {
 
 export function Nav() {
   return (
-    <nav className="glass-nav fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-3 md:py-4 flex items-center justify-between">
+    <nav 
+      className="glass-nav fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-3 md:py-4 flex items-center justify-between"
+      aria-label="Main navigation"
+    >
       <Link
         to="/"
         className="text-base md:text-lg font-semibold hover:opacity-70 transition-opacity"
         style={{ color: 'var(--color-accent)' }}
+        aria-label={`${siteConfig.name} - Go to homepage`}
       >
         {siteConfig.name}
       </Link>
-      <div className="flex items-center gap-4 md:gap-6">
+      <div className="flex items-center gap-4 md:gap-6" role="list" aria-label="Navigation links">
         <Link
           to="/submit"
           className="text-sm link-hover"
           style={{ color: 'var(--color-grey-400)' }}
+          role="listitem"
         >
           Submit
         </Link>
@@ -76,6 +81,7 @@ export function Nav() {
           to="/about"
           className="text-sm link-hover"
           style={{ color: 'var(--color-grey-400)' }}
+          role="listitem"
         >
           About
         </Link>
@@ -85,6 +91,8 @@ export function Nav() {
           rel="noopener noreferrer"
           className="text-sm link-hover"
           style={{ color: 'var(--color-grey-400)' }}
+          role="listitem"
+          aria-label="GitHub repository (opens in new tab)"
         >
           GitHub
         </a>

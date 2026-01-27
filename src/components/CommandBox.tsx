@@ -20,14 +20,26 @@ export function CommandBox({ name, command, primary, skillId }: CommandBoxProps)
     trackCopyEvent(trackingId)
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      handleCopy()
+    }
+  }
+
   return (
     <div
       onClick={handleCopy}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`Copy ${name} command: ${command}. ${copied ? 'Copied to clipboard' : 'Press Enter to copy'}`}
       className={`command-box flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 p-4 cursor-pointer ${primary ? 'primary' : ''}`}
     >
       <span
         className="label shrink-0 sm:w-24"
         style={{ color: primary ? 'var(--color-accent)' : 'var(--color-grey-400)' }}
+        aria-hidden="true"
       >
         {name}
       </span>
@@ -37,7 +49,10 @@ export function CommandBox({ name, command, primary, skillId }: CommandBoxProps)
       >
         {command}
       </code>
-      <span className={`label px-3 py-1.5 rounded-lg copy-btn ${copied ? 'copied' : ''}`}>
+      <span 
+        className={`label px-3 py-1.5 rounded-lg copy-btn ${copied ? 'copied' : ''}`}
+        aria-hidden="true"
+      >
         {copied ? 'Copied!' : 'Copy'}
       </span>
     </div>

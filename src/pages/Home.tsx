@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect, useMemo } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { skills, categories } from '../data/skills'
-import { Nav, Footer, Hero, InstallSection, SkillCard, CategoryFilter, SearchInput, SEO } from '../components'
+import { Nav, Footer, Hero, InstallSection, SkillCard, CategoryFilter, SearchInput, SEO, SkipLink } from '../components'
 
 export function Home() {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -36,13 +36,14 @@ export function Home() {
         canonicalUrl="/"
         keywords={['AI skills', 'Gemini CLI', 'Claude Code', 'AI coding assistant', 'developer tools']}
       />
-      <div className="mesh-gradient" />
-      <div className="noise-overlay" />
+      <SkipLink />
+      <div className="mesh-gradient" aria-hidden="true" />
+      <div className="noise-overlay" aria-hidden="true" />
 
       <Nav />
       <Hero />
 
-      <main className="px-6 md:px-12 pb-24">
+      <main id="main-content" className="px-6 md:px-12 pb-24">
         <InstallSection />
 
         <div className="mb-6 md:mb-8">
@@ -65,10 +66,21 @@ export function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          role="region"
+          aria-label="Skills list"
+        >
           {filteredSkills.map((skill) => (
             <SkillCard key={skill.id} skill={skill} />
           ))}
+        </div>
+
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {filteredSkills.length === 0 
+            ? (searchQuery.trim() ? 'No skills match your search' : 'No skills in this category')
+            : `Showing ${filteredSkills.length} skill${filteredSkills.length === 1 ? '' : 's'}`
+          }
         </div>
 
         {filteredSkills.length === 0 && (

@@ -3,9 +3,10 @@ import { categoryConfig } from '../config/categories'
 interface CategoryShapeProps {
   category: string
   size?: number
+  'aria-hidden'?: boolean
 }
 
-export function CategoryShape({ category, size = 12 }: CategoryShapeProps) {
+export function CategoryShape({ category, size = 12, 'aria-hidden': ariaHidden }: CategoryShapeProps) {
   const config = categoryConfig[category] || categoryConfig.development
 
   const shapes = {
@@ -32,7 +33,7 @@ export function CategoryShape({ category, size = 12 }: CategoryShapeProps) {
   }
 
   return (
-    <div style={{ filter: `drop-shadow(0 0 8px ${config.glow})` }}>
+    <div style={{ filter: `drop-shadow(0 0 8px ${config.glow})` }} aria-hidden={ariaHidden}>
       {shapes[config.shape]}
     </div>
   )

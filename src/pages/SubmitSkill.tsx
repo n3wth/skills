@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
+import { SkipLink } from '../components/SkipLink'
 import { categories } from '../data/skills'
 import { siteConfig } from '../config/site'
 
@@ -108,11 +109,12 @@ export function SubmitSkill() {
 
   return (
     <div className="min-h-screen relative">
-      <div className="mesh-gradient" />
-      <div className="noise-overlay" />
+      <SkipLink />
+      <div className="mesh-gradient" aria-hidden="true" />
+      <div className="noise-overlay" aria-hidden="true" />
       <Nav />
 
-      <main className="px-6 md:px-12 pt-28 md:pt-32 pb-24">
+      <main id="main-content" className="px-6 md:px-12 pt-28 md:pt-32 pb-24">
         <div className="max-w-2xl">
           <Link
             to="/"

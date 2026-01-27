@@ -12,9 +12,13 @@ export function SkillCard({ skill, showPopularity = false }: SkillCardProps) {
   const copyCount = showPopularity ? getCopyCount(skill.id) : 0
 
   return (
-    <Link to={`/skill/${skill.id}`} className="skill-card glass-card group cursor-pointer p-5 md:p-6 block">
+    <Link 
+      to={`/skill/${skill.id}`} 
+      className="skill-card glass-card group cursor-pointer p-5 md:p-6 block"
+      aria-label={`${skill.name}: ${skill.description}. Category: ${skill.category}. Click to view details.`}
+    >
       <div className="flex items-start justify-between mb-3 md:mb-4">
-        <CategoryShape category={skill.category} size={12} />
+        <CategoryShape category={skill.category} size={12} aria-hidden={true} />
         {showPopularity && copyCount > 0 && (
           <span 
             className="text-[10px] px-2 py-0.5 rounded-full"

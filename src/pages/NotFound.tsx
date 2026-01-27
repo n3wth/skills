@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom'
 import { skills } from '../data/skills'
-import { Nav, Footer, SkillCard } from '../components'
+import { Nav, Footer, SkillCard, SkipLink } from '../components'
 
 const suggestedSkills = skills.filter(s => s.featured).slice(0, 4)
 
 export function NotFound() {
   return (
     <div className="min-h-screen relative content-loaded">
-      <div className="mesh-gradient" />
-      <div className="noise-overlay" />
+      <SkipLink />
+      <div className="mesh-gradient" aria-hidden="true" />
+      <div className="noise-overlay" aria-hidden="true" />
 
       <Nav />
 
-      <main className="px-6 md:px-12 pt-32 pb-24">
+      <main id="main-content" className="px-6 md:px-12 pt-32 pb-24">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <p className="label mb-4">404 Error</p>
           <h1 className="text-4xl md:text-5xl font-semibold mb-6 text-white">
