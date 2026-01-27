@@ -648,6 +648,34 @@ export const skills: Skill[] = [
     compatibility: ['claude'],
     version: '1.0.0',
     lastUpdated: '2026-01-26'
+  },
+  {
+    id: 'schema-designer',
+    name: 'Schema Designer',
+    description: 'Design and visualize database schemas with SQL migration generation, ERD diagrams, and normalization support for PostgreSQL, MySQL, and SQLite.',
+    longDescription: 'A comprehensive database schema design skill that helps you create, visualize, and manage database structures. Design schemas visually, generate SQL migrations, create Entity-Relationship Diagrams (ERD), and normalize database structures following best practices. Supports PostgreSQL, MySQL, and SQLite with production-ready migration scripts.',
+    category: 'development',
+    tags: ['database', 'schema', 'sql', 'erd'],
+    icon: '◫',
+    color: 'oklch(0.72 0.16 160)',
+    skillFile: `${GITHUB_RAW_BASE}/schema-designer.md`,
+    features: [
+      'Visual database schema design',
+      'SQL migration generation',
+      'ERD diagram creation',
+      'Database normalization',
+      'PostgreSQL, MySQL, SQLite support'
+    ],
+    useCases: [
+      'Designing new databases',
+      'Refactoring existing schemas',
+      'Creating migration scripts',
+      'Documenting data models',
+      'Schema optimization'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
   }
 ]
 
