@@ -70,7 +70,7 @@ export const WorkflowCanvas = forwardRef<HTMLDivElement, WorkflowCanvasProps>(({
     const portHeight = 32
     
     const ports = isOutput ? schema.outputs : schema.inputs
-    const portIndex = ports.findIndex(p => p.id === portId)
+    const portIndex = Math.max(0, ports.findIndex(p => p.id === portId))
     
     const x = isOutput ? node.position.x + nodeWidth : node.position.x
     const y = node.position.y + headerHeight + (portIndex * portHeight) + (portHeight / 2)
