@@ -19,7 +19,7 @@ export function Workflows() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activeTab, setActiveTab] = useState<'templates' | 'my-workflows'>('templates')
   
-  const storedWorkflows = useMemo(() => getStoredWorkflows(), [])
+  const storedWorkflows = getStoredWorkflows()
   
   const displayedWorkflows = useMemo(() => {
     const workflows = activeTab === 'templates' ? workflowTemplates : storedWorkflows

@@ -51,8 +51,8 @@ export const WorkflowCanvas = forwardRef<HTMLDivElement, WorkflowCanvasProps>(({
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect()
       setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
+        x: e.clientX - rect.left + containerRef.current.scrollLeft,
+        y: e.clientY - rect.top + containerRef.current.scrollTop
       })
     }
   }, [])

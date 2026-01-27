@@ -60,8 +60,8 @@ export function WorkflowNodeComponent({
       if (!parent) return
       
       const parentRect = parent.getBoundingClientRect()
-      const newX = e.clientX - parentRect.left - dragOffset.x
-      const newY = e.clientY - parentRect.top - dragOffset.y
+      const newX = e.clientX - parentRect.left + parent.scrollLeft - dragOffset.x
+      const newY = e.clientY - parentRect.top + parent.scrollTop - dragOffset.y
       
       onUpdatePosition({
         x: Math.max(0, newX),

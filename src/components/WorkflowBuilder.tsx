@@ -222,7 +222,7 @@ export function WorkflowBuilder({ initialWorkflow, onSave }: WorkflowBuilderProp
         setSelectedNodeId(null)
       }
       if (e.key === 'Delete' || e.key === 'Backspace') {
-        if (selectedNodeId && document.activeElement?.tagName !== 'INPUT') {
+        if (selectedNodeId && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
           removeNode(selectedNodeId)
         }
       }
