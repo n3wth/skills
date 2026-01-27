@@ -48,6 +48,7 @@ export function InstallSection() {
             name={cmd.name}
             command={cmd.command}
             primary={cmd.primary}
+            assistantId={cmd.assistantId}
           />
         ))}
         
@@ -71,6 +72,7 @@ export function InstallSection() {
             name={cmd.name}
             command={cmd.command}
             primary={cmd.primary}
+            assistantId={cmd.assistantId}
           />
         ))}
       </div>
