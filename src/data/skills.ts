@@ -622,6 +622,37 @@ export const skills: Skill[] = [
     }
   },
   {
+    id: 'extension-sync',
+    name: 'Extension Sync Tool',
+    description: 'Export and sync Cursor extensions and settings across machines. Maintain consistent development environments with centralized configuration management.',
+    longDescription: 'A comprehensive tool for managing Cursor extensions and settings across multiple machines. Create backups, sync configurations via Git, and restore development environments with automated scripts for cross-platform support.',
+    category: 'development',
+    tags: ['cursor', 'extensions', 'sync', 'settings', 'backup'],
+    icon: '⟲',
+    color: 'oklch(0.72 0.17 180)',
+    skillFile: `${GITHUB_RAW_BASE}/extension-sync.md`,
+    features: [
+      'Export installed extensions with versions',
+      'Sync settings.json and keybindings',
+      'Automated backup with timestamps',
+      'Selective extension restore',
+      'Cross-platform support (macOS, Windows, Linux)'
+    ],
+    useCases: [
+      'Setting up new development machines',
+      'Maintaining consistent team environments',
+      'Backing up extension configurations',
+      'Version controlling editor settings',
+      'Disaster recovery for development setup'
+    ],
+    compatibility: ['gemini', 'claude', 'cursor'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    contributor: {
+      name: 'newth.ai'
+    }
+  },
+  {
     id: 'imessage',
     name: 'iMessage',
     description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
