@@ -394,38 +394,13 @@ function Nav() {
 function Footer() {
   return (
     <footer className="py-12 md:py-20 px-6 md:px-12">
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-        <div>
-          <p className="text-lg md:text-xl font-semibold text-white mb-2">
-            skills.newth.ai
-          </p>
-          <p className="text-sm" style={{ color: 'var(--color-grey-400)' }}>
-            Built by Oliver Newth
-          </p>
-        </div>
-        <div className="flex items-center gap-6">
-          <a
-            href="https://newth.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm link-hover"
-            style={{ color: 'var(--color-grey-400)' }}
-          >
-            About
-          </a>
-          <a
-            href="https://github.com/n3wth/newth-skills"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm link-hover"
-            style={{ color: 'var(--color-grey-400)' }}
-          >
-            GitHub
-          </a>
-          <span className="text-sm" style={{ color: 'var(--color-grey-600)' }}>
-            {new Date().getFullYear()}
-          </span>
-        </div>
+      <div className="flex items-center justify-between">
+        <p className="text-sm" style={{ color: 'var(--color-grey-400)' }}>
+          Built by Oliver Newth
+        </p>
+        <span className="text-sm" style={{ color: 'var(--color-grey-600)' }}>
+          {new Date().getFullYear()}
+        </span>
       </div>
     </footer>
   )
