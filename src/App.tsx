@@ -1,4 +1,4 @@
-import { lazy, Suspense, useLayoutEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -19,11 +19,24 @@ const Playground = lazy(() => import('./pages/Playground').then(m => ({ default:
 const Analytics = lazy(() => import('./pages/Analytics').then(m => ({ default: m.Analytics })))
 const CreateSkill = lazy(() => import('./pages/CreateSkill').then(m => ({ default: m.CreateSkill })))
 
-function ScrollToTop() {
+function RouteHandler() {
   const { pathname } = useLocation()
-  useLayoutEffect(() => {
+
+  useEffect(() => {
+    // Scroll to top on route change
     window.scrollTo(0, 0)
+
+    // Kill all ScrollTrigger instances on route change
+    ScrollTrigger.getAll().forEach(t => t.kill())
+
+    // Refresh after DOM settles
+    const timeout = setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 100)
+
+    return () => clearTimeout(timeout)
   }, [pathname])
+
   return null
 }
 
@@ -40,7 +53,7 @@ function App() {
   return (
     <ErrorBoundary fallback={<PageErrorFallback />}>
       <BrowserRouter>
-        <ScrollToTop />
+        <RouteHandler />
         <Routes>
           <Route
             path="/"
