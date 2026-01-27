@@ -59,7 +59,7 @@ export const skills: Skill[] = [
       'Micro-interactions',
       'Loading animations'
     ],
-    compatibility: ['gemini', 'claude', 'cursor', 'windsurf', 'cody', 'copilot'],
+    compatibility: ['gemini', 'claude', 'cursor', 'windsurf', 'copilot'],
     version: '1.2.0',
     lastUpdated: '2026-01-20',
     samplePrompts: [
@@ -137,7 +137,7 @@ export const skills: Skill[] = [
       'Team skill sharing',
       'Custom tooling'
     ],
-    compatibility: ['gemini', 'claude', 'cursor', 'windsurf', 'cody', 'copilot'],
+    compatibility: ['gemini', 'claude', 'cursor', 'windsurf', 'copilot'],
     version: '1.1.0',
     lastUpdated: '2026-01-10',
     samplePrompts: [

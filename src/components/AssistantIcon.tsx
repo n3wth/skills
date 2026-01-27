@@ -44,13 +44,6 @@ export function AssistantIcon({ assistant, size = 16, className = '' }: Assistan
           <path d="M4 20L20 4M4 20C4 20 8 16 12 16C16 16 20 12 20 8M4 20C4 16 6 12 10 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       )
-    case 'cody':
-      // Sourcegraph Cody icon
-      return (
-        <svg {...iconProps} viewBox="0 0 24 24">
-          <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5L19 8l-7 3.5L5 8l7-3.5zM4 9.5l7 3.5v7l-7-3.5v-7zm16 0v7l-7 3.5v-7l7-3.5z" />
-        </svg>
-      )
     case 'copilot':
       // GitHub Copilot icon (dual lens visor)
       return (

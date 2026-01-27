@@ -1,5 +1,5 @@
 // AI Assistant configuration for multi-platform support
-export type AssistantId = 'gemini' | 'claude' | 'cursor' | 'windsurf' | 'cody' | 'copilot'
+export type AssistantId = 'gemini' | 'claude' | 'cursor' | 'windsurf' | 'copilot'
 
 export interface AIAssistant {
   id: AssistantId
@@ -74,21 +74,6 @@ export const assistants: Record<AssistantId, AIAssistant> = {
         ? `curl -fsSL ${skillFileUrl} -o ~/.windsurf/skills/${skillId}.md`
         : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- windsurf ${skillId}`,
     description: 'Codeium AI-powered IDE',
-  },
-  cody: {
-    id: 'cody',
-    name: 'Sourcegraph Cody',
-    shortName: 'Cody',
-    color: '#ff5543',
-    bgColor: 'rgba(255, 85, 67, 0.15)',
-    borderColor: 'rgba(255, 85, 67, 0.3)',
-    icon: 'cody',
-    skillsDir: '~/.cody/skills',
-    installCommand: (skillId: string, skillFileUrl?: string) => 
-      skillFileUrl 
-        ? `curl -fsSL ${skillFileUrl} -o ~/.cody/skills/${skillId}.md`
-        : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- cody ${skillId}`,
-    description: 'Sourcegraph AI coding assistant',
   },
   copilot: {
     id: 'copilot',

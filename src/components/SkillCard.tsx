@@ -149,7 +149,7 @@ export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
         <Link
           ref={setRefs}
           to={`/skill/${skill.id}`}
-          className={`skill-card glass-card group cursor-pointer p-5 md:p-6 block ${isSelected ? 'ring-2 ring-white/40' : ''}`}
+          className={`skill-card glass-card group cursor-pointer p-5 md:p-6 flex flex-col h-full ${isSelected ? 'ring-2 ring-white/40' : ''}`}
           aria-current={isSelected ? 'true' : undefined}
           onTouchStart={handleTouchStart}
         >
@@ -219,7 +219,7 @@ export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
         </h3>
 
         <p
-          className="text-xs md:text-sm leading-relaxed mb-3 md:mb-4"
+          className="text-xs md:text-sm leading-relaxed mb-3 md:mb-4 flex-grow"
           style={{ color: 'var(--color-grey-200)' }}
         >
           {skill.description}

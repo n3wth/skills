@@ -35,12 +35,6 @@ export const installCommands: InstallCommand[] = [
     primary: false,
   },
   {
-    name: 'For Cody',
-    assistantId: 'cody',
-    command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- cody',
-    primary: false,
-  },
-  {
     name: 'For GitHub Copilot',
     assistantId: 'copilot',
     command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- copilot',
@@ -70,7 +64,6 @@ export function getSkillInstallCommand(
     claude: '~/.claude/skills',
     cursor: '~/.cursor/skills',
     windsurf: '~/.windsurf/skills',
-    cody: '~/.cody/skills',
     copilot: '~/.copilot/skills',
   }
 
