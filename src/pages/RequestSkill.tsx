@@ -63,15 +63,20 @@ export function RequestSkill() {
 
       const githubUrl = `${siteConfig.links.github}/issues/new?title=${issueTitle}&body=${issueBody}&labels=skill-request`
 
-      window.open(githubUrl, '_blank', 'noopener,noreferrer')
-      setSubmitStatus('success')
-
-      setFormData({
-        skillName: '',
-        description: '',
-        useCase: '',
-      })
-    } catch {
+      const newWindow = window.open(githubUrl, '_blank', 'noopener,noreferrer')
+      
+      if (newWindow) {
+        setSubmitStatus('success')
+        setFormData({
+          skillName: '',
+          description: '',
+          useCase: '',
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Failed to submit skill request:', error)
       setSubmitStatus('error')
     }
   }

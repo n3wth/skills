@@ -193,7 +193,7 @@ export function Home() {
 
         <InstallSection />
 
-        <div className="mb-6 md:mb-8 flex items-start justify-between">
+        <div className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div>
             <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
               Browse Skills
@@ -204,7 +204,7 @@ export function Home() {
           </div>
           <Link
             to="/request-skill"
-            className="glass-pill px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
+            className="glass-pill px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity md:self-start"
           >
             Request a Skill
           </Link>
