@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import confetti from 'canvas-confetti'
 import { trackCopyEvent } from '../lib/analytics'
 import type { AssistantId } from '../config/assistants'
@@ -55,16 +57,67 @@ export function CommandBox({ name, command, primary, skillId, assistantId }: Com
   const [copied, setCopied] = useState(false)
   const [showVerification, setShowVerification] = useState(false)
   const [verified, setVerified] = useState(false)
+  const copyButtonRef = useRef<HTMLSpanElement>(null)
+  const checkmarkRef = useRef<SVGSVGElement>(null)
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(command)
     setCopied(true)
     setShowVerification(true)
+    
+    // Announce to screen readers
+    const announcement = document.createElement('div')
+    announcement.setAttribute('role', 'status')
+    announcement.setAttribute('aria-live', 'polite')
+    announcement.className = 'sr-only'
+    announcement.textContent = 'Command copied to clipboard'
+    document.body.appendChild(announcement)
+    setTimeout(() => document.body.removeChild(announcement), 1000)
+    
     setTimeout(() => setCopied(false), 2000)
     
     const trackingId = skillId || name.toLowerCase().replace(/\s+/g, '-')
     trackCopyEvent(trackingId)
   }
+
+  // Animate copy feedback with GSAP
+  useGSAP(() => {
+    if (copied && copyButtonRef.current && checkmarkRef.current) {
+      const timeline = gsap.timeline()
+      
+      // Animate button scale and background
+      timeline.fromTo(
+        copyButtonRef.current,
+        { scale: 1 },
+        { 
+          scale: 1.1, 
+          duration: 0.2, 
+          ease: 'back.out(2)',
+          onComplete: () => {
+            gsap.to(copyButtonRef.current, {
+              scale: 1,
+              duration: 0.15,
+              ease: 'power2.out'
+            })
+          }
+        }
+      )
+      
+      // Animate checkmark entrance
+      timeline.fromTo(
+        checkmarkRef.current,
+        { scale: 0, opacity: 0, rotate: -45 },
+        { 
+          scale: 1, 
+          opacity: 1, 
+          rotate: 0,
+          duration: 0.3, 
+          ease: 'back.out(1.7)' 
+        },
+        '-=0.1'
+      )
+    }
+  }, [copied])
 
   const handleVerificationCopy = async () => {
     const verifyCommand = getVerificationCommand(assistantId)
@@ -94,7 +147,26 @@ export function CommandBox({ name, command, primary, skillId, assistantId }: Com
         >
           {command}
         </code>
-        <span className={`label px-3 py-1.5 rounded-lg copy-btn ${copied ? 'copied' : ''}`}>
+        <span 
+          ref={copyButtonRef}
+          className={`label px-3 py-1.5 rounded-lg copy-btn flex items-center gap-1.5 ${copied ? 'copied' : ''}`}
+        >
+          {copied && (
+            <svg
+              ref={checkmarkRef}
+              className="w-3.5 h-3.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={3}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          )}
           {copied ? 'Copied!' : 'Copy'}
         </span>
       </div>
