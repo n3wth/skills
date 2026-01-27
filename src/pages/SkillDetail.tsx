@@ -38,12 +38,12 @@ export function SkillDetail() {
   const skill = skills.find(s => s.id === skillId)
   const { showHelp, setShowHelp } = useKeyboardShortcuts()
 
-  // Track view when skill page is visited
+  // Track view when skill page is visited (only for valid skills)
   useEffect(() => {
-    if (skillId) {
+    if (skillId && skill) {
       trackViewEvent(skillId)
     }
-  }, [skillId])
+  }, [skillId, skill])
 
   if (!skill) {
     return (
