@@ -158,27 +158,40 @@ function FloatingShapes() {
   )
 }
 
-function CopyButton({ text }: { text: string }) {
+function CommandBox({ name, command, primary }: { name: string; command: string; primary: boolean }) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(text)
+    await navigator.clipboard.writeText(command)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
 
   return (
-    <button
+    <div
       onClick={handleCopy}
-      className={`copy-btn label px-3 py-1.5 rounded-lg ${copied ? 'copied' : ''}`}
+      className={`command-box flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 p-4 cursor-pointer ${primary ? 'primary' : ''}`}
     >
-      {copied ? 'Copied!' : 'Copy'}
-    </button>
+      <span
+        className="label shrink-0 sm:w-24"
+        style={{ color: primary ? 'var(--color-accent)' : 'var(--color-grey-400)' }}
+      >
+        {name}
+      </span>
+      <code
+        className="flex-1 text-xs sm:text-sm overflow-x-auto whitespace-nowrap font-mono"
+        style={{ color: 'var(--color-grey-200)' }}
+      >
+        {command}
+      </code>
+      <span className={`label px-3 py-1.5 rounded-lg copy-btn ${copied ? 'copied' : ''}`}>
+        {copied ? 'Copied!' : 'Copy'}
+      </span>
+    </div>
   )
 }
 
 function InstallSection() {
-
   const commands = [
     {
       name: 'Gemini CLI',
@@ -206,24 +219,7 @@ function InstallSection() {
 
       <div className="space-y-3">
         {commands.map((cmd) => (
-          <div
-            key={cmd.name}
-            className={`command-box flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 p-4 ${cmd.primary ? 'primary' : ''}`}
-          >
-            <span
-              className="label shrink-0 sm:w-24"
-              style={{ color: cmd.primary ? 'var(--color-accent)' : 'var(--color-grey-400)' }}
-            >
-              {cmd.name}
-            </span>
-            <code
-              className="flex-1 text-xs sm:text-sm overflow-x-auto whitespace-nowrap"
-              style={{ color: 'var(--color-grey-200)' }}
-            >
-              {cmd.command}
-            </code>
-            <CopyButton text={cmd.command} />
-          </div>
+          <CommandBox key={cmd.name} name={cmd.name} command={cmd.command} primary={cmd.primary} />
         ))}
       </div>
     </div>

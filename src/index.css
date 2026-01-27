@@ -19,7 +19,7 @@
 @theme {
   --font-display: 'Saans', system-ui, sans-serif;
   --font-sans: 'Saans', system-ui, sans-serif;
-  --font-mono: 'Saans', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Code', monospace;
 
   /* Dark iOS-inspired palette */
   --color-bg: #000000;
@@ -147,11 +147,21 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+.command-box:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--glass-highlight);
 }
 
 .command-box.primary {
   background: var(--glass-bg);
   border-color: var(--glass-highlight);
+}
+
+.command-box.primary:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* Copy button */
