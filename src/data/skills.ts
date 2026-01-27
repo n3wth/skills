@@ -622,6 +622,45 @@ export const skills: Skill[] = [
     }
   },
   {
+    id: 'cursor-code-review',
+    name: 'Cursor Code Review Assistant',
+    description: 'Review AI-generated code for quality and suggest improvements to your AI rules based on output quality. Ensures code meets team standards and continuously improves AI assistant configurations.',
+    longDescription: 'A comprehensive code review skill that helps you validate AI-generated code against team standards before committing. This skill analyzes code quality, identifies patterns in issues, suggests improvements to your Cursor AI rules, and tracks quality metrics over time to ensure continuous improvement of AI-generated code.',
+    category: 'development',
+    tags: ['code-review', 'cursor', 'quality', 'standards', 'ai-rules'],
+    featured: true,
+    icon: '✓',
+    color: 'oklch(0.70 0.16 280)',
+    skillFile: `${GITHUB_RAW_BASE}/cursor-code-review.md`,
+    features: [
+      'Pre-commit quality review process',
+      'Team standards validation',
+      'AI rules improvement suggestions',
+      'Quality metrics tracking',
+      'Context-aware code analysis'
+    ],
+    useCases: [
+      'Reviewing generated code before commit',
+      'Checking against team coding standards',
+      'Improving Cursor AI rules configuration',
+      'Tracking code quality trends',
+      'Setting up automated code review workflows'
+    ],
+    compatibility: ['cursor', 'claude', 'windsurf'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    samplePrompts: [
+      {
+        prompt: "Review the authentication code I just generated before I commit",
+        output: "## Code Review: Authentication Module\n\n### ✅ Strengths\n- Proper TypeScript types used throughout\n- Password hashing implemented correctly\n- JWT token generation follows best practices\n\n### ⚠️ Issues Found\n1. Missing error handling in `login()` function\n   - Line 45: API call not wrapped in try-catch\n   - Recommendation: Add error handling with specific error types\n\n2. Hardcoded JWT secret\n   - Line 23: Secret directly in code\n   - Recommendation: Move to environment variables\n\n### 📋 Before Committing\n- [ ] Fix error handling in login function\n- [ ] Move JWT secret to .env\n- [ ] Add rate limiting (or create follow-up ticket)\n- [ ] Add tests for error cases"
+      },
+      {
+        prompt: "Check if the new API endpoints follow our team standards",
+        output: "✅ PASS: TypeScript strict mode\n✅ PASS: Async/await used consistently\n✅ PASS: Proper error handling\n⚠️ WARN: Some files over 200 lines (api/users.ts: 245 lines)\n❌ FAIL: Missing input validation on 3 endpoints\n❌ FAIL: No authentication checks on public routes\n\n## Required Changes:\n1. Add input validation using Zod or Joi\n2. Split large files into smaller modules\n3. Add authentication middleware to protected routes"
+      }
+    ]
+  },
+  {
     id: 'imessage',
     name: 'iMessage',
     description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
