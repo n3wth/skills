@@ -214,7 +214,7 @@ export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
           )}
         </div>
 
-        <h3 className="text-sm md:text-base font-semibold mb-2 text-white group-hover:opacity-70 transition-opacity">
+        <h3 className="text-sm md:text-base font-semibold mb-2 text-white">
           {skill.name}
         </h3>
 
