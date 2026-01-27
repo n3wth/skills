@@ -650,6 +650,37 @@ export const skills: Skill[] = [
     compatibility: ['claude'],
     version: '1.0.0',
     lastUpdated: '2026-01-26'
+  },
+  {
+    id: 'cursor-driven-refactoring',
+    name: 'Cursor-Driven Refactoring',
+    description: 'Batch refactoring operations using Cursor agents with validation and rollback. Safe large-scale code transformations with automated testing.',
+    longDescription: 'A comprehensive refactoring skill that leverages Cursor\'s agent mode for large-scale code transformations. Includes change tracking, automated validation, test running, and rollback capabilities to ensure safe refactoring operations across entire codebases.',
+    category: 'development',
+    tags: ['refactoring', 'cursor', 'agent', 'testing', 'validation'],
+    icon: '⟲',
+    color: 'oklch(0.70 0.15 150)',
+    skillFile: `${GITHUB_RAW_BASE}/cursor-driven-refactoring.md`,
+    features: [
+      'Batch refactoring via Cursor agent',
+      'Automated change tracking',
+      'Test validation after changes',
+      'Rollback capability on failures',
+      'Summary report generation'
+    ],
+    useCases: [
+      'Renaming functions across codebase',
+      'Restructuring file organization',
+      'Extracting components or utilities',
+      'Consolidating duplicate code',
+      'Safe large-scale code changes'
+    ],
+    compatibility: ['claude', 'cursor'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    contributor: {
+      name: 'newth.ai'
+    }
   }
 ]
 
