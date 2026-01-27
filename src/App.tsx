@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })))
 const SkillDetail = lazy(() => import('./pages/SkillDetail').then(m => ({ default: m.SkillDetail })))
 const About = lazy(() => import('./pages/About').then(m => ({ default: m.About })))
+const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -53,6 +54,14 @@ function App() {
           element={
             <Suspense fallback={<HomeSkeleton />}>
               <About />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<HomeSkeleton />}>
+              <NotFound />
             </Suspense>
           }
         />
