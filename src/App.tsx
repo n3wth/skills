@@ -18,6 +18,9 @@ const Contribute = lazy(() => import('./pages/Contribute').then(m => ({ default:
 const Playground = lazy(() => import('./pages/Playground').then(m => ({ default: m.Playground })))
 const Analytics = lazy(() => import('./pages/Analytics').then(m => ({ default: m.Analytics })))
 const CreateSkill = lazy(() => import('./pages/CreateSkill').then(m => ({ default: m.CreateSkill })))
+const Compare = lazy(() => import('./pages/Compare').then(m => ({ default: m.Compare })))
+const Bundles = lazy(() => import('./pages/Bundles').then(m => ({ default: m.Bundles })))
+const FeatureRequests = lazy(() => import('./pages/FeatureRequests').then(m => ({ default: m.FeatureRequests })))
 
 function RouteHandler() {
   const { pathname } = useLocation()
@@ -131,6 +134,36 @@ function App() {
               <ErrorBoundary>
                 <Suspense fallback={<HomeSkeleton />}>
                   <CreateSkill />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/compare"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<HomeSkeleton />}>
+                  <Compare />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/bundles"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<HomeSkeleton />}>
+                  <Bundles />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/requests"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<HomeSkeleton />}>
+                  <FeatureRequests />
                 </Suspense>
               </ErrorBoundary>
             }

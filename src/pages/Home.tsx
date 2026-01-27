@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { skills, categories } from '../data/skills'
-import { Nav, Footer, Hero, InstallSection, SkillCard, CategoryFilter, SearchInput, KeyboardShortcutsHelp, SEO, SortDropdown, TaskInput, SkillRecommendations } from '../components'
+import { Nav, Footer, Hero, InstallSection, SkillCard, CategoryFilter, SearchInput, KeyboardShortcutsHelp, SEO, SortDropdown, TaskInput, SkillRecommendations, ComparisonBar } from '../components'
 import type { SortOption } from '../components'
 import { useKeyboardShortcuts } from '../hooks'
 import { getRecommendations } from '../lib/recommendations'
@@ -237,6 +237,8 @@ export function Home() {
         isOpen={showHelp}
         onClose={() => setShowHelp(false)}
       />
+
+      <ComparisonBar />
     </div>
   )
 }
