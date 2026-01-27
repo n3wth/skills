@@ -14,6 +14,7 @@ const SkillDetail = lazy(() => import('./pages/SkillDetail').then(m => ({ defaul
 const About = lazy(() => import('./pages/About').then(m => ({ default: m.About })))
 const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })))
 const SubmitSkill = lazy(() => import('./pages/SubmitSkill').then(m => ({ default: m.SubmitSkill })))
+const RequestSkill = lazy(() => import('./pages/RequestSkill').then(m => ({ default: m.RequestSkill })))
 const Contribute = lazy(() => import('./pages/Contribute').then(m => ({ default: m.Contribute })))
 const Playground = lazy(() => import('./pages/Playground').then(m => ({ default: m.Playground })))
 const Analytics = lazy(() => import('./pages/Analytics').then(m => ({ default: m.Analytics })))
@@ -96,6 +97,16 @@ function App() {
               <ErrorBoundary>
                 <Suspense fallback={<HomeSkeleton />}>
                   <SubmitSkill />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/request-skill"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<HomeSkeleton />}>
+                  <RequestSkill />
                 </Suspense>
               </ErrorBoundary>
             }

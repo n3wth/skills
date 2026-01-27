@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { skills, categories } from '../data/skills'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
@@ -193,13 +193,21 @@ export function Home() {
 
         <InstallSection />
 
-        <div className="mb-6 md:mb-8">
-          <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
-            Browse Skills
-          </h2>
-          <p className="label">
-            {skills.length} skills across {categories.length - 1} categories
-          </p>
+        <div className="mb-6 md:mb-8 flex items-start justify-between">
+          <div>
+            <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
+              Browse Skills
+            </h2>
+            <p className="label">
+              {skills.length} skills across {categories.length - 1} categories
+            </p>
+          </div>
+          <Link
+            to="/request-skill"
+            className="glass-pill px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            Request a Skill
+          </Link>
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 md:mb-10">
