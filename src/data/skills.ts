@@ -620,6 +620,34 @@ export const skills: Skill[] = [
     }
   },
   {
+    id: 'docker-builder',
+    name: 'Docker Builder',
+    description: 'Create and optimize Docker configurations with best practices. Build production-ready Dockerfiles, multi-stage builds, and Docker Compose setups.',
+    longDescription: 'A comprehensive Docker skill for containerizing applications with production-grade configurations. This skill covers Dockerfile best practices, multi-stage builds for optimized images, Docker Compose orchestration, volume and network management, and security hardening for production deployments.',
+    category: 'development',
+    tags: ['docker', 'containers', 'devops', 'infrastructure'],
+    icon: '◧',
+    color: 'oklch(0.72 0.17 210)',
+    skillFile: `${GITHUB_RAW_BASE}/docker-builder.md`,
+    features: [
+      'Dockerfile best practices',
+      'Docker Compose configurations',
+      'Multi-stage builds',
+      'Volume and network management',
+      'Production optimization'
+    ],
+    useCases: [
+      'Containerizing applications',
+      'Setting up dev environments',
+      'Creating production configs',
+      'Optimizing image sizes',
+      'Security hardening containers'
+    ],
+    compatibility: ['gemini', 'claude'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27'
+  },
+  {
     id: 'imessage',
     name: 'iMessage',
     description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
