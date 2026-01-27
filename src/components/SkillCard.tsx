@@ -2,14 +2,18 @@ import { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
 import { type Skill } from '../data/skills'
 import { CategoryShape } from './CategoryShape'
+import { getCopyCount } from '../lib/analytics'
 
 interface SkillCardProps {
   skill: Skill
   isSelected?: boolean
+  showPopularity?: boolean
 }
 
 export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
-  function SkillCard({ skill, isSelected = false }, ref) {
+  function SkillCard({ skill, isSelected = false, showPopularity = false }, ref) {
+    const copyCount = showPopularity ? getCopyCount(skill.id) : 0
+
     return (
       <Link
         ref={ref}
@@ -17,8 +21,20 @@ export const SkillCard = forwardRef<HTMLAnchorElement, SkillCardProps>(
         className={`glass-card group cursor-pointer p-5 md:p-6 block ${isSelected ? 'ring-2 ring-white/40' : ''}`}
         aria-current={isSelected ? 'true' : undefined}
       >
-        <div className="mb-3 md:mb-4">
+        <div className="flex items-start justify-between mb-3 md:mb-4">
           <CategoryShape category={skill.category} size={12} />
+          {showPopularity && copyCount > 0 && (
+            <span 
+              className="text-[10px] px-2 py-0.5 rounded-full"
+              style={{ 
+                color: 'var(--color-grey-300)',
+                backgroundColor: 'var(--glass-bg)',
+                border: '1px solid var(--glass-border)'
+              }}
+            >
+              {copyCount} {copyCount === 1 ? 'install' : 'installs'}
+            </span>
+          )}
         </div>
 
         <h3 className="text-sm md:text-base font-semibold mb-2 text-white group-hover:opacity-70 transition-opacity">
