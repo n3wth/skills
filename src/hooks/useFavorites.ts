@@ -20,7 +20,11 @@ export function useFavorites() {
   const [favorites, setFavorites] = useState<string[]>(() => getStoredFavorites())
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites))
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites))
+    } catch {
+      // localStorage not available or quota exceeded
+    }
   }, [favorites])
 
   const addFavorite = useCallback((skillId: string) => {

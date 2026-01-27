@@ -1,14 +1,18 @@
-import { useState, useLayoutEffect, useMemo } from 'react'
+import { useState, useLayoutEffect, useMemo, useRef, useCallback, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { skills, categories } from '../data/skills'
-import { Nav, Footer, Hero, InstallSection, SkillCard, CategoryFilter, SearchInput, SEO } from '../components'
-import { useFavorites } from '../hooks'
+import { Nav, Footer, Hero, InstallSection, SkillCard, CategoryFilter, SearchInput, KeyboardShortcutsHelp, SEO } from '../components'
+import { useFavorites, useKeyboardShortcuts } from '../hooks'
 
 export function Home() {
+  const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false)
   const { favorites, toggleFavorite, isFavorite } = useFavorites()
+  const searchInputRef = useRef<HTMLInputElement>(null)
+  const skillCardRefs = useRef<(HTMLAnchorElement | null)[]>([])
 
   const filteredSkills = useMemo(() => {
     let result = activeCategory === 'all'
@@ -30,6 +34,54 @@ export function Home() {
 
     return result
   }, [activeCategory, searchQuery, showFavoritesOnly, favorites])
+
+  const handleFocusSearch = useCallback(() => {
+    searchInputRef.current?.focus()
+  }, [])
+
+  const handleClearSearch = useCallback(() => {
+    setSearchQuery('')
+  }, [])
+
+  const handleCategoryChange = useCallback((categoryId: string) => {
+    setActiveCategory(categoryId)
+  }, [])
+
+  const { showHelp, setShowHelp, selectedIndex, setSelectedIndex } = useKeyboardShortcuts({
+    onFocusSearch: handleFocusSearch,
+    onClearSearch: handleClearSearch,
+    onCategoryChange: handleCategoryChange,
+    filteredSkillsCount: filteredSkills.length,
+  })
+
+  useEffect(() => {
+    const handleEnterKey = (event: KeyboardEvent) => {
+      if (event.key === 'Enter' && !showHelp && selectedIndex >= 0 && selectedIndex < filteredSkills.length) {
+        const activeElement = document.activeElement
+        const isTyping = activeElement?.tagName.toLowerCase() === 'input' ||
+                         activeElement?.tagName.toLowerCase() === 'textarea'
+        if (!isTyping) {
+          event.preventDefault()
+          navigate(`/skill/${filteredSkills[selectedIndex].id}`)
+        }
+      }
+    }
+    window.addEventListener('keydown', handleEnterKey)
+    return () => window.removeEventListener('keydown', handleEnterKey)
+  }, [selectedIndex, filteredSkills, navigate, showHelp])
+
+  useEffect(() => {
+    if (selectedIndex >= 0 && skillCardRefs.current[selectedIndex]) {
+      skillCardRefs.current[selectedIndex]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      })
+    }
+  }, [selectedIndex])
+
+  useEffect(() => {
+    setSelectedIndex(-1)
+  }, [activeCategory, searchQuery, setSelectedIndex])
 
   useLayoutEffect(() => {
     ScrollTrigger.refresh()
@@ -65,7 +117,7 @@ export function Home() {
           <div className="flex flex-wrap items-center gap-2">
             <CategoryFilter
               activeCategory={activeCategory}
-              onCategoryChange={setActiveCategory}
+              onCategoryChange={handleCategoryChange}
             />
             <button
               onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
@@ -91,16 +143,19 @@ export function Home() {
             </button>
           </div>
           <SearchInput
+            ref={searchInputRef}
             value={searchQuery}
             onChange={setSearchQuery}
           />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {filteredSkills.map((skill) => (
+          {filteredSkills.map((skill, index) => (
             <SkillCard
               key={skill.id}
+              ref={(el) => { skillCardRefs.current[index] = el }}
               skill={skill}
+              isSelected={selectedIndex === index}
               isFavorite={isFavorite(skill.id)}
               onToggleFavorite={toggleFavorite}
             />
@@ -110,11 +165,13 @@ export function Home() {
         {filteredSkills.length === 0 && (
           <div className="text-center py-24">
             <p className="label mb-2">
-              {showFavoritesOnly
-                ? 'No favorites yet'
-                : searchQuery.trim()
-                  ? 'No skills match your search'
-                  : 'No skills in this category yet'}
+              {showFavoritesOnly && searchQuery.trim()
+                ? 'No favorites match your search'
+                : showFavoritesOnly
+                  ? 'No favorites yet'
+                  : searchQuery.trim()
+                    ? 'No skills match your search'
+                    : 'No skills in this category yet'}
             </p>
             {(searchQuery.trim() || showFavoritesOnly) && (
               <button
@@ -132,6 +189,11 @@ export function Home() {
       </main>
 
       <Footer />
+
+      <KeyboardShortcutsHelp
+        isOpen={showHelp}
+        onClose={() => setShowHelp(false)}
+      />
     </div>
   )
 }
