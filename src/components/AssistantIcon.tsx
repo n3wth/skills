@@ -24,10 +24,10 @@ export function AssistantIcon({ assistant, size = 16, className = '' }: Assistan
         </svg>
       )
     case 'claude':
-      // Anthropic Claude icon (stylized C)
+      // Anthropic Claude icon (spark/sunburst)
       return (
         <svg {...iconProps} viewBox="0 0 24 24">
-          <path d="M4.709 15.955l4.72-2.647.08-.08 2.726-4.721c.398-.65 1.63-.65 2.029 0l2.726 4.72.08.08 4.72 2.648c.65.398.65 1.63 0 2.029l-4.72 2.726-.08.08-2.726 4.72c-.399.65-1.63.65-2.03 0L9.51 20.79l-.08-.08-4.72-2.726c-.65-.399-.65-1.63 0-2.029z" />
+          <path d="M12 2L13.09 8.26L18 6L14.74 10.91L21 12L14.74 13.09L18 18L13.09 15.74L12 22L10.91 15.74L6 18L9.26 13.09L3 12L9.26 10.91L6 6L10.91 8.26L12 2Z" />
         </svg>
       )
     case 'cursor':
@@ -38,11 +38,10 @@ export function AssistantIcon({ assistant, size = 16, className = '' }: Assistan
         </svg>
       )
     case 'windsurf':
-      // Windsurf/Codeium wave icon
+      // Windsurf/Codeium logo (stylized wave/sail)
       return (
         <svg {...iconProps} viewBox="0 0 24 24">
-          <path d="M2 12c2-3 4-4.5 6-4.5s4 1.5 6 4.5c2-3 4-4.5 6-4.5s4 1.5 6 4.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M2 17c2-3 4-4.5 6-4.5s4 1.5 6 4.5c2-3 4-4.5 6-4.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M4 20L20 4M4 20C4 20 8 16 12 16C16 16 20 12 20 8M4 20C4 16 6 12 10 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       )
     case 'cody':
@@ -53,10 +52,10 @@ export function AssistantIcon({ assistant, size = 16, className = '' }: Assistan
         </svg>
       )
     case 'copilot':
-      // GitHub Copilot glasses/visor icon
+      // GitHub Copilot icon (dual lens visor)
       return (
         <svg {...iconProps} viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12c0 2.13.67 4.1 1.8 5.72L12 22l8.2-4.28A9.96 9.96 0 0 0 22 12c0-5.52-4.48-10-10-10zm-4.5 9.5c0-1.1.9-2 2-2h5c1.1 0 2 .9 2 2v1c0 1.1-.9 2-2 2h-5c-1.1 0-2-.9-2-2v-1z" />
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-3 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6 0c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
         </svg>
       )
     default:
