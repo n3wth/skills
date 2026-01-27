@@ -622,6 +622,47 @@ export const skills: Skill[] = [
     }
   },
   {
+    id: 'cursor-code-review',
+    name: 'Cursor Code Review Assistant',
+    description: 'Review generated code and suggest rule improvements based on output quality. Ensure generated code meets team standards and improve AI rules continuously.',
+    longDescription: 'A comprehensive code review skill for AI-generated code. This skill helps you review code before commit, validate against team standards, suggest improvements to Cursor rules, and track code quality from AI generation. Perfect for maintaining high-quality code when working with AI coding assistants.',
+    category: 'development',
+    tags: ['code-review', 'quality', 'standards', 'cursor', 'ai-rules'],
+    icon: '◔',
+    color: 'oklch(0.73 0.17 160)',
+    skillFile: `${GITHUB_RAW_BASE}/cursor-code-review.md`,
+    features: [
+      'Pre-commit code review checklist',
+      'Team standards validation',
+      'AI rule improvement suggestions',
+      'Quality tracking and metrics',
+      'Pattern detection in generated code'
+    ],
+    useCases: [
+      'Reviewing AI-generated code before commit',
+      'Checking code against team standards',
+      'Improving Cursor rules based on output',
+      'Tracking code quality over time',
+      'Identifying recurring code issues'
+    ],
+    compatibility: ['claude', 'cursor'],
+    version: '1.0.0',
+    lastUpdated: '2026-01-27',
+    contributor: {
+      name: 'Community Contributor'
+    },
+    samplePrompts: [
+      {
+        prompt: "Review this generated authentication code for security issues",
+        output: "I'll review the authentication code for security:\n\n**Security Checklist:**\n✅ Password hashing - using bcrypt\n❌ Missing rate limiting on login attempts\n❌ No input validation on username field\n✅ Proper error handling\n⚠️ Storing tokens in localStorage (consider httpOnly cookies)\n\n**Critical Issues:**\n1. Add rate limiting to prevent brute force attacks\n2. Validate and sanitize username input\n3. Consider using httpOnly cookies for tokens\n\n**Cursor Rule Suggestion:**\nAdd to .cursorrules:\n```\nWhen generating authentication code:\n- Always implement rate limiting on login endpoints\n- Validate all user inputs with proper sanitization\n- Use httpOnly cookies for storing sensitive tokens\n- Include security headers (CORS, CSP)\n```"
+      },
+      {
+        prompt: "Track the quality of code generated over the past week",
+        output: "Here's a quality tracking script for your AI-generated code:\n\n```typescript\nimport { execSync } from 'child_process';\nimport fs from 'fs';\n\ninterface QualityMetrics {\n  date: string;\n  filesChanged: number;\n  lintIssues: number;\n  typeErrors: number;\n  testCoverage: number;\n}\n\nfunction collectMetrics(): QualityMetrics {\n  const lintOutput = execSync('npm run lint', { encoding: 'utf-8' });\n  const lintIssues = (lintOutput.match(/error/g) || []).length;\n  \n  const typeOutput = execSync('npm run type-check', { encoding: 'utf-8' });\n  const typeErrors = (typeOutput.match(/error TS/g) || []).length;\n  \n  return {\n    date: new Date().toISOString(),\n    filesChanged: 0, // Track manually\n    lintIssues,\n    typeErrors,\n    testCoverage: 0 // Get from coverage report\n  };\n}\n```\n\nRun this daily to track improvement trends."
+      }
+    ]
+  },
+  {
     id: 'imessage',
     name: 'iMessage',
     description: 'Manage iMessage conversations with database queries and AppleScript automation. Find unreplied threads, search contacts, read history, and send messages.',
