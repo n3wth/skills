@@ -230,7 +230,8 @@ async function getData(): Promise<ApiResponse> {
     return data
   } catch (error) {
     console.error('Failed to fetch data:', error)
-    return { data: [], error: error.message }
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    return { data: [], error: errorMessage }
   }
 }
 \```
