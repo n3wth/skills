@@ -2,7 +2,7 @@ import { lazy, Suspense, useLayoutEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SkillDetailSkeleton } from './components'
+import { SkillDetailSkeleton, AnalyticsDashboard } from './components'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -57,6 +57,7 @@ function App() {
           }
         />
       </Routes>
+      <AnalyticsDashboard />
     </BrowserRouter>
   )
 }
