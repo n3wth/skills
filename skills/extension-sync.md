@@ -81,7 +81,7 @@ Create a list of all installed extensions:
 # Get platform-specific paths
 if [[ "$OSTYPE" == "darwin"* ]]; then
     CURSOR_PATH="$HOME/Library/Application Support/Cursor"
-elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "win32" ]]; then
+elif [[ "$OSTYPE" == "msys"* ]] || [[ "$OSTYPE" == "cygwin"* ]] || [[ -n "$WINDIR" ]]; then
     CURSOR_PATH="$APPDATA/Cursor"
 else
     CURSOR_PATH="$HOME/.config/Cursor"
@@ -149,7 +149,7 @@ REMOTE_REPO="git@github.com:yourusername/cursor-config.git"
 get_cursor_path() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         echo "$HOME/Library/Application Support/Cursor"
-    elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "win32" ]]; then
+    elif [[ "$OSTYPE" == "msys"* ]] || [[ "$OSTYPE" == "cygwin"* ]] || [[ -n "$WINDIR" ]]; then
         echo "$APPDATA/Cursor"
     else
         echo "$HOME/.config/Cursor"
