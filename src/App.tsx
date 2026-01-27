@@ -300,7 +300,7 @@ function Hero() {
   }, { scope: heroRef })
 
   return (
-    <div ref={heroRef} className="relative min-h-[70vh] md:min-h-[85vh] flex items-center px-6 md:px-12 pt-24 md:pt-0">
+    <div ref={heroRef} className="relative h-screen flex items-center px-6 md:px-12 pt-14">
       <FloatingShapes />
       <div className="relative z-10 w-full">
         <div className="max-w-5xl">
