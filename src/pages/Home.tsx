@@ -1,4 +1,5 @@
-import { useState, useRef, useCallback, useMemo } from 'react'
+import { useState, useMemo, useRef, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { skills, categories } from '../data/skills'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
@@ -107,13 +108,21 @@ export function Home() {
         <StatsRow />
 
         {/* Browse Section Header */}
-        <div ref={browseHeaderRef} className="mb-6 md:mb-8">
-          <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
-            What works right now
-          </h2>
-          <p className="label">
-            {skills.length} tested skills across {categories.length - 1} categories. All community-built.
-          </p>
+        <div ref={browseHeaderRef} className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div>
+            <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
+              What works right now
+            </h2>
+            <p className="label">
+              {skills.length} tested skills across {categories.length - 1} categories. All community-built.
+            </p>
+          </div>
+          <Link
+            to="/request-skill"
+            className="glass-pill px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity md:self-start"
+          >
+            Request a Skill
+          </Link>
         </div>
 
         {/* Filters */}
