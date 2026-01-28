@@ -1,95 +1,47 @@
-import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useState, useMemo, useRef, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { skills, categories } from '../data/skills'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
 import { Hero } from '../components/Hero'
 import { InstallSection } from '../components/InstallSection'
+import { StatsRow } from '../components/StatsRow'
 import { SkillCard } from '../components/SkillCard'
 import { CategoryFilter } from '../components/CategoryFilter'
 import { SearchInput } from '../components/SearchInput'
 import { KeyboardShortcutsHelp } from '../components/KeyboardShortcutsHelp'
 import { SEO } from '../components/SEO'
-import { SortDropdown, type SortOption } from '../components/SortDropdown'
+import { SortDropdown } from '../components/SortDropdown'
 import { TaskInput } from '../components/TaskInput'
 import { SkillRecommendations } from '../components/SkillRecommendations'
 import { ComparisonBar } from '../components/ComparisonBar'
-import { useKeyboardShortcuts, useAIRecommendations } from '../hooks'
+import { useKeyboardShortcuts, useAIRecommendations, useSkillSearch, useSkillNavigation, useScrollReveal, useCardAnimation, usePageTransition } from '../hooks'
 import { getSkillBadgeStatus } from '../lib/analytics'
 
-const SORT_STORAGE_KEY = 'newth-skills-sort-preference'
-
-// Hoist static props outside component (rerender-memo-with-default-value)
 const SEO_KEYWORDS = ['AI skills', 'Gemini CLI', 'Claude Code', 'AI coding assistant', 'developer tools']
 
-function getStoredSortPreference(): SortOption {
-  if (typeof window === 'undefined') return 'name-asc'
-  const stored = localStorage.getItem(SORT_STORAGE_KEY)
-  if (stored && ['name-asc', 'name-desc', 'category', 'recently-updated'].includes(stored)) {
-    return stored as SortOption
-  }
-  return 'name-asc'
-}
-
 export function Home() {
-  const navigate = useNavigate()
-  const [activeCategory, setActiveCategory] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
-  const [sortOption, setSortOption] = useState<SortOption>(getStoredSortPreference)
+  const searchInputRef = useRef<HTMLInputElement>(null)
+  const pageRef = usePageTransition()
+  const gridRef = useCardAnimation({ stagger: 0.08, enableHoverLift: true })
+  const recommendationsRef = useScrollReveal({ direction: 'up', distance: 30, stagger: 0.12 })
+  const browseHeaderRef = useScrollReveal({ direction: 'up', distance: 20, delay: 0.1 })
+
+  // Search, filter, and sort
+  const {
+    category,
+    query,
+    sort,
+    results: filteredSkills,
+    setCategory,
+    setQuery,
+    setSort,
+    clearSearch,
+  } = useSkillSearch(skills)
+
+  // AI recommendations
   const [taskQuery, setTaskQuery] = useState('')
   const [showRecommendations, setShowRecommendations] = useState(false)
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const skillCardRefs = useRef<(HTMLAnchorElement | null)[]>([])
-
-  const filteredSkills = useMemo(() => {
-    let result = activeCategory === 'all'
-      ? [...skills]
-      : skills.filter(s => s.category === activeCategory)
-
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase().trim()
-      result = result.filter(skill =>
-        skill.name.toLowerCase().includes(query) ||
-        skill.description.toLowerCase().includes(query) ||
-        skill.tags.some(tag => tag.toLowerCase().includes(query))
-      )
-    }
-
-    switch (sortOption) {
-      case 'name-asc':
-        result.sort((a, b) => a.name.localeCompare(b.name))
-        break
-      case 'name-desc':
-        result.sort((a, b) => b.name.localeCompare(a.name))
-        break
-      case 'category':
-        result.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name))
-        break
-      case 'recently-updated':
-        result.sort((a, b) => new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime())
-        break
-    }
-
-    return result
-  }, [activeCategory, searchQuery, sortOption])
-
-  const handleFocusSearch = useCallback(() => {
-    searchInputRef.current?.focus()
-  }, [])
-
-  const handleClearSearch = useCallback(() => {
-    setSearchQuery('')
-  }, [])
-
-  const handleCategoryChange = useCallback((categoryId: string) => {
-    setActiveCategory(categoryId)
-  }, [])
-
-  const handleSortChange = useCallback((newSortOption: SortOption) => {
-    setSortOption(newSortOption)
-    localStorage.setItem(SORT_STORAGE_KEY, newSortOption)
-  }, [])
-
   const { results: recommendations, isLoading: isLoadingRecommendations } = useAIRecommendations(taskQuery, 6)
 
   const handleTaskChange = useCallback((value: string) => {
@@ -102,64 +54,26 @@ export function Home() {
     setShowRecommendations(false)
   }, [])
 
-  const { showHelp, setShowHelp, selectedIndex, setSelectedIndex } = useKeyboardShortcuts({
-    onFocusSearch: handleFocusSearch,
-    onClearSearch: handleClearSearch,
-    onCategoryChange: handleCategoryChange,
+  // Keyboard navigation
+  const { selectedIndex, setCardRef } = useSkillNavigation({
+    skills: filteredSkills,
+  })
+
+  const { showHelp, setShowHelp } = useKeyboardShortcuts({
+    onFocusSearch: () => searchInputRef.current?.focus(),
+    onClearSearch: clearSearch,
+    onCategoryChange: setCategory,
     filteredSkillsCount: filteredSkills.length,
   })
 
-  useEffect(() => {
-    const handleEnterKey = (event: KeyboardEvent) => {
-      if (event.key === 'Enter' && !showHelp && selectedIndex >= 0 && selectedIndex < filteredSkills.length) {
-        const activeElement = document.activeElement
-        const isTyping = activeElement?.tagName.toLowerCase() === 'input' ||
-                         activeElement?.tagName.toLowerCase() === 'textarea'
-        if (!isTyping) {
-          event.preventDefault()
-          navigate(`/skill/${filteredSkills[selectedIndex].id}`)
-        }
-      }
-    }
-    window.addEventListener('keydown', handleEnterKey)
-    return () => window.removeEventListener('keydown', handleEnterKey)
-  }, [selectedIndex, filteredSkills, navigate, showHelp])
-
-  // Only scroll to selected card if using keyboard navigation (j/k/arrows)
-  const isKeyboardNav = useRef(false)
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (['j', 'k', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
-        isKeyboardNav.current = true
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
-
-  useEffect(() => {
-    if (isKeyboardNav.current && selectedIndex >= 0 && skillCardRefs.current[selectedIndex]) {
-      skillCardRefs.current[selectedIndex]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      })
-      isKeyboardNav.current = false
-    }
-  }, [selectedIndex])
-
-  useEffect(() => {
-    setSelectedIndex(-1)
-  }, [activeCategory, searchQuery, setSelectedIndex])
-
-  // Compute badge status once for all skills (performance optimization)
+  // Badge status (memoized)
   const badgeStatus = useMemo(() => getSkillBadgeStatus(), [])
 
   return (
-    <div className="min-h-screen relative content-loaded">
+    <div ref={pageRef} className="min-h-screen relative content-loaded">
       <SEO
-        title="Skills for AI Coding Assistants - Gemini CLI & Claude Code"
-        description="Teach your AI to build animations, generate documents, and create art. Skills for Gemini CLI and Claude Code. One command to install, works offline."
+        title="Skills for Claude Code & Gemini CLI - Give Your AI Superpowers"
+        description="Install skills that actually matter. Extend Claude and Gemini with tools that work offline. No API limits. You stay in control."
         canonicalUrl="/"
         keywords={SEO_KEYWORDS}
       />
@@ -170,19 +84,17 @@ export function Home() {
       <Hero />
 
       <main className="px-6 md:px-12 pb-24">
-        <section className="mb-16 md:mb-20">
+        {/* AI Recommendations Section */}
+        <section ref={recommendationsRef} className="mb-16 md:mb-20">
           <div className="text-center mb-6">
             <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
-              What do you want to build?
+              What do you need your AI to do?
             </h2>
             <p className="label">
-              Describe your project and see which skills can help
+              Tell us. We'll show you the skills that actually solve it.
             </p>
           </div>
-          <TaskInput
-            value={taskQuery}
-            onChange={handleTaskChange}
-          />
+          <TaskInput value={taskQuery} onChange={handleTaskChange} />
           <SkillRecommendations
             recommendations={recommendations}
             isVisible={showRecommendations}
@@ -193,13 +105,16 @@ export function Home() {
 
         <InstallSection />
 
-        <div className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <StatsRow />
+
+        {/* Browse Section Header */}
+        <div ref={browseHeaderRef} className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div>
             <h2 className="text-xl md:text-2xl font-medium mb-2 text-white">
-              Browse Skills
+              What works right now
             </h2>
             <p className="label">
-              {skills.length} skills across {categories.length - 1} categories
+              {skills.length} tested skills across {categories.length - 1} categories. All community-built.
             </p>
           </div>
           <Link
@@ -210,55 +125,60 @@ export function Home() {
           </Link>
         </div>
 
+        {/* Filters */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 md:mb-10">
-          <CategoryFilter
-            activeCategory={activeCategory}
-            onCategoryChange={handleCategoryChange}
-          />
+          <CategoryFilter activeCategory={category} onCategoryChange={setCategory} />
           <div className="flex items-center gap-3">
-            <SortDropdown
-              value={sortOption}
-              onChange={handleSortChange}
-            />
-            <SearchInput
-              ref={searchInputRef}
-              value={searchQuery}
-              onChange={setSearchQuery}
-            />
+            <SortDropdown value={sort} onChange={setSort} />
+            <SearchInput ref={searchInputRef} value={query} onChange={setQuery} />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {/* Skills Grid */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredSkills.map((skill, index) => (
-            <SkillCard
-              key={skill.id}
-              ref={(el) => { skillCardRefs.current[index] = el }}
-              skill={skill}
-              isSelected={selectedIndex === index}
-              isTrending={badgeStatus.trendingSkillIds.has(skill.id)}
-              isPopular={badgeStatus.popularSkillIds.has(skill.id)}
-            />
+            <div key={skill.id} data-card>
+              <SkillCard
+                ref={setCardRef(index)}
+                skill={skill}
+                isSelected={selectedIndex === index}
+                isTrending={badgeStatus.trendingSkillIds.has(skill.id)}
+                isPopular={badgeStatus.popularSkillIds.has(skill.id)}
+              />
+            </div>
           ))}
         </div>
 
+        {/* Empty State - Delightful */}
         {filteredSkills.length === 0 && (
           <div className="text-center py-24">
+            <div className="empty-state-icon inline-block mb-6">
+              <svg
+                width="64"
+                height="64"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ color: 'var(--color-grey-400)' }}
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+                <path d="M8 8l6 6" />
+                <path d="M14 8l-6 6" />
+              </svg>
+            </div>
             <p className="text-lg text-white mb-2">
-              {searchQuery.trim()
-                ? 'No matches'
-                : 'Nothing here yet'}
+              {query.trim() ? 'Nothing fits that description' : 'This category is empty right now'}
             </p>
             <p className="label mb-4">
-              {searchQuery.trim()
-                ? 'Try broader keywords or clear the filter'
-                : 'This category is coming soon'}
+              {query.trim() ? 'Try something broader, or skip straight to browsing all skills' : 'Check back soon or explore what exists'}
             </p>
-            {searchQuery.trim() && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="glass-pill px-4 py-2 rounded-full text-sm font-medium"
-              >
-                Show all skills
+            {query.trim() && (
+              <button onClick={clearSearch} className="glass-pill btn-press px-4 py-2 rounded-full text-sm font-medium">
+                See all skills
               </button>
             )}
           </div>
@@ -266,12 +186,7 @@ export function Home() {
       </main>
 
       <Footer />
-
-      <KeyboardShortcutsHelp
-        isOpen={showHelp}
-        onClose={() => setShowHelp(false)}
-      />
-
+      <KeyboardShortcutsHelp isOpen={showHelp} onClose={() => setShowHelp(false)} />
       <ComparisonBar />
     </div>
   )

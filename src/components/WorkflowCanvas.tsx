@@ -1,11 +1,12 @@
 import { forwardRef, useCallback, useState, useRef } from 'react'
 import { skills } from '../data/skills'
-import { 
-  type WorkflowNode, 
+import {
+  type WorkflowNode,
   type WorkflowConnection,
   getSkillIOSchema
 } from '../data/workflows'
 import { WorkflowNodeComponent } from './WorkflowNode'
+import type { NodeExecutionState } from '../lib/workflowExecutor'
 
 interface WorkflowCanvasProps {
   nodes: WorkflowNode[]
@@ -19,6 +20,7 @@ interface WorkflowCanvasProps {
   onRemoveNode: (nodeId: string) => void
   onRemoveConnection: (connectionId: string) => void
   onCancelConnection: () => void
+  nodeExecutionStates?: Record<string, NodeExecutionState>
 }
 
 export const WorkflowCanvas = forwardRef<HTMLDivElement, WorkflowCanvasProps>(({
@@ -32,7 +34,8 @@ export const WorkflowCanvas = forwardRef<HTMLDivElement, WorkflowCanvasProps>(({
   onCompleteConnection,
   onRemoveNode,
   onRemoveConnection,
-  onCancelConnection
+  onCancelConnection,
+  nodeExecutionStates
 }, ref) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const svgRef = useRef<SVGSVGElement>(null)
@@ -156,13 +159,10 @@ export const WorkflowCanvas = forwardRef<HTMLDivElement, WorkflowCanvasProps>(({
       onClick={handleCanvasClick}
       onMouseMove={handleMouseMove}
     >
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
+      <div
+        className="absolute inset-0"
         style={{
-          backgroundImage: `
-            linear-gradient(var(--color-grey-400) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-grey-400) 1px, transparent 1px)
-          `,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23666' fill-opacity='0.1'/%3E%3C/svg%3E")`,
           backgroundSize: '40px 40px'
         }}
       />
@@ -228,6 +228,7 @@ export const WorkflowCanvas = forwardRef<HTMLDivElement, WorkflowCanvasProps>(({
             onStartConnection={(outputId) => onStartConnection(node.id, outputId)}
             onCompleteConnection={(inputId) => onCompleteConnection(node.id, inputId)}
             onRemove={() => onRemoveNode(node.id)}
+            executionState={nodeExecutionStates?.[node.id]}
           />
         )
       })}
