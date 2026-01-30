@@ -92,9 +92,9 @@ export function BundleCard({ bundle, index = 0 }: BundleCardProps) {
         </span>
       </div>
 
-      <h3 className="text-lg font-semibold text-[var(--color-white)] mb-2 line-clamp-2">
+      <p className="text-lg font-semibold text-[var(--color-white)] mb-2 line-clamp-2">
         {bundle.name}
-      </h3>
+      </p>
 
       <p className="text-sm text-[var(--color-grey-400)] mb-4 line-clamp-2">
         {bundle.description}
