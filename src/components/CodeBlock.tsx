@@ -60,7 +60,7 @@ function tokenize(code: string): Token[] {
   return tokens
 }
 
-export function CodeBlock({ code, language = 'javascript' }: CodeBlockProps) {
+export function CodeBlock({ code, language: _language = 'javascript' }: CodeBlockProps) {
   const tokens = useMemo(() => tokenize(code), [code])
 
   return (

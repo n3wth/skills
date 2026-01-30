@@ -7,8 +7,51 @@ export function Footer() {
 
   return (
     <footer ref={footerRef} className="py-12 md:py-20 px-6 md:px-12 border-t" style={{ borderColor: 'var(--glass-border)' }}>
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="flex items-center gap-4">
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <Link
+            to="/about"
+            className="text-sm hover:text-white transition-colors"
+            style={{ color: 'var(--color-grey-400)' }}
+          >
+            What are skills?
+          </Link>
+          <span style={{ color: 'var(--color-grey-600)' }}>|</span>
+          <Link
+            to="/contribute"
+            className="text-sm hover:text-white transition-colors"
+            style={{ color: 'var(--color-grey-400)' }}
+          >
+            Contribute
+          </Link>
+          <span style={{ color: 'var(--color-grey-600)' }}>|</span>
+          <Link
+            to="/contact"
+            className="text-sm hover:text-white transition-colors"
+            style={{ color: 'var(--color-grey-400)' }}
+          >
+            Contact
+          </Link>
+          <span style={{ color: 'var(--color-grey-600)' }}>|</span>
+          <Link
+            to="/privacy"
+            className="text-sm hover:text-white transition-colors"
+            style={{ color: 'var(--color-grey-400)' }}
+          >
+            Privacy
+          </Link>
+          <span style={{ color: 'var(--color-grey-600)' }}>|</span>
+          <a
+            href={siteConfig.links.github}
+            className="text-sm hover:text-white transition-colors"
+            style={{ color: 'var(--color-grey-400)' }}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="text-sm" style={{ color: 'var(--color-grey-400)' }}>
             Made by{' '}
             <a
@@ -20,18 +63,10 @@ export function Footer() {
               {siteConfig.author}
             </a>
           </p>
-          <span style={{ color: 'var(--color-grey-600)' }}>|</span>
-          <Link
-            to="/about"
-            className="text-sm hover:text-white transition-colors"
-            style={{ color: 'var(--color-grey-400)' }}
-          >
-            What are skills?
-          </Link>
+          <span className="text-sm" style={{ color: 'var(--color-grey-600)' }}>
+            {new Date().getFullYear()}
+          </span>
         </div>
-        <span className="text-sm" style={{ color: 'var(--color-grey-600)' }}>
-          {new Date().getFullYear()}
-        </span>
       </div>
     </footer>
   )

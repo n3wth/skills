@@ -73,7 +73,7 @@ export function Home() {
     <div ref={pageRef} className="min-h-screen relative content-loaded">
       <SEO
         title="Skills for Claude Code & Gemini CLI - Give Your AI Superpowers"
-        description="Install skills that actually matter. Extend Claude and Gemini with tools that work offline. No API limits. You stay in control."
+        description="50+ curated skills for Claude Code and Gemini CLI. Install in seconds, works offline. GSAP animations, PDF generation, and more."
         canonicalUrl="/"
         keywords={SEO_KEYWORDS}
       />

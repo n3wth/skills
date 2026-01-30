@@ -26,6 +26,8 @@ const BundleDetail = lazy(() => import('./pages/BundleDetail').then(m => ({ defa
 const FeatureRequests = lazy(() => import('./pages/FeatureRequests').then(m => ({ default: m.FeatureRequests })))
 const Workflows = lazy(() => import('./pages/Workflows').then(m => ({ default: m.Workflows })))
 const WorkflowBuilderPage = lazy(() => import('./pages/WorkflowBuilder').then(m => ({ default: m.WorkflowBuilderPage })))
+const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })))
+const Privacy = lazy(() => import('./pages/Privacy').then(m => ({ default: m.Privacy })))
 
 function RouteHandler() {
   const { pathname } = useLocation()
@@ -219,6 +221,26 @@ function App() {
               <ErrorBoundary>
                 <Suspense fallback={<HomeSkeleton />}>
                   <WorkflowBuilderPage />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<HomeSkeleton />}>
+                  <Contact />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/privacy"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<HomeSkeleton />}>
+                  <Privacy />
                 </Suspense>
               </ErrorBoundary>
             }
