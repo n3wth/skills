@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { NavLink } from '@n3wth/ui'
 import { siteConfig } from '../config/site'
 import { useScrollReveal } from '../hooks'
 
@@ -43,15 +44,15 @@ export function Footer() {
             Privacy
           </Link>
           <span style={{ color: 'var(--color-grey-600)' }}>|</span>
-          <a
+          <NavLink
             href={siteConfig.links.github}
-            className="text-sm hover:text-white transition-colors"
-            style={{ color: 'var(--color-grey-400)' }}
+            variant="default"
+            className="text-sm"
             target="_blank"
             rel="noopener noreferrer"
           >
             GitHub
-          </a>
+          </NavLink>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="text-sm" style={{ color: 'var(--color-grey-400)' }}>

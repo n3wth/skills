@@ -119,9 +119,9 @@ export function CuratedBundlesClient() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              <h3 className="text-lg font-medium text-[var(--color-grey-300)] mb-2">
+              <h2 className="text-lg font-medium text-[var(--color-grey-300)] mb-2">
                 No bundles found
-              </h3>
+              </h2>
               <p className="text-sm text-[var(--color-grey-600)]">
                 Try adjusting your filters or search terms
               </p>

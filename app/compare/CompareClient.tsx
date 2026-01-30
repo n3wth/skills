@@ -223,7 +223,7 @@ export function CompareClient() {
                   <>
                     <tr className="border-t" style={{ borderColor: 'var(--glass-border)' }}>
                       <td colSpan={comparedSkills.length + 1} className="p-4">
-                        <h3 className="text-sm font-semibold text-white">Features</h3>
+                        <h2 className="text-sm font-semibold text-white">Features</h2>
                       </td>
                     </tr>
                     {allFeatures.map((feature, index) => (
@@ -254,7 +254,7 @@ export function CompareClient() {
                   <>
                     <tr className="border-t" style={{ borderColor: 'var(--glass-border)' }}>
                       <td colSpan={comparedSkills.length + 1} className="p-4">
-                        <h3 className="text-sm font-semibold text-white">Use Cases</h3>
+                        <h2 className="text-sm font-semibold text-white">Use Cases</h2>
                       </td>
                     </tr>
                     {allUseCases.map((useCase, index) => (
