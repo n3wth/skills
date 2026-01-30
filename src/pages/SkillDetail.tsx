@@ -8,6 +8,7 @@ import { Footer } from '../components/Footer'
 import { KeyboardShortcutsHelp } from '../components/KeyboardShortcutsHelp'
 import { SEO } from '../components/SEO'
 import { SkillCard } from '../components/SkillCard'
+import { SkillTestimonials } from '../components/SkillTestimonials'
 import { AssistantBadge } from '../components/AssistantBadge'
 import { ShareButtons } from '../components/ShareButtons'
 import { VoteButton } from '../components/VoteButton'
@@ -332,6 +333,8 @@ export function SkillDetail() {
               })}
             </div>
           </div>
+
+          <SkillTestimonials skillId={skill.id} limit={3} />
 
           {(() => {
             const relatedSkills = getRelatedSkills(skill, skills, 2)
