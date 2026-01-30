@@ -52,7 +52,7 @@ export const SkillCard = memo(forwardRef<HTMLAnchorElement, SkillCardProps>(
     )
 
     return (
-      <div className="relative" onMouseEnter={triggerProps.onMouseEnter} onMouseLeave={triggerProps.onMouseLeave}>
+      <div className="relative h-full" onMouseEnter={triggerProps.onMouseEnter} onMouseLeave={triggerProps.onMouseLeave}>
         <Link
           ref={setRefs}
           href={`/skill/${skill.id}`}
@@ -77,7 +77,7 @@ export const SkillCard = memo(forwardRef<HTMLAnchorElement, SkillCardProps>(
 
           <h3 className="text-sm md:text-base font-semibold mb-2 text-white">{skill.name}</h3>
 
-          <p className="text-[11px] sm:text-xs md:text-sm leading-relaxed mb-2 sm:mb-3 md:mb-4 flex-grow" style={{ color: 'var(--color-grey-200)' }}>
+          <p className="text-[11px] sm:text-xs md:text-sm leading-relaxed mb-2 sm:mb-3 md:mb-4 line-clamp-3" style={{ color: 'var(--color-grey-200)' }}>
             {skill.description}
           </p>
 
