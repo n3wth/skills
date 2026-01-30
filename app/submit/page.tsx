@@ -3,7 +3,7 @@ import { SubmitClient } from './SubmitClient'
 
 export const metadata: Metadata = {
   title: 'Submit a Skill',
-  description: 'Submit your skill to the newth.ai skills marketplace. Contribute to the community and help others extend their AI assistants.',
+  description: 'Submit your skill to the newth.ai marketplace. Contribute to the community and help others extend their AI assistants.',
   alternates: { canonical: '/submit' },
 }
 

@@ -3,7 +3,7 @@ import { WorkflowsClient } from './WorkflowsClient'
 
 export const metadata: Metadata = {
   title: 'Workflows',
-  description: 'Create and share skill workflows that chain multiple AI capabilities together',
+  description: 'Create and share skill workflows that chain multiple AI capabilities together.',
   alternates: { canonical: '/workflows' },
 }
 
