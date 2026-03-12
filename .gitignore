@@ -30,6 +30,7 @@ out/
 
 # TypeScript
 tsconfig.tsbuildinfo
+*.tsbuildinfo
 
 # Test outputs
 test-results/
