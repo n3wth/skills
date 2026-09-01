@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Share your AI coding skills with the community. Submit markdown templates and best practices for Claude Code and other AI assistants to help developers worldwide.',
   alternates: { canonical: '/contribute' },
   openGraph: {
-    title: 'Contribute a Skill to the Community Directory | newth.ai',
+    title: 'Contribute a Skill to the Community Directory | skills.n3wth.com',
     description: 'Share your AI coding skills with the community. Submit markdown templates and best practices for Claude Code and other AI assistants to help developers worldwide.',
     url: 'https://skills.n3wth.com/contribute',
   },

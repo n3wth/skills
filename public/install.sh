@@ -1,5 +1,5 @@
 #!/bin/bash
-# newth.ai skills installer
+# n3wth skills installer
 # Usage: curl -fsSL https://skills.n3wth.com/install.sh | bash [-s -- gemini|claude|cursor|windsurf|cody|copilot]
 
 set -e
@@ -17,7 +17,7 @@ NC='\033[0m'
 print_header() {
     echo ""
     echo -e "${BLUE}╭─────────────────────────────────────╮${NC}"
-    echo -e "${BLUE}│${NC}    ${GREEN}newth.ai skills installer${NC}        ${BLUE}│${NC}"
+    echo -e "${BLUE}│${NC}    ${GREEN}n3wth skills installer${NC}            ${BLUE}│${NC}"
     echo -e "${BLUE}╰─────────────────────────────────────╯${NC}"
     echo ""
 }

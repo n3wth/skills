@@ -3,10 +3,10 @@ import { SubmitClient } from './SubmitClient'
 
 export const metadata: Metadata = {
   title: 'Submit a Skill',
-  description: 'Submit your skill to the newth.ai marketplace. Contribute to the community and help others extend their AI assistants.',
+  description: 'Submit your skill to the skills.n3wth.com directory. Contribute to the community and help others extend their AI assistants.',
   alternates: { canonical: '/submit' },
   openGraph: {
-    title: 'Submit Your AI Skill to the Community Directory | newth.ai',
+    title: 'Submit Your AI Skill to the Community Directory | skills.n3wth.com',
     description: 'Submit your skill to the AI skills directory. Contribute to the community and help developers worldwide extend their Claude Code and other AI assistants.',
     url: 'https://skills.n3wth.com/submit',
   },

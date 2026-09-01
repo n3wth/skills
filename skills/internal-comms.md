@@ -1,7 +1,7 @@
 ---
 name: Internal Comms
 version: 1.0.0
-author: newth.ai
+author: n3wth
 category: business
 tags:
   - communication

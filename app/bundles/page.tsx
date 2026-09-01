@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Create and share collections of AI coding skills. Bundle your favorite skills together for easy one-command installation and share them with your team or the community.',
   alternates: { canonical: '/bundles' },
   openGraph: {
-    title: 'Skill Bundles - Create and Share Skill Collections | newth.ai',
+    title: 'Skill Bundles - Create and Share Skill Collections | skills.n3wth.com',
     description: 'Create and share collections of AI coding skills. Bundle your favorite skills together for easy one-command installation and share them with your team or the community.',
     url: 'https://skills.n3wth.com/bundles',
   },

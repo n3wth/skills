@@ -1,7 +1,7 @@
 ---
 name: Skill Creator
 version: 1.1.0
-author: newth.ai
+author: n3wth
 category: development
 tags:
   - skills
@@ -175,7 +175,7 @@ This downloads the skill to `~/.claude/skills/` or the equivalent for your AI as
 ---
 name: React Testing
 version: 1.0.0
-author: newth.ai
+author: n3wth
 category: development
 tags:
   - react

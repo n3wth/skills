@@ -1,7 +1,7 @@
 ---
 name: Canvas Design
 version: 1.0.0
-author: newth.ai
+author: n3wth
 category: creative
 tags:
   - design

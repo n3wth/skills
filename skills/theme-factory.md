@@ -1,7 +1,7 @@
 ---
 name: Theme Factory
 version: 1.1.0
-author: newth.ai
+author: n3wth
 category: creative
 tags:
   - themes

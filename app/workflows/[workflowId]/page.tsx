@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: 'Build custom AI workflows by chaining skills together. Create automated sequences combining research, writing, and document creation.',
       alternates: { canonical: '/workflows/new' },
       openGraph: {
-        title: 'Create AI Workflow | newth.ai',
+        title: 'Create AI Workflow | skills.n3wth.com',
         description: 'Build custom AI workflows by chaining skills together. Create automated sequences combining research, writing, and document creation.',
         url: 'https://skills.n3wth.com/workflows/new',
       },
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       alternates: { canonical: `/workflows/${workflowId}` },
       keywords: template.tags,
       openGraph: {
-        title: `${template.name} - AI Workflow | newth.ai`,
+        title: `${template.name} - AI Workflow | skills.n3wth.com`,
         description: desc,
         url: `https://skills.n3wth.com/workflows/${workflowId}`,
       },
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: 'Edit and customize your AI workflow by chaining skills together. Connect research, writing, and document creation skills into powerful automated sequences.',
     alternates: { canonical: `/workflows/${workflowId}` },
     openGraph: {
-      title: 'Edit AI Skill Workflow - Visual Builder | newth.ai',
+      title: 'Edit AI Skill Workflow - Visual Builder | skills.n3wth.com',
       description: 'Edit and customize your AI workflow by chaining skills together. Connect research, writing, and document creation skills into powerful automated sequences.',
       url: `https://skills.n3wth.com/workflows/${workflowId}`,
     },

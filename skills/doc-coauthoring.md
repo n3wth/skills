@@ -1,7 +1,7 @@
 ---
 name: Doc Co-authoring
 version: 1.0.0
-author: newth.ai
+author: n3wth
 category: business
 tags:
   - documentation

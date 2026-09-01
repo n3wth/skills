@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: `/skill/${skillId}` },
     keywords: skill.tags,
     openGraph: {
-      title: `${skill.name} - AI Skill | newth.ai`,
+      title: `${skill.name} - AI Skill | skills.n3wth.com`,
       description,
       url: `https://skills.n3wth.com/skill/${skillId}`,
     },

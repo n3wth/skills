@@ -1221,7 +1221,7 @@ export const skills: Skill[] = [
     version: '1.0.0',
     lastUpdated: '2026-01-27',
     contributor: {
-      name: 'newth.ai'
+      name: 'n3wth'
     }
   },
   {
@@ -1252,7 +1252,7 @@ export const skills: Skill[] = [
     version: '1.0.0',
     lastUpdated: '2026-01-27',
     contributor: {
-      name: 'newth.ai',
+      name: 'n3wth',
       github: 'n3wth'
     }
   },
@@ -1418,7 +1418,7 @@ export const skills: Skill[] = [
     version: '1.0.0',
     lastUpdated: '2026-01-27',
     contributor: {
-      name: 'newth.ai'
+      name: 'n3wth'
     }
   },
   {
@@ -1482,7 +1482,7 @@ export const skills: Skill[] = [
     version: '1.0.0',
     lastUpdated: '2026-01-27',
     contributor: {
-      name: 'newth.ai'
+      name: 'n3wth'
     },
     samplePrompts: [
       {

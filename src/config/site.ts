@@ -5,7 +5,7 @@ export const siteConfig = {
   tagline: 'Works offline. No API limits. Full control.',
   author: 'Oliver Newth',
   links: {
-    about: 'https://newth.ai',
+    about: 'https://n3wth.com',
     github: 'https://github.com/n3wth/skills',
     twitter: 'https://twitter.com/olivernewth',
     docs: 'https://github.com/n3wth/skills#readme',

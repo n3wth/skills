@@ -1,7 +1,7 @@
 ---
 name: MCP Builder
 version: 2.0.0
-author: newth.ai
+author: n3wth
 category: development
 tags:
   - mcp
