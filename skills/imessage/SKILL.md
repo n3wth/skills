@@ -1,15 +1,6 @@
 ---
-name: iMessage Manager
-version: 2.0.0
-author: newth.ai
-category: personal
-tags:
-  - imessage
-  - messaging
-  - macos
-  - automation
-compatibility:
-  - claude
+name: imessage
+description: Manage iMessage conversations using the `imsg` CLI tool. List chats, read history, send messages, watch incoming messages in real-time, and find unreplied threads.
 ---
 
 # iMessage Manager

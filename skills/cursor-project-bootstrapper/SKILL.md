@@ -1,17 +1,6 @@
 ---
-name: Cursor Project Bootstrapper
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - workspace
-  - setup
-  - configuration
-  - templates
-compatibility:
-  - claude
-  - cursor
+name: cursor-project-bootstrapper
+description: Create new Cursor workspaces with pre-configured rules, extensions, and settings. Automate workspace initialization for different project types with context-aware Cursor configuration.
 ---
 
 # Cursor Project Bootstrapper

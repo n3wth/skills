@@ -1,16 +1,6 @@
 ---
-name: Git Workflow
-version: 1.0.0
-author: Community Contributor
-category: development
-tags:
-  - git
-  - version-control
-  - workflow
-  - collaboration
-compatibility:
-  - gemini
-  - claude
+name: git-workflow
+description: Streamlined Git workflows for common development tasks. Handles branching strategies, commit conventions, and merge conflict resolution for effective version control.
 ---
 
 # Git Workflow

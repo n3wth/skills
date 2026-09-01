@@ -1,36 +1,70 @@
 # n3wth/skills
 
-AI assistant skills for Gemini CLI and Claude Code. Markdown files that teach your AI new tricks.
+[![skills.sh](https://skills.sh/b/n3wth/skills)](https://skills.sh/n3wth/skills)
+
+AI assistant skills for Claude Code, Cursor, and other AI coding assistants. Markdown files that teach your AI new tricks.
 
 **[skills.newth.ai](https://skills.newth.ai)**
 
 ## Install
 
 ```bash
-curl -sL https://skills.newth.ai/api/install/<skill-name> | bash
+npx skills add n3wth/skills
 ```
 
-Or visit the website and click any skill to copy the install command.
+Or install specific skills:
 
-## Categories
+```bash
+npx skills add n3wth/skills --skill cursor-code-review
+npx skills add n3wth/skills --skill gsap-animations
+```
 
-**Development** - GSAP animations, MCP servers, webapp testing, frontend patterns
+## Skills
 
-**Documents** - DOCX, XLSX, PPTX, PDF generation and manipulation
+### Cursor & AI Tooling
 
-**Creative** - Algorithmic art, canvas design, typography, theme generation
+| Skill | Description |
+|-------|-------------|
+| `ai-rules-manager` | Generate, version, and manage .cursor/rules files with automatic pattern learning |
+| `cursor-agent-orchestrator` | Coordinate multiple AI agents for complex tasks with context handoff |
+| `cursor-code-review` | Review AI-generated code for quality and suggest rule improvements |
+| `cursor-driven-refactoring` | AI-assisted code refactoring with safety checks and rollback |
+| `cursor-git-workflow` | Git operations orchestrated through Cursor with branch management |
+| `cursor-linear-bridge` | Sync Linear issues with Cursor tasks and auto-update status |
+| `cursor-project-bootstrapper` | Initialize new projects with AI-friendly configurations |
+| `cursor-project-scanner` | Analyze codebases to generate AI context and recommendations |
+| `cursor-rules-generator` | Generate .cursor/rules from codebase analysis |
+| `cursor-usage-analytics` | Track and optimize AI assistant usage patterns |
 
-**Business** - Copywriting, internal comms, dashboard UIs
+### Development Tools
+
+| Skill | Description |
+|-------|-------------|
+| `code-generation-pipeline` | Multi-stage code generation with validation and testing |
+| `codebase-context-builder` | Build comprehensive context files for AI assistants |
+| `extension-sync` | Sync VS Code/Cursor extensions across machines |
+| `git-workflow` | Advanced git workflows with branching strategies |
+| `gsap-animations` | Create GSAP animations with ScrollTrigger and SplitText |
+| `monorepo-manager` | Manage monorepo dependencies and workspace configurations |
+| `settings-distribution-manager` | Distribute IDE settings across teams |
+| `vscode-cursor-sync` | Sync settings between VS Code and Cursor |
+
+### Utilities
+
+| Skill | Description |
+|-------|-------------|
+| `business-panel` | Create dashboard UIs with data visualization |
+| `imessage` | iMessage automation and integration |
+| `typography-selector` | Font pairing and typography recommendations |
 
 ## How it works
 
-Skills are markdown files with YAML frontmatter. They live in your AI assistant's config directory and work completely offline.
+Skills are SKILL.md files with YAML frontmatter that follow the [Agent Skills specification](https://agentskills.io). They install to your AI assistant's skills directory and work offline.
 
 ```markdown
 ---
 name: skill-name
-category: development
-compatibility: [gemini, claude]
+description: What this skill does and when to use it
 ---
 
 # Skill Name
@@ -44,13 +78,8 @@ Instructions for your AI...
 npm install
 npm run dev          # localhost:3000
 npm run build
-npm run test:unit    # single run
-npm run test         # watch mode
+npm run test:unit
 ```
-
-### Env (optional)
-
-Copy `.env.example` to `.env.local` and add Supabase + Neon credentials for upvotes, comments, and analytics. See [docs/](docs/) for SUPABASE, REFACTORING, and TESTING-AND-LINTING.
 
 ### Scripts
 
@@ -61,7 +90,6 @@ Copy `.env.example` to `.env.local` and add Supabase + Neon credentials for upvo
 | `npm run lint` | ESLint |
 | `npm run test:unit` | Unit tests |
 | `npm run test:e2e` | Playwright E2E |
-| `npm run verify:supabase` | Verify Supabase connection |
 
 ## Stack
 

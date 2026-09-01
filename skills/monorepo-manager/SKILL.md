@@ -1,20 +1,6 @@
 ---
-name: Monorepo Manager
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - monorepo
-  - turborepo
-  - nx
-  - workspaces
-  - build-optimization
-compatibility:
-  - gemini
-  - claude
-  - cursor
-  - windsurf
-  - copilot
+name: monorepo-manager
+description: Comprehensive guide for managing monorepo workspaces with Turborepo, Nx, or pnpm workspaces. Master build caching, dependency management, and package publishing workflows for scalable monorepo deve...
 ---
 
 # Monorepo Manager

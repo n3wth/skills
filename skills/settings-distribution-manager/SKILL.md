@@ -1,17 +1,6 @@
 ---
-name: Settings Distribution Manager
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - settings
-  - configuration
-  - team
-  - deployment
-compatibility:
-  - claude
-  - cursor
+name: settings-distribution-manager
+description: Deploy Cursor settings and rules to entire team with version management. Standardize Cursor configuration across development teams with managed rollouts and automated updates.
 ---
 
 # Settings Distribution Manager

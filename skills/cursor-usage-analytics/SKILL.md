@@ -1,17 +1,6 @@
 ---
-name: Cursor Usage Analytics
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - analytics
-  - ai-coding
-  - metrics
-  - optimization
-compatibility:
-  - cursor
-  - claude
+name: cursor-usage-analytics
+description: Track Cursor usage patterns, model preferences, and code quality improvements. Optimize your AI-assisted development workflow through data-driven insights.
 ---
 
 # Cursor Usage Analytics

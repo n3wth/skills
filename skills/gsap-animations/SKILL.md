@@ -1,16 +1,6 @@
 ---
-name: GSAP Animations
-version: 1.2.0
-author: newth.ai
-category: development
-tags:
-  - animation
-  - gsap
-  - scrolltrigger
-  - motion
-compatibility:
-  - gemini
-  - claude
+name: gsap-animations
+description: Create beautiful, production-ready GSAP animations with ScrollTrigger, SplitText, and other plugins. Build scroll effects, text animations, hero entrances, page transitions, and micro-interactions.
 ---
 
 # GSAP Animations

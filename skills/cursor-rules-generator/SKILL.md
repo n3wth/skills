@@ -1,17 +1,6 @@
 ---
-name: Smart .cursor/rules Generator
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - ai-rules
-  - code-analysis
-  - automation
-compatibility:
-  - claude
-  - cursor
-  - windsurf
+name: cursor-rules-generator
+description: Auto-generate AI rules from coding patterns and project characteristics. Create project-specific AI rules that match team coding style and best practices.
 ---
 
 # Smart .cursor/rules Generator

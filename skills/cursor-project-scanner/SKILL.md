@@ -1,16 +1,6 @@
 ---
-name: Cursor Project Scanner
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - configuration
-  - audit
-  - devtools
-compatibility:
-  - claude
-  - cursor
+name: cursor-project-scanner
+description: Audit Cursor configuration health and identify configuration gaps across projects. Ensure all projects have optimal Cursor configuration with comprehensive compliance reports.
 ---
 
 # Cursor Project Scanner

@@ -1,16 +1,6 @@
 ---
-name: Cursor ↔ Git Workflow
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - git
-  - workflow
-  - automation
-  - ai-editor
-compatibility:
-  - claude
+name: cursor-git-workflow
+description: Seamlessly integrate Cursor AI editor into git-based development workflows. Generate branch-specific contexts, create PR-based rules, validate code with git hooks, and manage experimental changes.
 ---
 
 # Cursor ↔ Git Workflow

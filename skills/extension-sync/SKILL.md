@@ -1,18 +1,6 @@
 ---
-name: Extension Sync Tool
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - extensions
-  - sync
-  - settings
-  - backup
-compatibility:
-  - gemini
-  - claude
-  - cursor
+name: extension-sync
+description: Export and sync Cursor extensions and settings across machines. Maintain consistent development environments with centralized configuration management, backup, and restore capabilities.
 ---
 
 # Extension Sync Tool

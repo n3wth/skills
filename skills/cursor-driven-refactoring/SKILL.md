@@ -1,17 +1,6 @@
 ---
-name: Cursor-Driven Refactoring
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - refactoring
-  - cursor
-  - agent
-  - testing
-  - validation
-compatibility:
-  - claude
-  - cursor
+name: cursor-driven-refactoring
+description: Batch refactoring operations using Cursor's agent mode with validation and rollback capabilities. Safely perform large-scale code transformations with automated testing and change tracking.
 ---
 
 # Cursor-Driven Refactoring
