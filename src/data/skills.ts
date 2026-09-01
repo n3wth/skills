@@ -473,28 +473,28 @@ export const skills: Skill[] = [
   {
     id: 'canvas',
     name: 'Canvas',
-    description: 'Create a shareable HTML or React canvas with live preview. Push source, iterate, and return https://canvas.n3wth.com/c/{slug} for cowork.',
-    longDescription: 'Create and share live HTML or React canvases via canvas.n3wth.com. Push source code, get a hot-updating preview URL, and iterate in place. Ideal for coworking surfaces where humans or agents need to open a running tool by URL.',
+    description: 'Create a shareable interactive markdown canvas and return https://canvas.n3wth.com/c/{slug}.',
+    longDescription: 'Create and share interactive markdown canvases via canvas.n3wth.com. Push source, get a rendered preview URL, and iterate in place. Use when humans or agents should open the output by URL.',
     category: 'development',
-    tags: ['canvas', 'html', 'react', 'preview', 'collaboration', 'live'],
+    tags: ['canvas', 'markdown', 'preview', 'collaboration'],
     featured: true,
     icon: '▣',
     color: 'oklch(0.72 0.18 200)',
     skillFile: `${CANVAS_SKILL_BASE}/canvas/SKILL.md`,
     features: [
-      'Create HTML or React canvases with live preview',
-      'Hot-updating share URLs at canvas.n3wth.com/c/{slug}',
+      'Create interactive markdown canvases',
+      'Share URLs at canvas.n3wth.com/c/{slug}',
       'Push and iterate source without reload',
       'Read current source before editing',
       'Bearer token auth for production deployments'
     ],
     useCases: [
       'Spin up cowork surfaces for humans or agents',
-      'Share generated HTML/React with stable links',
-      'Iterate on UI prototypes with live preview',
-      'Collaborate on components in real-time'
+      'Share rendered markdown with stable links',
+      'Iterate on content in place',
+      'Collaborate on documents'
     ],
-    compatibility: ['claude', 'cursor', 'windsurf', 'copilot'],
+    compatibility: ['cursor', 'windsurf', 'copilot'],
     version: '1.0.0',
     lastUpdated: '2026-09-01',
     contributor: {
@@ -504,12 +504,12 @@ export const skills: Skill[] = [
     },
     samplePrompts: [
       {
-        prompt: "Create a canvas with a simple React counter",
-        output: "I'll create a new canvas with a React counter component:\n\n```bash\ncurl -sS -X POST \"$CANVAS_SITE_URL/agent/v1/canvases\" \\\n  -H \"Authorization: Bearer $CANVAS_AGENT_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"Counter\", \"kind\": \"react\", \"source\": \"function App() { const [count, setCount] = React.useState(0); return <button onClick={() => setCount(c => c + 1)}>Count: {count}</button>; } render(<App />);\"}'\n```\n\nOpen the returned URL at https://canvas.n3wth.com/c/{slug} to see the live counter."
+        prompt: "Create a canvas with markdown content",
+        output: "I'll create a new canvas:\n\n```bash\ncurl -sS -X POST \"$CANVAS_SITE_URL/agent/v1/canvases\" \\\n  -H \"Authorization: Bearer $CANVAS_AGENT_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"My doc\", \"source\": \"# Hello\\n\\nThis is **markdown**.\"}'\n```\n\nReturns `https://canvas.n3wth.com/c/{slug}` to open."
       },
       {
-        prompt: "Update an existing canvas with new HTML",
-        output: "I'll update the canvas source:\n\n```bash\ncurl -sS -X PUT \"$CANVAS_SITE_URL/agent/v1/canvases/$SLUG/source\" \\\n  -H \"Authorization: Bearer $CANVAS_AGENT_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"source\": \"<!doctype html><html><body><h1>Updated!</h1></body></html>\"}'\n```\n\nOpen tabs at https://canvas.n3wth.com/c/$SLUG re-render automatically."
+        prompt: "Update an existing canvas",
+        output: "I'll update the canvas source:\n\n```bash\ncurl -sS -X PUT \"$CANVAS_SITE_URL/agent/v1/canvases/$SLUG/source\" \\\n  -H \"Authorization: Bearer $CANVAS_AGENT_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"source\": \"# Updated\\n\\nNew content.\"}'\n```\n\nOpen tabs at https://canvas.n3wth.com/c/$SLUG re-render automatically."
       }
     ]
   },
