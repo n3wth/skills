@@ -1,4 +1,4 @@
-# Contributing to skills.newth.ai
+# Contributing to skills.n3wth.com
 
 ## Local Development Setup
 

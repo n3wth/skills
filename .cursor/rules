@@ -4,7 +4,7 @@
 - Repository: n3wth/newth-skills
 - Type: AI skill discovery and distribution platform
 - Tech: React 18 + TypeScript + Vite, Tailwind CSS, GSAP animations
-- Site: skills.newth.ai - Skills for Claude Code, Gemini CLI, and other AI assistants
+- Site: skills.n3wth.com - Skills for Claude Code, Gemini CLI, and other AI assistants
 
 ## Skill Implementation Standards
 
@@ -189,7 +189,7 @@ Testing: [validation approach]
 - GitHub Issues: https://github.com/n3wth/newth-skills/issues
 - Project Board: https://github.com/orgs/n3wth/projects
 - Site Repo: https://github.com/n3wth/newth-skills
-- Live Site: https://skills.newth.ai
+- Live Site: https://skills.n3wth.com
 
 ## Quick Checklist for New Skills
 - [ ] Create `.skill` package directory

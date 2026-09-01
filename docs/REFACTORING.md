@@ -1,6 +1,6 @@
 # Refactoring & TDD Roadmap
 
-A plan for making the skills.newth.ai codebase easier to work with at scale and aligned with test-driven development principles.
+A plan for making the skills.n3wth.com codebase easier to work with at scale and aligned with test-driven development principles.
 
 ---
 

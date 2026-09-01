@@ -5,7 +5,7 @@ import { PostHogProvider } from '../src/components/PostHogProvider'
 import '../src/index.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://skills.newth.ai'),
+  metadataBase: new URL('https://skills.n3wth.com'),
   title: {
     default: 'n3wth/skills - AI Coding Assistant Skills',
     template: '%s | n3wth/skills',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://skills.newth.ai',
+    url: 'https://skills.n3wth.com',
     siteName: 'n3wth/skills',
     title: 'n3wth/skills - AI Coding Assistant Skills',
     description:

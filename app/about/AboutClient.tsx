@@ -262,7 +262,7 @@ export default function AboutClient() {
                   className="text-sm font-mono"
                   style={{ color: 'var(--color-grey-200)' }}
                 >
-                  curl -fsSL https://skills.newth.ai/install.sh | bash
+                  curl -fsSL https://skills.n3wth.com/install.sh | bash
                 </code>
               </div>
               <p

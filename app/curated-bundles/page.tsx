@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Curated Skill Bundles for Every Role | newth.ai',
     description: 'Pre-built skill bundles for different roles. From frontend developers to founders - get pre-curated collections designed for your profession.',
-    url: 'https://skills.newth.ai/curated-bundles',
+    url: 'https://skills.n3wth.com/curated-bundles',
     images: ['/og-image.png'],
   },
 }

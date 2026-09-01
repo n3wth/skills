@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Skill Bundles - Create and Share Skill Collections | newth.ai',
     description: 'Create and share collections of AI coding skills. Bundle your favorite skills together for easy one-command installation and share them with your team or the community.',
-    url: 'https://skills.newth.ai/bundles',
+    url: 'https://skills.n3wth.com/bundles',
     images: ['/og-image.png'],
   },
 }

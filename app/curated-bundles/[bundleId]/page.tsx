@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: bundle.description,
     alternates: { canonical: `/curated-bundles/${bundleId}` },
     openGraph: {
-      url: `https://skills.newth.ai/curated-bundles/${bundleId}`,
+      url: `https://skills.n3wth.com/curated-bundles/${bundleId}`,
     },
     keywords: bundle.tags,
   }

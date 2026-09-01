@@ -61,7 +61,7 @@ export default function PrivacyClient() {
                 className="text-base leading-relaxed"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                skills.newth.ai is a directory of markdown-based skills for AI coding assistants. We commit to protecting your privacy and being transparent about our data practices.
+                skills.n3wth.com is a directory of markdown-based skills for AI coding assistants. We commit to protecting your privacy and being transparent about our data practices.
               </p>
             </section>
 

@@ -48,7 +48,7 @@ export async function GET() {
       const { object } = await generateObject({
         model: google('gemini-2.5-flash'),
         schema: SkillOfDaySchema,
-        prompt: `You are the curator of a daily "Skill of the Day" feature on skills.newth.ai, a platform for AI coding assistant skills.
+        prompt: `You are the curator of a daily "Skill of the Day" feature on skills.n3wth.com, a platform for AI coding assistant skills.
 
 Today is ${dayOfWeek}, ${today}.
 

@@ -27,7 +27,7 @@ export const assistants: Record<AssistantId, AIAssistant> = {
     installCommand: (skillId: string, skillFileUrl?: string) => 
       skillFileUrl 
         ? `curl -fsSL ${skillFileUrl} -o ~/.gemini/skills/${skillId}.md`
-        : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- gemini ${skillId}`,
+        : `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- gemini ${skillId}`,
     description: 'Google AI coding assistant',
   },
   claude: {
@@ -42,7 +42,7 @@ export const assistants: Record<AssistantId, AIAssistant> = {
     installCommand: (skillId: string, skillFileUrl?: string) => 
       skillFileUrl 
         ? `curl -fsSL ${skillFileUrl} -o ~/.claude/skills/${skillId}.md`
-        : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- claude ${skillId}`,
+        : `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- claude ${skillId}`,
     description: 'Anthropic AI coding assistant',
   },
   cursor: {
@@ -57,7 +57,7 @@ export const assistants: Record<AssistantId, AIAssistant> = {
     installCommand: (skillId: string, skillFileUrl?: string) => 
       skillFileUrl 
         ? `curl -fsSL ${skillFileUrl} -o ~/.cursor/skills/${skillId}.md`
-        : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- cursor ${skillId}`,
+        : `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- cursor ${skillId}`,
     description: 'AI-native code editor',
   },
   windsurf: {
@@ -72,7 +72,7 @@ export const assistants: Record<AssistantId, AIAssistant> = {
     installCommand: (skillId: string, skillFileUrl?: string) => 
       skillFileUrl 
         ? `curl -fsSL ${skillFileUrl} -o ~/.windsurf/skills/${skillId}.md`
-        : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- windsurf ${skillId}`,
+        : `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- windsurf ${skillId}`,
     description: 'Codeium AI code editor',
   },
   copilot: {
@@ -87,7 +87,7 @@ export const assistants: Record<AssistantId, AIAssistant> = {
     installCommand: (skillId: string, skillFileUrl?: string) => 
       skillFileUrl 
         ? `curl -fsSL ${skillFileUrl} -o ~/.copilot/skills/${skillId}.md`
-        : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- copilot ${skillId}`,
+        : `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- copilot ${skillId}`,
     description: 'GitHub AI pair programmer',
   },
 }
