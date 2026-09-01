@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Create your own AI coding skill with our interactive wizard. Choose from templates or start from scratch.',
   alternates: { canonical: '/create' },
   openGraph: {
-    title: 'Create Your Own AI Skill | newth.ai',
+    title: 'Create Your Own AI Skill | skills.n3wth.com',
     description: 'Create your own AI coding skill with our interactive wizard. Choose from templates or start from scratch.',
     url: 'https://skills.n3wth.com/create',
   },

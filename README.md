@@ -1,8 +1,6 @@
 # n3wth/skills
 
-[![skills.sh](https://skills.sh/b/n3wth/skills)](https://skills.sh/n3wth/skills)
-
-AI assistant skills for Claude Code, Cursor, and other AI coding assistants. Markdown files that teach your AI new tricks.
+AI assistant skills for Cursor, Gemini CLI, and other AI coding assistants. Markdown files that teach your AI new tricks.
 
 **[skills.n3wth.com](https://skills.n3wth.com)**
 
@@ -21,7 +19,7 @@ npx skills add n3wth/skills --skill gsap-animations
 
 ## Skills
 
-### Cursor & AI Tooling
+### Cursor and AI Tooling
 
 | Skill | Description |
 |-------|-------------|
@@ -73,6 +71,8 @@ Instructions for your AI...
 ```
 
 ## Development
+
+See [AGENTS.md](./AGENTS.md) for development guidelines, design system, and project structure.
 
 ```bash
 npm install

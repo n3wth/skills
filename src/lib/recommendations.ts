@@ -101,7 +101,7 @@ export function getSuggestedTasks(): string[] {
   return [
     'add scroll animations to my hero section',
     'extract data from a PDF invoice',
-    'connect Claude to a custom API',
+    'connect my AI assistant to a custom API',
     'write copy that converts',
     'run end-to-end tests on my React app',
     'generate algorithmic art with p5.js'

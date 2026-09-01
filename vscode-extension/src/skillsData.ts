@@ -87,7 +87,7 @@ export const skills: Skill[] = [
   {
     id: 'skill-creator',
     name: 'Skill Creator',
-    description: 'Guide for creating effective Claude Code skills with specialized knowledge, workflows, and tool integrations.',
+    description: 'Guide for creating effective AI coding skills with specialized knowledge, workflows, and tool integrations.',
     category: 'development',
     tags: ['skills', 'claude', 'automation', 'markdown'],
     featured: true,

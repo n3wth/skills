@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Create and share skill workflows that chain multiple AI capabilities together.',
   alternates: { canonical: '/workflows' },
   openGraph: {
-    title: 'Skill Workflows - Chain AI Capabilities Together | newth.ai',
+    title: 'Skill Workflows - Chain AI Capabilities Together | skills.n3wth.com',
     description: 'Create and share skill workflows that chain multiple AI capabilities together. Combine research, writing, and document creation into powerful automated sequences.',
     url: 'https://skills.n3wth.com/workflows',
   },

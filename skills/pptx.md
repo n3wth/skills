@@ -1,7 +1,7 @@
 ---
 name: Presentations
 version: 1.0.0
-author: newth.ai
+author: n3wth
 category: documents
 tags:
   - powerpoint

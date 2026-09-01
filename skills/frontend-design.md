@@ -1,7 +1,7 @@
 ---
 name: Frontend Design
 version: 1.4.0
-author: newth.ai
+author: n3wth
 category: development
 tags:
   - ui

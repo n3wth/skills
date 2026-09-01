@@ -23,7 +23,7 @@ ${colors.muted('           AI Coding Skills Manager')}
 
 program
   .name('newth-skills')
-  .description('CLI tool for managing AI coding skills for Gemini CLI and Claude Code')
+  .description('CLI tool for managing AI coding skills for Gemini CLI, Cursor, and more')
   .version('1.0.0')
   .addHelpText('beforeAll', banner)
 

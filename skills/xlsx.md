@@ -1,7 +1,7 @@
 ---
 name: Spreadsheets
 version: 1.2.0
-author: newth.ai
+author: n3wth
 category: documents
 tags:
   - excel

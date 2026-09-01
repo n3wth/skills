@@ -36,7 +36,7 @@ export const testimonials: Testimonial[] = [
     author: 'David Park',
     role: 'platform engineer',
     company: 'Anthropic',
-    quote: 'The MCP Builder skill transformed how we extend Claude. We built a custom integration in two hours that would have taken a full day.',
+    quote: 'The MCP Builder skill transformed how we extend our AI workflows. We built a custom integration in two hours that would have taken a full day.',
     impact: 'Reduced integration time by 75 percent',
     source: 'verified',
   },

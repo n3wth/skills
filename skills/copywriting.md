@@ -1,7 +1,7 @@
 ---
 name: Copywriting
 version: 1.2.0
-author: newth.ai
+author: n3wth
 category: business
 tags:
   - marketing

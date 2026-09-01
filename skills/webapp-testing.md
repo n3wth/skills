@@ -1,7 +1,7 @@
 ---
 name: Webapp Testing
 version: 1.5.0
-author: newth.ai
+author: n3wth
 category: development
 tags:
   - testing

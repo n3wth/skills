@@ -61,7 +61,7 @@ export const bundles: Bundle[] = [
     estimatedSetupTime: '10 minutes',
     whatYouCanBuild: [
       'High-performance REST/GraphQL APIs',
-      'Custom MCP servers for Claude and Gemini',
+      'Custom MCP servers for AI assistants',
       'Optimized database queries',
       'Automated deployment pipelines',
       'Service documentation systems',

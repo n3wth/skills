@@ -1,7 +1,7 @@
 ---
 name: Word Documents
 version: 1.1.0
-author: newth.ai
+author: n3wth
 category: documents
 tags:
   - word

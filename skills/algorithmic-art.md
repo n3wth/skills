@@ -1,7 +1,7 @@
 ---
 name: Algorithmic Art
 version: 1.3.0
-author: newth.ai
+author: n3wth
 category: creative
 tags:
   - p5js

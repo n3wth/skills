@@ -10,6 +10,7 @@ const sites = [
 const legal = [
   { name: 'Terms', href: '/terms' },
   { name: 'Privacy', href: '/privacy' },
+  { name: 'Contact', href: 'mailto:hey@n3wth.com' },
 ]
 
 export function Footer() {

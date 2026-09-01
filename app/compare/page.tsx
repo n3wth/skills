@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Compare AI coding skills side by side with detailed feature matrices. Evaluate compatibility, features, and use cases to find the best skills for your workflow.',
   alternates: { canonical: '/compare' },
   openGraph: {
-    title: 'Compare AI Skills Side by Side - Feature Matrix | newth.ai',
+    title: 'Compare AI Skills Side by Side - Feature Matrix | skills.n3wth.com',
     description: 'Compare AI coding skills side by side with detailed feature matrices. Evaluate compatibility, features, and use cases to find the best skills for your workflow.',
     url: 'https://skills.n3wth.com/compare',
   },
