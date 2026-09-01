@@ -36,6 +36,7 @@ export interface Skill {
 }
 
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/n3wth/newth-skills/main/skills'
+const CANVAS_SKILL_BASE = 'https://raw.githubusercontent.com/n3wth/canvas/main/skills'
 
 export const skills: Skill[] = [
   {
@@ -468,6 +469,49 @@ export const skills: Skill[] = [
     compatibility: ['gemini', 'claude'],
     version: '1.5.0',
     lastUpdated: '2026-01-18'
+  },
+  {
+    id: 'canvas',
+    name: 'Canvas',
+    description: 'Create a shareable HTML or React canvas with live preview. Push source, iterate, and return https://canvas.n3wth.com/c/{slug} for cowork.',
+    longDescription: 'Create and share live HTML or React canvases via canvas.n3wth.com. Push source code, get a hot-updating preview URL, and iterate in place. Ideal for coworking surfaces where humans or agents need to open a running tool by URL.',
+    category: 'development',
+    tags: ['canvas', 'html', 'react', 'preview', 'collaboration', 'live'],
+    featured: true,
+    icon: '▣',
+    color: 'oklch(0.72 0.18 200)',
+    skillFile: `${CANVAS_SKILL_BASE}/canvas/SKILL.md`,
+    features: [
+      'Create HTML or React canvases with live preview',
+      'Hot-updating share URLs at canvas.n3wth.com/c/{slug}',
+      'Push and iterate source without reload',
+      'Read current source before editing',
+      'Bearer token auth for production deployments'
+    ],
+    useCases: [
+      'Spin up cowork surfaces for humans or agents',
+      'Share generated HTML/React with stable links',
+      'Iterate on UI prototypes with live preview',
+      'Collaborate on components in real-time'
+    ],
+    compatibility: ['claude', 'cursor', 'windsurf', 'copilot'],
+    version: '1.0.0',
+    lastUpdated: '2026-09-01',
+    contributor: {
+      name: 'n3wth',
+      github: 'n3wth',
+      url: 'mailto:hey@n3wth.com'
+    },
+    samplePrompts: [
+      {
+        prompt: "Create a canvas with a simple React counter",
+        output: "I'll create a new canvas with a React counter component:\n\n```bash\ncurl -sS -X POST \"$CANVAS_SITE_URL/agent/v1/canvases\" \\\n  -H \"Authorization: Bearer $CANVAS_AGENT_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"Counter\", \"kind\": \"react\", \"source\": \"function App() { const [count, setCount] = React.useState(0); return <button onClick={() => setCount(c => c + 1)}>Count: {count}</button>; } render(<App />);\"}'\n```\n\nOpen the returned URL at https://canvas.n3wth.com/c/{slug} to see the live counter."
+      },
+      {
+        prompt: "Update an existing canvas with new HTML",
+        output: "I'll update the canvas source:\n\n```bash\ncurl -sS -X PUT \"$CANVAS_SITE_URL/agent/v1/canvases/$SLUG/source\" \\\n  -H \"Authorization: Bearer $CANVAS_AGENT_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"source\": \"<!doctype html><html><body><h1>Updated!</h1></body></html>\"}'\n```\n\nOpen tabs at https://canvas.n3wth.com/c/$SLUG re-render automatically."
+      }
+    ]
   },
   {
     id: 'canvas-design',
