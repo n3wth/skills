@@ -29,6 +29,7 @@ function AnimatedStat({ value, label, suffix = '' }: StatProps) {
     }
 
     const counter = { value: 0 }
+    element.textContent = `0${suffix}`
 
     ScrollTrigger.create({
       trigger: element,
@@ -62,7 +63,7 @@ function AnimatedStat({ value, label, suffix = '' }: StatProps) {
         ref={valueRef}
         className="block text-3xl sm:text-4xl md:text-5xl font-semibold text-white counter-animate"
       >
-        0{suffix}
+        {value}{suffix}
       </span>
       <span className="text-[10px] sm:text-xs uppercase tracking-wider" style={{ color: 'var(--color-grey-400)' }}>
         {label}
