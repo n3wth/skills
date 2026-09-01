@@ -36,6 +36,7 @@ export interface Skill {
 }
 
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/n3wth/newth-skills/main/skills'
+const CANVAS_SKILL_BASE = 'https://raw.githubusercontent.com/n3wth/canvas/main/skills'
 
 export const skills: Skill[] = [
   {
@@ -468,6 +469,49 @@ export const skills: Skill[] = [
     compatibility: ['gemini', 'claude'],
     version: '1.5.0',
     lastUpdated: '2026-01-18'
+  },
+  {
+    id: 'canvas',
+    name: 'Canvas',
+    description: 'Create a shareable interactive markdown canvas and return https://canvas.n3wth.com/c/{slug}.',
+    longDescription: 'Create and share interactive markdown canvases via canvas.n3wth.com. Push source, get a rendered preview URL, and iterate in place. Use when humans or agents should open the output by URL.',
+    category: 'development',
+    tags: ['canvas', 'markdown', 'preview', 'collaboration'],
+    featured: true,
+    icon: '▣',
+    color: 'oklch(0.72 0.18 200)',
+    skillFile: `${CANVAS_SKILL_BASE}/canvas/SKILL.md`,
+    features: [
+      'Create interactive markdown canvases',
+      'Share URLs at canvas.n3wth.com/c/{slug}',
+      'Push and iterate source without reload',
+      'Read current source before editing',
+      'Bearer token auth for production deployments'
+    ],
+    useCases: [
+      'Spin up cowork surfaces for humans or agents',
+      'Share rendered markdown with stable links',
+      'Iterate on content in place',
+      'Collaborate on documents'
+    ],
+    compatibility: ['cursor', 'windsurf', 'copilot'],
+    version: '1.0.0',
+    lastUpdated: '2026-09-01',
+    contributor: {
+      name: 'n3wth',
+      github: 'n3wth',
+      url: 'mailto:hey@n3wth.com'
+    },
+    samplePrompts: [
+      {
+        prompt: "Create a canvas with markdown content",
+        output: "I'll create a new canvas:\n\n```bash\ncurl -sS -X POST \"$CANVAS_SITE_URL/agent/v1/canvases\" \\\n  -H \"Authorization: Bearer $CANVAS_AGENT_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"My doc\", \"source\": \"# Hello\\n\\nThis is **markdown**.\"}'\n```\n\nReturns `https://canvas.n3wth.com/c/{slug}` to open."
+      },
+      {
+        prompt: "Update an existing canvas",
+        output: "I'll update the canvas source:\n\n```bash\ncurl -sS -X PUT \"$CANVAS_SITE_URL/agent/v1/canvases/$SLUG/source\" \\\n  -H \"Authorization: Bearer $CANVAS_AGENT_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"source\": \"# Updated\\n\\nNew content.\"}'\n```\n\nOpen tabs at https://canvas.n3wth.com/c/$SLUG re-render automatically."
+      }
+    ]
   },
   {
     id: 'canvas-design',
