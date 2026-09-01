@@ -3,7 +3,7 @@
 import { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { skills } from '@/src/data/skills'
-import { Nav, Footer, CategoryShape } from '@/src/components'
+import { IslandNav, Footer, CategoryShape } from '@/src/components'
 import { categoryConfig } from '@/src/config/categories'
 
 const STORAGE_KEY_RUNS = 'newth-playground-runs'
@@ -266,7 +266,7 @@ export function PlaygroundClient() {
       <div className="mesh-gradient" />
       <div className="noise-overlay" />
 
-      <Nav />
+      <IslandNav />
 
       <main className="max-w-6xl mx-auto px-6 md:px-12 pt-28 md:pt-32 pb-24">
         <div className="max-w-6xl mx-auto">

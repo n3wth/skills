@@ -3,7 +3,7 @@
 import { useState, useMemo, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import { skills, categories } from '../src/data/skills'
-import { Nav } from '../src/components/Nav'
+import { IslandNav } from '../src/components/IslandNav'
 import { Footer } from '../src/components/Footer'
 import { Hero } from '../src/components/Hero'
 import { InstallSection } from '../src/components/InstallSection'
@@ -73,7 +73,7 @@ export default function HomeClient() {
       <div className="mesh-gradient" />
       <div className="noise-overlay" />
 
-      <Nav />
+      <IslandNav />
       <Hero />
 
       <main id="main-content" className="max-w-6xl mx-auto px-6 md:px-12 pb-24">

@@ -1,4 +1,4 @@
-import { Nav } from './Nav'
+import { IslandNav } from './IslandNav'
 import { Footer } from './Footer'
 
 export function SkillDetailSkeleton() {
@@ -6,7 +6,7 @@ export function SkillDetailSkeleton() {
     <div className="min-h-screen relative">
       <div className="mesh-gradient" />
       <div className="noise-overlay" />
-      <Nav />
+      <IslandNav />
 
       <main className="pt-28 md:pt-32 pb-24 animate-pulse">
         <div className="max-w-6xl mx-auto px-6 md:px-12">

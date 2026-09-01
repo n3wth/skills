@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { Nav } from '../../src/components/Nav'
+import { IslandNav } from '../../src/components/IslandNav'
 import { Footer } from '../../src/components/Footer'
 import { FloatingShapes } from '../../src/components/FloatingShapes'
 
@@ -29,7 +29,7 @@ export default function PrivacyClient() {
       <div className="mesh-gradient" />
       <div className="noise-overlay" />
       <FloatingShapes />
-      <Nav />
+      <IslandNav />
 
       <main className="max-w-6xl mx-auto px-6 md:px-12 pt-28 md:pt-32 pb-24">
         <div ref={contentRef} className="max-w-2xl">

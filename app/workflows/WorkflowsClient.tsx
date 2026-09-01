@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Nav, Footer } from '@/src/components'
+import { IslandNav, Footer } from '@/src/components'
 import { WorkflowCard } from '@/src/components/WorkflowCard'
 import { workflowTemplates, type Workflow } from '@/src/data/workflows'
 
@@ -42,7 +42,7 @@ export function WorkflowsClient() {
       <div className="mesh-gradient" />
       <div className="noise-overlay" />
 
-      <Nav />
+      <IslandNav />
 
       <main className="max-w-6xl mx-auto px-6 md:px-12 pt-28 md:pt-32 pb-24">
         <div className="max-w-4xl">

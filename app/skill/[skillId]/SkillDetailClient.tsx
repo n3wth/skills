@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { skills, type Skill } from '@/src/data/skills'
 import { CategoryShape } from '@/src/components/CategoryShape'
 import { CommandBox } from '@/src/components/CommandBox'
-import { Nav } from '@/src/components/Nav'
+import { IslandNav } from '@/src/components/IslandNav'
 import { Footer } from '@/src/components/Footer'
 import { KeyboardShortcutsHelp } from '@/src/components/KeyboardShortcutsHelp'
 import { SkillCard } from '@/src/components/SkillCard'
@@ -69,7 +69,7 @@ export function SkillDetailClient({ skillId }: Props) {
       <div className="min-h-screen relative">
         <div className="mesh-gradient" />
         <div className="noise-overlay" />
-        <Nav />
+        <IslandNav />
         <main className="max-w-6xl mx-auto px-6 md:px-12 pt-28 md:pt-32 pb-24">
           <div className="max-w-4xl">
             <Link
@@ -99,7 +99,7 @@ export function SkillDetailClient({ skillId }: Props) {
     <div className="min-h-screen relative content-loaded">
       <div className="mesh-gradient" />
       <div className="noise-overlay" />
-      <Nav />
+      <IslandNav />
 
       <main className="max-w-6xl mx-auto px-6 md:px-12 pt-28 md:pt-32 pb-24">
         <div className="max-w-4xl">
