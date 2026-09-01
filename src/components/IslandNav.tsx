@@ -64,15 +64,17 @@ export function IslandNav() {
 
   return (
     <nav
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300"
+      className="fixed top-4 z-50 transition-all duration-300"
       style={{
+        left: '50%',
         transform: hidden
-          ? 'translate(-50%, -150%)'
-          : 'translate(-50%, 0)',
+          ? 'translateX(-50%) translateY(-150%)'
+          : 'translateX(-50%)',
+        width: 'max-content',
       }}
       aria-label="Main navigation"
     >
-      <div className="glass-pill flex items-center gap-1 px-2 py-1.5 rounded-full">
+      <div className="glass-pill flex items-center gap-1 px-2 py-1.5 rounded-full w-max">
         {/* Logo/Home */}
         <Link
           href="/"
