@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { skills } from '@/src/data/skills'
-import { Nav } from '@/src/components/Nav'
+import { IslandNav } from '@/src/components/IslandNav'
 import { Footer } from '@/src/components/Footer'
 import { SkillCard } from '@/src/components/SkillCard'
 
@@ -12,7 +12,7 @@ export default function NotFound() {
       <div className="mesh-gradient" />
       <div className="noise-overlay" />
 
-      <Nav />
+      <IslandNav />
 
       <main className="max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-24">
         <div className="max-w-2xl mx-auto text-center mb-16">
