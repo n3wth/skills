@@ -91,9 +91,9 @@ export class SkillBrowserProvider implements vscode.WebviewViewProvider {
 
     let command: string
     if (preferredAssistant === 'gemini') {
-      command = `curl -sL https://skills.newth.ai/install.sh | bash -s -- gemini ${skillId}`
+      command = `curl -sL https://skills.n3wth.com/install.sh | bash -s -- gemini ${skillId}`
     } else {
-      command = `curl -sL https://skills.newth.ai/install.sh | bash -s -- claude ${skillId}`
+      command = `curl -sL https://skills.n3wth.com/install.sh | bash -s -- claude ${skillId}`
     }
 
     vscode.window
@@ -118,7 +118,7 @@ export class SkillBrowserProvider implements vscode.WebviewViewProvider {
     const skill = skills.find((s) => s.id === skillId)
     if (!skill) return
 
-    const url = `https://skills.newth.ai/skill/${skillId}`
+    const url = `https://skills.n3wth.com/skill/${skillId}`
     vscode.env.openExternal(vscode.Uri.parse(url))
   }
 

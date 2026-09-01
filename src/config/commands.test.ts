@@ -34,7 +34,7 @@ describe('installCommands', () => {
   it('should have valid curl commands', () => {
     installCommands.forEach(cmd => {
       expect(cmd.command).toContain('curl')
-      expect(cmd.command).toContain('https://skills.newth.ai/install.sh')
+      expect(cmd.command).toContain('https://skills.n3wth.com/install.sh')
     })
   })
 })

@@ -1,4 +1,4 @@
-# skills.newth.ai
+# skills.n3wth.com
 
 AI-powered skill discovery and installation platform for Claude Code and other AI assistants.
 

@@ -92,7 +92,7 @@ export function HoverPreview({ skill, isVisible, anchorRect, onClose }: HoverPre
     e.preventDefault()
     e.stopPropagation()
 
-    const command = `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- ${skill.id}`
+    const command = `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- ${skill.id}`
     await navigator.clipboard.writeText(command)
     setCopied(true)
     trackCopyEvent(skill.id)

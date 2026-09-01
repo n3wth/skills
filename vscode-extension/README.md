@@ -77,7 +77,7 @@ The extension includes skills for:
 
 ## Links
 
-- [Newth Skills Website](https://skills.newth.ai)
+- [Newth Skills Website](https://skills.n3wth.com)
 - [GitHub Repository](https://github.com/n3wth/newth-skills)
 - [Report Issues](https://github.com/n3wth/newth-skills/issues)
 

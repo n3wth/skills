@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${skill.name} - AI Skill | newth.ai`,
       description,
-      url: `https://skills.newth.ai/skill/${skillId}`,
+      url: `https://skills.n3wth.com/skill/${skillId}`,
       images: ['/og-image.png'],
     },
   }

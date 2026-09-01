@@ -157,7 +157,7 @@ Specify what the skill should and shouldn't do:
 Skills are installed via CLI:
 
 ```bash
-curl -fsSL https://skills.newth.ai/install.sh | bash -s -- skill-id
+curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- skill-id
 ```
 
 This downloads the skill to `~/.claude/skills/` or the equivalent for your AI assistant.

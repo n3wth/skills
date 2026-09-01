@@ -1,6 +1,6 @@
 #!/bin/bash
 # newth.ai skills installer
-# Usage: curl -fsSL https://skills.newth.ai/install.sh | bash [-s -- gemini|claude|cursor|windsurf|cody|copilot]
+# Usage: curl -fsSL https://skills.n3wth.com/install.sh | bash [-s -- gemini|claude|cursor|windsurf|cody|copilot]
 
 set -e
 
@@ -415,5 +415,5 @@ echo "Next steps:"
 echo "  1. Restart your AI assistant"
 echo "  2. Try using a skill: /pdf, /xlsx, /gsap-animations"
 echo ""
-echo -e "Learn more at ${BLUE}https://skills.newth.ai${NC}"
+echo -e "Learn more at ${BLUE}https://skills.n3wth.com${NC}"
 echo ""

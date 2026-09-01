@@ -1,6 +1,6 @@
 # Supabase Setup
 
-Supabase powers auth, upvotes, and comments for skills.newth.ai.
+Supabase powers auth, upvotes, and comments for skills.n3wth.com.
 
 ## Environment Variables
 
@@ -16,8 +16,8 @@ Get these from your [Supabase project](https://supabase.com/dashboard) → Setti
 ### GitHub OAuth (Sign in with GitHub)
 
 1. **Supabase** → Authentication → URL Configuration:
-   - Site URL: `https://skills.newth.ai` (or your domain)
-   - Redirect URLs: add `https://skills.newth.ai/auth/callback`
+   - Site URL: `https://skills.n3wth.com` (or your domain)
+   - Redirect URLs: add `https://skills.n3wth.com/auth/callback`
 
 2. **Supabase** → Authentication → Providers → GitHub:
    - Enable GitHub
@@ -70,7 +70,7 @@ curl http://localhost:3000/api/health/supabase
 Or in production:
 
 ```bash
-curl https://skills.newth.ai/api/health/supabase
+curl https://skills.n3wth.com/api/health/supabase
 ```
 
 Response:

@@ -13,37 +13,37 @@ export const installCommands: InstallCommand[] = [
   {
     name: 'For Gemini CLI',
     assistantId: 'gemini',
-    command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- gemini',
+    command: 'curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- gemini',
     primary: true,
   },
   {
     name: 'For Claude Code',
     assistantId: 'claude',
-    command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- claude',
+    command: 'curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- claude',
     primary: false,
   },
   {
     name: 'For Cursor',
     assistantId: 'cursor',
-    command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- cursor',
+    command: 'curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- cursor',
     primary: false,
   },
   {
     name: 'For Windsurf',
     assistantId: 'windsurf',
-    command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- windsurf',
+    command: 'curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- windsurf',
     primary: false,
   },
   {
     name: 'For GitHub Copilot',
     assistantId: 'copilot',
-    command: 'curl -fsSL https://skills.newth.ai/install.sh | bash -s -- copilot',
+    command: 'curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- copilot',
     primary: false,
   },
   {
     name: 'Install All Skills',
     assistantId: 'all',
-    command: 'curl -fsSL https://skills.newth.ai/install.sh | bash',
+    command: 'curl -fsSL https://skills.n3wth.com/install.sh | bash',
     primary: false,
   },
 ]
@@ -71,5 +71,5 @@ export function getSkillInstallCommand(
     return `curl -fsSL ${skillFileUrl} -o ${skillsDir[assistantId]}/${skillId}.md`
   }
   
-  return `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- ${assistantId} ${skillId}`
+  return `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- ${assistantId} ${skillId}`
 }

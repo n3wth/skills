@@ -59,7 +59,7 @@ export function RequestSkillClient() {
         `**Requested Skill:** ${formData.skillName}\n\n` +
         `### Description\n${formData.description}\n\n` +
         (formData.useCase ? `### Use Case\n${formData.useCase}\n\n` : '') +
-        `---\n*Submitted via skills.newth.ai marketplace*`
+        `---\n*Submitted via skills.n3wth.com marketplace*`
       )
 
       const githubUrl = `${siteConfig.links.github}/issues/new?title=${issueTitle}&body=${issueBody}&labels=skill-request`

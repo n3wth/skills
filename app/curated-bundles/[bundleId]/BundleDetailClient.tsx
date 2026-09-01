@@ -24,7 +24,7 @@ export function BundleDetailClient({ bundleId }: Props) {
     .map(id => skills.find(s => s.id === id))
     .filter(Boolean)
 
-  const installCommand = `curl -sL https://skills.newth.ai/install.sh | sh -s -- ${bundle.skillIds.join(' ')}`
+  const installCommand = `curl -sL https://skills.n3wth.com/install.sh | sh -s -- ${bundle.skillIds.join(' ')}`
 
   const difficultyColors = {
     beginner: 'bg-green-500/15 text-green-400',

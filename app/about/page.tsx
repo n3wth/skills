@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About AI Skills - What They Are and How They Work | newth.ai',
     description: 'Learn what AI coding skills are, how they work with Claude Code and other assistants, and when to use them vs MCP servers for your development workflow.',
-    url: 'https://skills.newth.ai/about',
+    url: 'https://skills.n3wth.com/about',
     images: ['/og-image.png'],
   },
 }

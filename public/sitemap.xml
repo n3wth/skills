@@ -2,383 +2,383 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main pages -->
   <url>
-    <loc>https://skills.newth.ai/</loc>
+    <loc>https://skills.n3wth.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/about</loc>
+    <loc>https://skills.n3wth.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/contact</loc>
+    <loc>https://skills.n3wth.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/privacy</loc>
+    <loc>https://skills.n3wth.com/privacy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/contribute</loc>
+    <loc>https://skills.n3wth.com/contribute</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/request-skill</loc>
+    <loc>https://skills.n3wth.com/request-skill</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/submit</loc>
+    <loc>https://skills.n3wth.com/submit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/requests</loc>
+    <loc>https://skills.n3wth.com/requests</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/playground</loc>
+    <loc>https://skills.n3wth.com/playground</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/bundles</loc>
+    <loc>https://skills.n3wth.com/bundles</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/curated-bundles</loc>
+    <loc>https://skills.n3wth.com/curated-bundles</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflows</loc>
+    <loc>https://skills.n3wth.com/workflows</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflow-builder</loc>
+    <loc>https://skills.n3wth.com/workflow-builder</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/compare</loc>
+    <loc>https://skills.n3wth.com/compare</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/analytics</loc>
+    <loc>https://skills.n3wth.com/analytics</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/create</loc>
+    <loc>https://skills.n3wth.com/create</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Curated Bundles -->
   <url>
-    <loc>https://skills.newth.ai/curated-bundles/frontend-starter</loc>
+    <loc>https://skills.n3wth.com/curated-bundles/frontend-starter</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/curated-bundles/backend-builder</loc>
+    <loc>https://skills.n3wth.com/curated-bundles/backend-builder</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/curated-bundles/devops-toolkit</loc>
+    <loc>https://skills.n3wth.com/curated-bundles/devops-toolkit</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/curated-bundles/content-creator</loc>
+    <loc>https://skills.n3wth.com/curated-bundles/content-creator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/curated-bundles/data-analyst</loc>
+    <loc>https://skills.n3wth.com/curated-bundles/data-analyst</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/curated-bundles/founder-toolkit</loc>
+    <loc>https://skills.n3wth.com/curated-bundles/founder-toolkit</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Workflow Templates -->
   <url>
-    <loc>https://skills.newth.ai/workflows/research-report</loc>
+    <loc>https://skills.n3wth.com/workflows/research-report</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflows/business-presentation</loc>
+    <loc>https://skills.n3wth.com/workflows/business-presentation</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflows/animated-landing</loc>
+    <loc>https://skills.n3wth.com/workflows/animated-landing</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflows/generative-art-skill</loc>
+    <loc>https://skills.n3wth.com/workflows/generative-art-skill</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflows/email-campaign</loc>
+    <loc>https://skills.n3wth.com/workflows/email-campaign</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflows/api-documentation</loc>
+    <loc>https://skills.n3wth.com/workflows/api-documentation</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflows/content-pipeline</loc>
+    <loc>https://skills.n3wth.com/workflows/content-pipeline</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/workflows/invoice-processor</loc>
+    <loc>https://skills.n3wth.com/workflows/invoice-processor</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Skills -->
   <url>
-    <loc>https://skills.newth.ai/skill/gsap-animations</loc>
+    <loc>https://skills.n3wth.com/skill/gsap-animations</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/mcp-builder</loc>
+    <loc>https://skills.n3wth.com/skill/mcp-builder</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/monorepo-manager</loc>
+    <loc>https://skills.n3wth.com/skill/monorepo-manager</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/skill-creator</loc>
+    <loc>https://skills.n3wth.com/skill/skill-creator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/code-generation-pipeline</loc>
+    <loc>https://skills.n3wth.com/skill/code-generation-pipeline</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/algorithmic-art</loc>
+    <loc>https://skills.n3wth.com/skill/algorithmic-art</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/business-panel</loc>
+    <loc>https://skills.n3wth.com/skill/business-panel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/frontend-design</loc>
+    <loc>https://skills.n3wth.com/skill/frontend-design</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/pdf</loc>
+    <loc>https://skills.n3wth.com/skill/pdf</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/docx</loc>
+    <loc>https://skills.n3wth.com/skill/docx</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/pptx</loc>
+    <loc>https://skills.n3wth.com/skill/pptx</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/xlsx</loc>
+    <loc>https://skills.n3wth.com/skill/xlsx</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/webapp-testing</loc>
+    <loc>https://skills.n3wth.com/skill/webapp-testing</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/canvas-design</loc>
+    <loc>https://skills.n3wth.com/skill/canvas-design</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/slack-gif-creator</loc>
+    <loc>https://skills.n3wth.com/skill/slack-gif-creator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/theme-factory</loc>
+    <loc>https://skills.n3wth.com/skill/theme-factory</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/doc-coauthoring</loc>
+    <loc>https://skills.n3wth.com/skill/doc-coauthoring</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/internal-comms</loc>
+    <loc>https://skills.n3wth.com/skill/internal-comms</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/copywriting</loc>
+    <loc>https://skills.n3wth.com/skill/copywriting</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/typography-selector</loc>
+    <loc>https://skills.n3wth.com/skill/typography-selector</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/git-workflow</loc>
+    <loc>https://skills.n3wth.com/skill/git-workflow</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/sql-optimizer</loc>
+    <loc>https://skills.n3wth.com/skill/sql-optimizer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/api-docs-generator</loc>
+    <loc>https://skills.n3wth.com/skill/api-docs-generator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cicd-builder</loc>
+    <loc>https://skills.n3wth.com/skill/cicd-builder</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/code-reviewer</loc>
+    <loc>https://skills.n3wth.com/skill/code-reviewer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/data-viz</loc>
+    <loc>https://skills.n3wth.com/skill/data-viz</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/email-drafter</loc>
+    <loc>https://skills.n3wth.com/skill/email-drafter</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/regex-builder</loc>
+    <loc>https://skills.n3wth.com/skill/regex-builder</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/schema-designer</loc>
+    <loc>https://skills.n3wth.com/skill/schema-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-agent-orchestrator</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-agent-orchestrator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/imessage</loc>
+    <loc>https://skills.n3wth.com/skill/imessage</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-rules-generator</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-rules-generator</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/research-assistant</loc>
+    <loc>https://skills.n3wth.com/skill/research-assistant</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/ai-rules-manager</loc>
+    <loc>https://skills.n3wth.com/skill/ai-rules-manager</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/codebase-context-builder</loc>
+    <loc>https://skills.n3wth.com/skill/codebase-context-builder</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-code-review</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-code-review</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-driven-refactoring</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-driven-refactoring</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-git-workflow</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-git-workflow</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-linear-bridge</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-linear-bridge</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-project-bootstrapper</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-project-bootstrapper</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-project-scanner</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-project-scanner</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/cursor-usage-analytics</loc>
+    <loc>https://skills.n3wth.com/skill/cursor-usage-analytics</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/extension-sync</loc>
+    <loc>https://skills.n3wth.com/skill/extension-sync</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/settings-distribution-manager</loc>
+    <loc>https://skills.n3wth.com/skill/settings-distribution-manager</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skills.newth.ai/skill/vscode-cursor-sync</loc>
+    <loc>https://skills.n3wth.com/skill/vscode-cursor-sync</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

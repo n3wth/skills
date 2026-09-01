@@ -8,7 +8,7 @@ title: 'n3wth/skills - AI Coding Assistant Skills',
   openGraph: {
     title: 'n3wth/skills - AI Coding Assistant Skills',
     description: 'Discover and install AI coding skills for Gemini CLI and other assistants. Browse community-built templates, workflows, and best practices that accelerate your development.',
-    url: 'https://skills.newth.ai',
+    url: 'https://skills.n3wth.com',
     images: ['/og-image.png'],
   },
 }

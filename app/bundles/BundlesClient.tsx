@@ -105,7 +105,7 @@ export function BundlesClient() {
     return selectedBundleSkills
       .map(skill => skill.skillFile
         ? `curl -fsSL ${skill.skillFile} -o ~/.claude/skills/${skill.id}.md`
-        : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- ${skill.id}`
+        : `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- ${skill.id}`
       )
       .join(' && ')
   }, [selectedBundle, selectedBundleSkills])

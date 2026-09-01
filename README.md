@@ -4,7 +4,7 @@
 
 AI assistant skills for Claude Code, Cursor, and other AI coding assistants. Markdown files that teach your AI new tricks.
 
-**[skills.newth.ai](https://skills.newth.ai)**
+**[skills.n3wth.com](https://skills.n3wth.com)**
 
 ## Install
 

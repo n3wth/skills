@@ -6,9 +6,9 @@ const GEMINI_MODEL = 'gemini-2.0-flash'
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const allowedOrigins = ['https://skills.newth.ai', 'http://localhost:3000']
+  const allowedOrigins = ['https://skills.n3wth.com', 'http://localhost:3000']
   const origin = req.headers?.origin || ''
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigins.includes(origin) ? origin : 'https://skills.newth.ai')
+  res.setHeader('Access-Control-Allow-Origin', allowedOrigins.includes(origin) ? origin : 'https://skills.n3wth.com')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 

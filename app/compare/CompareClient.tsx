@@ -301,7 +301,7 @@ export function CompareClient() {
                                           name="Install"
                                           command={skill.skillFile
                                             ? `curl -fsSL ${skill.skillFile} -o ~/.claude/skills/${skill.id}.md`
-                                            : `curl -fsSL https://skills.newth.ai/install.sh | bash -s -- ${skill.id}`
+                                            : `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- ${skill.id}`
                                           }
                                           skillId={skill.id}
                                           primary={false}

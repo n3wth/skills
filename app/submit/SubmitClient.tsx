@@ -95,7 +95,7 @@ export function SubmitClient() {
         `### Contributor\n` +
         `**Name:** ${formData.contributorName}\n` +
         (formData.contributorGithub ? `**GitHub:** @${formData.contributorGithub}\n` : '') +
-        `\n---\n*Submitted via skills.newth.ai marketplace*`
+        `\n---\n*Submitted via skills.n3wth.com marketplace*`
       )
 
       const githubUrl = `${siteConfig.links.github}/issues/new?title=${issueTitle}&body=${issueBody}&labels=skill-submission`

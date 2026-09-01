@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Skill Workflows - Chain AI Capabilities Together | newth.ai',
     description: 'Create and share skill workflows that chain multiple AI capabilities together. Combine research, writing, and document creation into powerful automated sequences.',
-    url: 'https://skills.newth.ai/workflows',
+    url: 'https://skills.n3wth.com/workflows',
     images: ['/og-image.png'],
   },
 }

@@ -181,7 +181,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand('newthSkills.viewSkillDetail', (skill: Skill) => {
-      const url = `https://skills.newth.ai/skill/${skill.id}`
+      const url = `https://skills.n3wth.com/skill/${skill.id}`
       vscode.env.openExternal(vscode.Uri.parse(url))
     })
   )
@@ -237,8 +237,8 @@ export function activate(context: vscode.ExtensionContext) {
 function handleSkillAction(action: string, skill: Skill, assistant: 'gemini' | 'claude') {
   const command =
     assistant === 'gemini'
-      ? `curl -sL https://skills.newth.ai/install.sh | bash -s -- gemini ${skill.id}`
-      : `curl -sL https://skills.newth.ai/install.sh | bash -s -- claude ${skill.id}`
+      ? `curl -sL https://skills.n3wth.com/install.sh | bash -s -- gemini ${skill.id}`
+      : `curl -sL https://skills.n3wth.com/install.sh | bash -s -- claude ${skill.id}`
 
   switch (action) {
     case 'install':
@@ -257,7 +257,7 @@ function handleSkillAction(action: string, skill: Skill, assistant: 'gemini' | '
       break
 
     case 'view': {
-      const url = `https://skills.newth.ai/skill/${skill.id}`
+      const url = `https://skills.n3wth.com/skill/${skill.id}`
       vscode.env.openExternal(vscode.Uri.parse(url))
       break
     }
