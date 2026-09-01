@@ -9,7 +9,6 @@ title: 'n3wth/skills - AI Coding Assistant Skills',
     title: 'n3wth/skills - AI Coding Assistant Skills',
     description: 'Discover and install AI coding skills for Gemini CLI and other assistants. Browse community-built templates, workflows, and best practices that accelerate your development.',
     url: 'https://skills.n3wth.com',
-    images: ['/og-image.png'],
   },
 }
 

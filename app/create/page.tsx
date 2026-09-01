@@ -9,7 +9,6 @@ export const metadata: Metadata = {
     title: 'Create Your Own AI Skill | newth.ai',
     description: 'Create your own AI coding skill with our interactive wizard. Choose from templates or start from scratch.',
     url: 'https://skills.n3wth.com/create',
-    images: ['/og-image.png'],
   },
 }
 

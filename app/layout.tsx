@@ -23,21 +23,12 @@ export const metadata: Metadata = {
     title: 'n3wth/skills - AI Coding Assistant Skills',
     description:
       'Markdown files that give Gemini CLI, Claude Code, and Cursor new capabilities. Install in seconds and work offline.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Skills for AI coding assistants',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'n3wth/skills - AI Coding Assistant Skills',
     description:
       'Markdown files that give Gemini CLI, Claude Code, and Cursor new capabilities. Install in seconds and work offline.',
-    images: ['/og-image.png'],
   },
 }
 

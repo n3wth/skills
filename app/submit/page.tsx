@@ -9,7 +9,6 @@ export const metadata: Metadata = {
     title: 'Submit Your AI Skill to the Community Directory | newth.ai',
     description: 'Submit your skill to the AI skills directory. Contribute to the community and help developers worldwide extend their Claude Code and other AI assistants.',
     url: 'https://skills.n3wth.com/submit',
-    images: ['/og-image.png'],
   },
 }
 
