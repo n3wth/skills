@@ -1,17 +1,6 @@
 ---
-name: Cursor Agent Orchestrator
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - agent
-  - orchestration
-  - automation
-  - workflow
-compatibility:
-  - cursor
-  - claude
+name: cursor-agent-orchestrator
+description: Chain multiple Cursor agent operations and batch process files. Enable complex multi-step agent workflows with dependency management, error recovery, and result logging.
 ---
 
 # Cursor Agent Orchestrator

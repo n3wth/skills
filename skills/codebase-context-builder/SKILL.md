@@ -1,19 +1,6 @@
 ---
-name: Codebase Context Builder
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - analysis
-  - architecture
-  - documentation
-  - cursor
-  - ai-context
-compatibility:
-  - claude
-  - cursor
-  - windsurf
-  - copilot
+name: codebase-context-builder
+description: Analyze project structure and generate AI context for Cursor rules. Improve AI assistants' understanding of project architecture, coding patterns, and architectural decisions.
 ---
 
 # Codebase Context Builder

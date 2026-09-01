@@ -1,15 +1,6 @@
 ---
-name: Typography Selector
-version: 1.0.0
-author: newth.ai
-category: creative
-tags:
-  - fonts
-  - typography
-  - design
-compatibility:
-  - gemini
-  - claude
+name: typography-selector
+description: Browse and select fonts from Google Fonts or curated pairings. Find perfect typography for design projects with harmonious heading and body combinations.
 ---
 
 # Typography Selector

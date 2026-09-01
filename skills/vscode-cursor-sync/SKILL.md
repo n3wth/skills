@@ -1,18 +1,6 @@
 ---
-name: VSCode ↔ Cursor Sync
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - vscode
-  - cursor
-  - sync
-  - settings
-  - extensions
-compatibility:
-  - claude
-  - cursor
-  - copilot
+name: vscode-cursor-sync
+description: Mirror VSCode keybindings, extensions, and settings to Cursor to maintain a consistent development environment between editors.
 ---
 
 # VSCode ↔ Cursor Sync

@@ -1,18 +1,6 @@
 ---
-name: Cursor Code Review Assistant
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - code-review
-  - cursor
-  - quality
-  - standards
-  - ai-rules
-compatibility:
-  - cursor
-  - claude
-  - windsurf
+name: cursor-code-review
+description: Review AI-generated code for quality and suggest improvements to your AI rules based on output quality. Ensures generated code meets team standards and continuously improves AI assistant configurat...
 ---
 
 # Cursor Code Review Assistant

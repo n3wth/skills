@@ -1,15 +1,6 @@
 ---
-name: Business Panel
-version: 1.0.0
-author: newth.ai
-category: business
-tags:
-  - strategy
-  - analysis
-  - experts
-compatibility:
-  - gemini
-  - claude
+name: business-panel
+description: Multi-expert business strategy panel synthesizing perspectives from Clayton Christensen, Michael Porter, Peter Drucker, Seth Godin, and more. Supports sequential, debate, and Socratic modes for com...
 ---
 
 # Business Panel

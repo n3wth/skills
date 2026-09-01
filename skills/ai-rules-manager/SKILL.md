@@ -1,19 +1,6 @@
 ---
-name: AI Rules Manager
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - ai
-  - cursor
-  - rules
-  - automation
-  - patterns
-compatibility:
-  - claude
-  - cursor
-  - windsurf
-  - copilot
+name: ai-rules-manager
+description: Generate, version, and manage .cursor/rules files with automatic pattern learning. Learn project conventions and create scoped AI instructions automatically from codebase patterns.
 ---
 
 # AI Rules Manager

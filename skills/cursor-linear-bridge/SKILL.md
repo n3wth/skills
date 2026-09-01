@@ -1,17 +1,6 @@
 ---
-name: Cursor ↔ Linear Bridge
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - linear
-  - workflow
-  - automation
-  - integration
-compatibility:
-  - claude
-  - cursor
+name: cursor-linear-bridge
+description: Create Cursor workspaces from Linear issues with bidirectional sync. Connect issue tracking with development context for seamless workflow automation.
 ---
 
 # Cursor ↔ Linear Bridge

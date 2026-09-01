@@ -1,19 +1,6 @@
 ---
-name: Code Generation Pipeline
-version: 1.0.0
-author: newth.ai
-category: development
-tags:
-  - cursor
-  - code-generation
-  - automation
-  - validation
-  - scaffolding
-compatibility:
-  - claude
-  - cursor
-  - windsurf
-  - copilot
+name: code-generation-pipeline
+description: Streamline boilerplate and scaffold generation with automatic validation. Trigger Cursor code generation, extract and organize generated code, validate against project standards, and auto-commit wi...
 ---
 
 # Code Generation Pipeline
