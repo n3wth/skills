@@ -81,10 +81,10 @@ export default function HomeClient() {
         <section className="mb-16 md:mb-24">
           <div className="text-center mb-6">
             <h2 className="section-title mb-2">
-              What do you want your AI to ship today?
+              What are you working on?
             </h2>
             <p className="label">
-              Describe your goal and we'll surface the skills that get you there.
+              Describe your task to see matching skills.
             </p>
           </div>
           <TaskInput value={taskQuery} onChange={handleTaskChange} />

@@ -16,7 +16,7 @@ export function FeaturedSkills() {
           Featured
         </h2>
         <p className="label">
-          The skills people actually use every day
+          Commonly used skills
         </p>
       </div>
 
