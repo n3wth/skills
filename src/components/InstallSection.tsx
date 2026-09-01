@@ -24,7 +24,7 @@ export function InstallSection() {
           Install
         </h2>
         <p className="label mb-4">
-          One command. Works offline. No servers, no waiting, and no limits.
+          One command. Skills install locally and work offline.
         </p>
       </div>
 

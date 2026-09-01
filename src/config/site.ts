@@ -2,7 +2,7 @@
 export const siteConfig = {
   name: 'n3wth/skills',
   description: 'Give your AI coding assistant practical skills it can use right away.',
-  tagline: 'Works offline. No API limits. Full control.',
+  tagline: 'Installs locally and works offline.',
   author: 'Oliver Newth',
   links: {
     about: 'https://n3wth.com',
@@ -16,7 +16,7 @@ export const siteConfig = {
   sections: {
     install: {
       title: 'Install',
-      subtitle: 'One command. Works with Gemini CLI, Cursor, and more. No configuration required.',
+      subtitle: 'One command. Works with Gemini CLI, Cursor, and more.',
     },
     browse: {
       title: 'Browse Skills',
