@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/submit' },
   openGraph: {
     title: 'Submit Your AI Skill to the Community Directory | skills.n3wth.com',
-    description: 'Submit your skill to the AI skills directory. Contribute to the community and help developers worldwide extend their Claude Code and other AI assistants.',
+    description: 'Submit your skill to the AI skills directory. Contribute to the community and help developers worldwide extend their AI coding assistants.',
     url: 'https://skills.n3wth.com/submit',
   },
 }

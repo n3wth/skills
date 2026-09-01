@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s | n3wth/skills',
   },
   description:
-    'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Claude Code, and Cursor. Install in seconds and work offline.',
+    'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, and more. Install in seconds and work offline.',
   authors: [{ name: 'Oliver Newth' }],
   creator: 'Oliver Newth',
   robots: 'index, follow',
@@ -22,13 +22,22 @@ export const metadata: Metadata = {
     siteName: 'n3wth/skills',
     title: 'n3wth/skills - AI Coding Assistant Skills',
     description:
-      'Markdown files that give Gemini CLI, Claude Code, and Cursor new capabilities. Install in seconds and work offline.',
+      'Markdown files that give Gemini CLI, Cursor, and other AI assistants new capabilities. Install in seconds and work offline.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Skills for AI coding assistants',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'n3wth/skills - AI Coding Assistant Skills',
     description:
-      'Markdown files that give Gemini CLI, Claude Code, and Cursor new capabilities. Install in seconds and work offline.',
+      'Markdown files that give Gemini CLI, Cursor, and other AI assistants new capabilities. Install in seconds and work offline.',
+    images: ['/og-image.png'],
   },
 }
 

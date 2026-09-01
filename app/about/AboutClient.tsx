@@ -159,7 +159,7 @@ export default function AboutClient() {
                 className="text-lg leading-relaxed"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                Want Claude to build scroll animations? Install the GSAP skill. Need it to generate PDFs? A skill handles that. Each skill delivers curated knowledge your AI can reference on demand.
+                Want your AI to build scroll animations? Install the GSAP skill. Need it to generate PDFs? A skill handles that. Each skill delivers curated knowledge your AI can reference on demand.
               </p>
             </section>
 

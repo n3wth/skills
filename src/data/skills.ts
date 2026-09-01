@@ -108,7 +108,7 @@ export const skills: Skill[] = [
     samplePrompts: [
       {
         prompt: "Build an MCP server that connects to a weather API",
-        output: "I'll create a FastMCP server for weather data:\n\n```python\nfrom fastmcp import FastMCP\nimport httpx\n\nmcp = FastMCP('weather-server')\n\n@mcp.tool()\nasync def get_weather(city: str) -> dict:\n    \"\"\"Get current weather for a city.\"\"\"\n    async with httpx.AsyncClient() as client:\n        response = await client.get(\n            f'https://api.weather.com/v1/current',\n            params={'city': city}\n        )\n        return response.json()\n\nif __name__ == '__main__':\n    mcp.run()\n```\n\nThe tool lets Claude fetch real-time weather data."
+        output: "I'll create a FastMCP server for weather data:\n\n```python\nfrom fastmcp import FastMCP\nimport httpx\n\nmcp = FastMCP('weather-server')\n\n@mcp.tool()\nasync def get_weather(city: str) -> dict:\n    \"\"\"Get current weather for a city.\"\"\"\n    async with httpx.AsyncClient() as client:\n        response = await client.get(\n            f'https://api.weather.com/v1/current',\n            params={'city': city}\n        )\n        return response.json()\n\nif __name__ == '__main__':\n    mcp.run()\n```\n\nThe tool lets your AI assistant fetch real-time weather data."
       },
       {
         prompt: "How do I handle errors in MCP tools?",
@@ -157,7 +157,7 @@ export const skills: Skill[] = [
   {
     id: 'skill-creator',
     name: 'Skill Creator',
-    description: 'Guide for creating effective Claude Code skills with specialized knowledge, workflows, and tool integrations.',
+    description: 'Guide for creating effective AI coding skills with specialized knowledge, workflows, and tool integrations.',
     longDescription: 'Create your own skills that extend AI coding assistants. The skill covers structure, best practices, and patterns for building effective skills that provide specialized knowledge and workflows.',
     category: 'development',
     tags: ['skills', 'claude', 'automation'],

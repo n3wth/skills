@@ -93,7 +93,7 @@ const skills: Skill[] = [
   {
     id: 'skill-creator',
     name: 'Skill Creator',
-    description: 'Guide for creating effective Claude Code skills with specialized knowledge, workflows, and tool integrations.',
+    description: 'Guide for creating effective AI coding skills with specialized knowledge, workflows, and tool integrations.',
     longDescription: 'Learn how to create your own skills that extend AI coding assistants. This skill covers the structure, best practices, and patterns for building effective skills that provide specialized knowledge and workflows.',
     category: 'development',
     tags: ['skills', 'claude', 'automation'],

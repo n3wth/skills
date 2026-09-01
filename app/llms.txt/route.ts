@@ -29,7 +29,7 @@ export async function GET() {
 
   const content = `# n3wth/skills
 
-AI coding assistant skills for Claude Code, Gemini CLI, Cursor, Windsurf, and Copilot.
+AI coding assistant skills for Gemini CLI, Cursor, Windsurf, and Copilot.
 
 ## Install
 

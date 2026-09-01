@@ -16,7 +16,7 @@ export const siteConfig = {
   sections: {
     install: {
       title: 'Install',
-      subtitle: 'One command. Works with Gemini CLI, Claude Code, and Cursor. No configuration required.',
+      subtitle: 'One command. Works with Gemini CLI, Cursor, and more. No configuration required.',
     },
     browse: {
       title: 'Browse Skills',
@@ -24,10 +24,10 @@ export const siteConfig = {
   },
   seo: {
     keywords: [
-      'Claude Code skills',
+      'AI coding skills',
       'Gemini CLI extensions',
       'AI assistant plugins',
-      'Claude extensions',
+      'Cursor extensions',
       'AI tools',
       'developer productivity',
       'workflow automation',

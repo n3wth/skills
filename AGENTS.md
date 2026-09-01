@@ -1,6 +1,6 @@
 # skills.n3wth.com
 
-AI-powered skill discovery and installation platform for Claude Code and other AI assistants.
+AI-powered skill discovery and installation platform for AI coding assistants.
 
 ## Tech Stack
 
