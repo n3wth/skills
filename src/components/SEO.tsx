@@ -10,7 +10,7 @@ interface SEOProps {
 const BASE_URL = 'https://skills.n3wth.com'
 const DEFAULT_TITLE = 'newth.ai skills - Extend Your AI Coding Assistant'
 const DEFAULT_DESCRIPTION = 'Skills for Gemini CLI, Claude Code, and more. Extend your AI coding assistant with specialized capabilities. Install with one command.'
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`
+const DEFAULT_OG_IMAGE = `${BASE_URL}/opengraph-image`
 
 export function SEO({
   title = DEFAULT_TITLE,

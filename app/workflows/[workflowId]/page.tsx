@@ -19,7 +19,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: 'Create AI Workflow | newth.ai',
         description: 'Build custom AI workflows by chaining skills together. Create automated sequences combining research, writing, and document creation.',
         url: 'https://skills.n3wth.com/workflows/new',
-        images: ['/og-image.png'],
       },
     }
   }
@@ -46,7 +45,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: `${template.name} - AI Workflow | newth.ai`,
         description: desc,
         url: `https://skills.n3wth.com/workflows/${workflowId}`,
-        images: ['/og-image.png'],
       },
     }
   }
@@ -60,7 +58,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: 'Edit AI Skill Workflow - Visual Builder | newth.ai',
       description: 'Edit and customize your AI workflow by chaining skills together. Connect research, writing, and document creation skills into powerful automated sequences.',
       url: `https://skills.n3wth.com/workflows/${workflowId}`,
-      images: ['/og-image.png'],
     },
   }
 }

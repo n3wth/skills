@@ -10,7 +10,6 @@ export const metadata: Metadata = {
     title: 'Compare AI Skills Side by Side - Feature Matrix | newth.ai',
     description: 'Compare AI coding skills side by side with detailed feature matrices. Evaluate compatibility, features, and use cases to find the best skills for your workflow.',
     url: 'https://skills.n3wth.com/compare',
-    images: ['/og-image.png'],
   },
 }
 
