@@ -1,139 +1,140 @@
-# skills.n3wth.com
+# Skill Catalog — Quick Reference
 
-AI-powered skill discovery and installation platform for AI coding assistants.
+**Contact**: hey@n3wth.com
 
-## Tech Stack
+---
 
-- **Framework**: Next.js 16 + React 19 + TypeScript
-- **Styling**: Tailwind CSS 4 with CSS custom properties
-- **Animation**: GSAP with useGSAP hook
-- **Data**: Supabase (auth, upvotes, comments), Neon (anonymous votes)
-
-## Design System
-
-### Core Principles
-
-**LIQUID GLASS (iOS 26 inspired)**
-- Glass material: backdrop-blur + translucent backgrounds + inset highlights
-- Solid black background
-- Depth through translucency, not elevation
-- No pseudo-element overlays (no ::before/::after gradients on cards)
-
-### Visual Hierarchy
-
-- Glass card with backdrop-filter blur, border, inset shadow
-- Border brightens on hover
-- Keep animations subtle and purposeful
-
-### Color Palette
-
-```css
-/* Category colors */
-development: #30d158 (green)
-documents: #ff6961 (coral)
-creative: #64d2ff (blue)
-business: #ffd60a (gold)
-
-/* Liquid Glass variables */
---glass-bg: rgba(255, 255, 255, 0.06)
---glass-border: rgba(255, 255, 255, 0.08)
---glass-highlight: rgba(255, 255, 255, 0.18)
---glass-blur: blur(20px) saturate(180%)
---glass-inset: inset 0 1px 0 0 rgba(255, 255, 255, 0.12)
-
-/* Background */
-Solid black (#000000) - no gradient mesh
-```
-
-### Category Shapes
-
-Each category has a distinct shape:
-- **development**: Circle
-- **documents**: Square
-- **creative**: Triangle
-- **business**: Diamond
-
-### Glass Card Variants
-
-- `.glass-card` - Standard glass (blur 20px, 20px radius)
-- `.glass-card--featured` - 24px radius variant
-- `.glass-card--hero` - 24px radius variant
-
-### Allowed Effects
-
-- `backdrop-filter: blur()` with `saturate()` for glass material
-- `box-shadow: inset` for top-edge highlight
-- `transform` for hover interactions
-- CSS/GSAP animations for entrance/motion
-
-### Forbidden Effects
-
-- `drop-shadow()` filter
-- `text-shadow`
-- Outer `box-shadow` (elevation shadows)
-- Pseudo-element gradient overlays (::before/::after with gradients)
-- Bright/neon glow animations
-
-## Project Structure
+## File Map
 
 ```
-app/                 # Next.js App Router (pages, API routes)
-src/
-├── components/      # React components
-├── config/          # Configuration (categories, site)
-├── data/            # Skill data and types
-├── lib/             # Utilities (analytics, supabase)
-└── index.css        # Global styles
-supabase/
-└── migrations/      # Supabase schema (profiles, upvotes, comments)
-docs/                # SUPABASE.md, REFACTORING.md, TESTING-AND-LINTING.md
+skills/                          # Skill markdown files (YAML frontmatter + content)
+  ├── gsap-animations/SKILL.md   # Skill in folder format
+  └── mcp-builder.md             # Skill as single file
+
+src/data/skills.ts               # Catalog array — add new entries here
+src/config/categories.ts         # Category IDs: development | documents | creative | productivity | business
+src/config/assistants.ts         # Assistant IDs: gemini | claude | cursor | windsurf | copilot
 ```
+
+---
+
+## Skill Record Schema
+
+Add to the `skills` array in `src/data/skills.ts`:
+
+```typescript
+interface Skill {
+  id: string                      // kebab-case, matches skill file name
+  name: string                    // Display name
+  description: string             // One sentence
+  longDescription?: string        // Expanded description
+  category: 'development' | 'documents' | 'creative' | 'productivity' | 'business'
+  tags: string[]                  // Search keywords
+  featured?: boolean              // Show on homepage
+  icon: string                    // Single emoji or symbol
+  color: string                   // oklch(0.70 0.15 200)
+  features?: string[]             // Bullet points
+  useCases?: string[]             // Example applications
+  compatibility?: ('gemini' | 'claude' | 'cursor' | 'windsurf' | 'copilot')[]
+  version: string                 // semver
+  lastUpdated: string             // YYYY-MM-DD
+  contributor?: { name: string; github?: string; url?: string }
+  samplePrompts?: { prompt: string; output: string }[]
+  skillFile?: string              // URL to raw skill file (optional)
+}
+```
+
+---
+
+## Copy-Paste Example
+
+### 1. Add catalog entry in `src/data/skills.ts`
+
+Insert into the `skills` array:
+
+```typescript
+  {
+    id: 'my-new-skill',
+    name: 'My New Skill',
+    description: 'One-line description of what the skill does.',
+    category: 'development',
+    tags: ['keyword1', 'keyword2'],
+    icon: '◆',
+    color: 'oklch(0.72 0.16 200)',
+    features: [
+      'Feature one',
+      'Feature two',
+    ],
+    useCases: [
+      'Use case one',
+      'Use case two',
+    ],
+    compatibility: ['claude', 'cursor'],
+    version: '1.0.0',
+    lastUpdated: '2026-09-01',
+  },
+```
+
+### 2. Create skill file in `skills/`
+
+Create `skills/my-new-skill.md`:
+
+```markdown
+---
+name: my-new-skill
+description: One-line description of what the skill does.
+---
+
+# My New Skill
+
+Expanded description of the skill.
+
+## Triggers
+
+Use this skill when the user asks about:
+- Trigger keyword one
+- Trigger keyword two
+
+## Instructions
+
+1. Step one
+2. Step two
+
+## Example
+
+**Prompt**: Example user request
+
+**Output**: Example response
+```
+
+---
+
+## Where to Put a New Skill
+
+| What | Where |
+|------|-------|
+| Catalog entry | `src/data/skills.ts` — add to `skills` array |
+| Skill file | `skills/<skill-id>.md` or `skills/<skill-id>/SKILL.md` |
+
+**Required**: Catalog entry. Skill file is optional (for detailed instructions).
+
+---
 
 ## Commands
 
 ```bash
-npm run dev          # Development server (localhost:3000)
+npm run dev          # Development server
 npm run build        # Production build
 npm run typecheck    # TypeScript check
 npm run lint         # ESLint
-npm run test:unit    # Unit tests
-npm run verify:supabase  # Verify Supabase connection
 ```
 
-## Component Patterns
+---
 
-### Skill Cards
-- Glass card with backdrop-filter blur
-- No movement on hover (no translateY, no scale)
-- Border brightens on hover
+## Design System (for UI work)
 
-### Glass Elements
-- Use `backdrop-filter: var(--glass-blur)` for glass effect
-- Border with `--glass-border`, inset highlight with `--glass-inset`
-
-### Category Indicators
-- Solid color shapes
-- Simple SVG with fill color
-
-## Adding New Features
-
-1. Follow Liquid Glass design principles
-2. Use existing CSS variables (--glass-*)
-3. Only inset box-shadows (for glass highlight effect)
-4. Test reduced motion support
-5. Use glass-card variant classes for appropriate depth level
-
-## Skills Data
-
-Skills are defined in `src/data/skills.ts` and real skill files exist in `skills/` directory as markdown with YAML frontmatter.
-
-## Telemetry
-
-Web Vitals (LCP, CLS, INP, FCP, TTFB) are collected via [Axiom](https://app.axiom.co) (`next-axiom`) and PostHog (`capture_performance`). Data flows to the `vercel` dataset in Axiom. Only production deployments send data.
-
-- Axiom dashboard: https://app.axiom.co
-- PostHog web vitals: https://us.posthog.com (Web Analytics > Web Vitals)
-
-## Deployment
-
-Deployed to Vercel. The `install.sh` endpoint handles skill installation.
+- **Background**: Solid black (#000000)
+- **Glass cards**: `backdrop-filter: blur(20px) saturate(180%)`
+- **Glass border**: `rgba(255, 255, 255, 0.08)`
+- **Category colors**: development=#30d158, documents=#ff6961, creative=#64d2ff, productivity=#a855f7, business=#ffd60a
+- **No outer shadows**, only `box-shadow: inset` for highlights
