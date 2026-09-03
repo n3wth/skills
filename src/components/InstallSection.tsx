@@ -6,15 +6,17 @@ import { CommandBox } from './CommandBox'
 import { AssistantIcon } from './AssistantIcon'
 import { useScrollReveal } from '../hooks'
 
+const publicAssistantList = assistantList.filter(a => a.id !== 'claude')
+
 export function InstallSection() {
   const [showAll, setShowAll] = useState(false)
   const sectionRef = useScrollReveal({ direction: 'up', distance: 35, stagger: 0.15, duration: 0.9 })
   
   const primaryCommands = installCommands.filter(cmd => 
-    cmd.assistantId === 'gemini' || cmd.assistantId === 'claude' || cmd.assistantId === 'all'
+    cmd.assistantId === 'gemini' || cmd.assistantId === 'all'
   )
   const additionalCommands = installCommands.filter(cmd => 
-    cmd.assistantId !== 'gemini' && cmd.assistantId !== 'claude' && cmd.assistantId !== 'all'
+    cmd.assistantId !== 'gemini' && cmd.assistantId !== 'all'
   )
 
   return (
@@ -29,7 +31,7 @@ export function InstallSection() {
       </div>
 
       <div className="flex flex-wrap gap-2 mb-6">
-        {assistantList.map(assistant => (
+        {publicAssistantList.map(assistant => (
           <span
             key={assistant.id}
             className="text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1.5"
@@ -67,7 +69,7 @@ export function InstallSection() {
               border: '1px solid var(--glass-border)',
             }}
           >
-            Show {additionalCommands.length} more assistants (Cursor, Windsurf, Cody, and Copilot)
+            Show {additionalCommands.length} more assistants (Cursor, Windsurf, Copilot)
           </button>
         )}
         

@@ -17,12 +17,6 @@ export const installCommands: InstallCommand[] = [
     primary: true,
   },
   {
-    name: 'For Claude Code',
-    assistantId: 'claude',
-    command: 'curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- claude',
-    primary: false,
-  },
-  {
     name: 'For Cursor',
     assistantId: 'cursor',
     command: 'curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- cursor',

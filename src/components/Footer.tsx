@@ -1,16 +1,18 @@
 'use client'
 
 const sites = [
-  { name: 'n3wth', href: 'https://n3wth.com' },
-  { name: 'Skills', href: '/', current: true },
-  { name: 'UI', href: 'https://ui.n3wth.com' },
-  { name: 'Garden', href: 'https://garden.n3wth.com' },
+  { name: 'hop.flights', href: 'https://hop.flights' },
+  { name: 'r3', href: 'https://r3.n3wth.com' },
+  { name: 'kit', href: 'https://kit.n3wth.com' },
+  { name: 'garden', href: 'https://garden.n3wth.com' },
+  { name: 'ui', href: 'https://ui.n3wth.com' },
+  { name: 'n3wth.com', href: 'https://n3wth.com' },
+  { name: 'Email', href: 'mailto:hey@n3wth.com' },
 ]
 
 const legal = [
   { name: 'Terms', href: '/terms' },
   { name: 'Privacy', href: '/privacy' },
-  { name: 'Contact', href: 'mailto:hey@n3wth.com' },
 ]
 
 export function Footer() {
@@ -18,23 +20,17 @@ export function Footer() {
     <footer className="py-10">
       <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col gap-6">
         {/* Sites */}
-        <nav className="flex items-center gap-4">
+        <nav className="flex items-center gap-4 flex-wrap">
           {sites.map((site, i) => (
             <span key={site.name} className="flex items-center gap-4">
-              {site.current ? (
-                <span className="text-sm font-medium" style={{ color: 'var(--color-white)' }}>
-                  {site.name}
-                </span>
-              ) : (
-                <a
-                  href={site.href}
-                  rel="external"
-                  className="text-sm hover:text-white transition-colors"
-                  style={{ color: 'var(--color-grey-500)' }}
-                >
-                  {site.name}
-                </a>
-              )}
+              <a
+                href={site.href}
+                rel={site.href.startsWith('http') ? 'external' : undefined}
+                className="text-sm hover:text-white transition-colors"
+                style={{ color: 'var(--color-grey-500)' }}
+              >
+                {site.name}
+              </a>
               {i < sites.length - 1 && (
                 <span style={{ color: 'var(--color-grey-700)' }}>/</span>
               )}
