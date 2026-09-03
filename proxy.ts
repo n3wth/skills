@@ -36,7 +36,7 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const protectedPaths = ['/create', '/settings']
+  const protectedPaths = ['/create']
   const isProtected = protectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path)
   )
@@ -53,6 +53,9 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/create/:path*',
+    '/auth/:path*',
+    '/api/vote/:path*',
+    '/api/comments/:path*',
   ],
 }
