@@ -174,7 +174,7 @@ export function CompareClient() {
                   {comparedSkills.map(skill => (
                     <td key={skill.id} className="p-4">
                       <div className="flex flex-wrap gap-1">
-                        {skill.compatibility?.map(assistantId => (
+                        {skill.compatibility?.filter(id => id !== 'claude').map(assistantId => (
                           <AssistantBadge key={assistantId} assistantId={assistantId} size="sm" />
                         ))}
                       </div>
@@ -300,7 +300,7 @@ export function CompareClient() {
                                         <CommandBox
                                           name="Install"
                                           command={skill.skillFile
-                                            ? `curl -fsSL ${skill.skillFile} -o ~/.claude/skills/${skill.id}.md`
+                                            ? `curl -fsSL ${skill.skillFile} -o ~/.gemini/skills/${skill.id}.md`
                                             : `curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- ${skill.id}`
                                           }
                                           skillId={skill.id}

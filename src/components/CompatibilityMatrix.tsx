@@ -7,6 +7,8 @@ interface CompatibilityMatrixProps {
   size?: 'sm' | 'md' | 'lg'
 }
 
+const publicAssistantList = assistantList.filter(a => a.id !== 'claude')
+
 export function CompatibilityMatrix({ 
   compatibility = [], 
   showLabels = false,
@@ -22,7 +24,7 @@ export function CompatibilityMatrix({
 
   return (
     <div className={`flex flex-wrap items-center ${config.gap}`}>
-      {assistantList.map(assistant => {
+      {publicAssistantList.map(assistant => {
         const isCompatible = compatibility.includes(assistant.id)
         
         return (
