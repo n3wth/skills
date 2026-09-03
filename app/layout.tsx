@@ -9,11 +9,11 @@ import '../src/index.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://skills.n3wth.com'),
   title: {
-    default: 'n3wth/skills — AI Coding Assistant Skills',
+    default: 'n3wth/skills',
     template: '%s | n3wth/skills',
   },
   description:
-    'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, Windsurf, and Copilot. Install in seconds and work offline.',
+    'Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot. 46 skills. One install, works offline.',
   authors: [{ name: 'Oliver Newth', url: 'https://n3wth.com' }],
   creator: 'n3wth',
   publisher: 'n3wth',
@@ -33,24 +33,24 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://skills.n3wth.com',
     siteName: 'n3wth/skills',
-    title: 'n3wth/skills — AI Coding Assistant Skills',
+    title: 'n3wth/skills',
     description:
-      'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, Windsurf, and Copilot.',
+      'Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot. 46 skills. One install, works offline.',
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'n3wth/skills — AI Coding Assistant Skills',
+        alt: 'n3wth/skills',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'n3wth/skills — AI Coding Assistant Skills',
+    title: 'n3wth/skills',
     description:
-      'Extend your AI coding assistant with ready-made skills. Install in seconds and work offline.',
+      'Markdown skills for coding agents. One install, works offline.',
     images: ['/twitter-image'],
     creator: '@olivernewth',
   },

@@ -22,7 +22,7 @@ export function WebSiteJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'n3wth/skills',
-    description: 'AI coding assistant skills for Gemini CLI, Cursor, Windsurf, and Copilot',
+    description: 'Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot',
     url: 'https://skills.n3wth.com',
     potentialAction: {
       '@type': 'SearchAction',

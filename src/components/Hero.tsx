@@ -13,9 +13,9 @@ export function Hero() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.15] mb-6"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            <span className="text-white">Teach</span>
+            <span className="text-white">Skills for</span>
             <br />
-            <span className="text-white">Your AI</span>
+            <span className="text-white">coding agents</span>
           </h1>
 
           {/* Description */}

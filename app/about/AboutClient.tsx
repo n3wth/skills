@@ -140,26 +140,26 @@ export default function AboutClient() {
               What are Skills?
             </h1>
             <p className="text-lg mb-12 animate-in" style={{ color: 'var(--color-grey-300)' }}>
-              Specialized knowledge files that teach your AI assistant new capabilities—instantly.
+              Markdown files that tell your AI how to do one thing well.
             </p>
           </div>
 
           <div ref={sectionsRef} className="space-y-12">
             <section>
               <h2 className="text-2xl md:text-3xl font-medium text-white mb-4">
-                Specialized knowledge, instantly ready
+                How they work
               </h2>
               <p
                 className="text-lg leading-relaxed mb-4"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                Skills are markdown files that teach your AI assistant how to handle specific tasks. When you install one, your AI gains the context it needs for that domain: the right patterns, best practices, and pitfalls to avoid.
+                A skill is a markdown file with instructions for a specific domain. Install one, and your AI gets context for that area: patterns, conventions, and common mistakes.
               </p>
               <p
                 className="text-lg leading-relaxed"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                Want your AI to build scroll animations? Install the GSAP skill. Need it to generate PDFs? A skill handles that. Each skill delivers curated knowledge your AI can reference on demand.
+                Want scroll animations? Install the GSAP skill. Need PDFs? There's a skill for that.
               </p>
             </section>
 
@@ -171,13 +171,13 @@ export default function AboutClient() {
                 className="text-lg leading-relaxed mb-4"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                You might wonder why skills instead of MCP servers. MCP servers connect your AI to live systems like databases, APIs, and real-time data. Skills take a different approach—they are static files that work without any infrastructure.
+                MCP servers connect your AI to live systems: databases, APIs, real-time data. Skills are different. They're static files. No server process, no infrastructure.
               </p>
               <p
                 className="text-lg leading-relaxed mb-4"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                Instead of running external servers, skills are static markdown files that deliver instructions and context directly to your AI assistant. That keeps them lightweight, portable, and available without setup or maintenance.
+                A skill is just a markdown file in your config directory. Copy it anywhere.
               </p>
               <div ref={comparisonRef} className="glass-card p-6 md:p-8 mt-6">
                 <div className="grid md:grid-cols-2 gap-8">
@@ -231,31 +231,25 @@ export default function AboutClient() {
                 className="text-lg leading-relaxed mb-4"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                <strong style={{ color: 'var(--color-white)' }}>Use skills</strong> when you need to teach your AI how to do something—following framework best practices, writing code in a particular style, or understanding domain-specific concepts. Skills excel at guidance, patterns, and workflows.
+                <strong style={{ color: 'var(--color-white)' }}>Skills</strong> teach your AI how to do something: framework patterns, coding conventions, domain concepts.
               </p>
               <p
                 className="text-lg leading-relaxed"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                <strong style={{ color: 'var(--color-white)' }}>Use MCP servers</strong> when your AI needs to interact with external systems, fetch real-time data, or perform actions that require API access. MCP servers are ideal for databases, third-party services, and live connections.
+                <strong style={{ color: 'var(--color-white)' }}>MCP servers</strong> connect to external systems: databases, APIs, anything that needs live data.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl md:text-3xl font-medium text-white mb-4">
-                How it works
+                Installation
               </h2>
               <p
                 className="text-lg leading-relaxed mb-4"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                Skills are markdown files installed into your AI assistant's configuration directory. When you ask for help, your assistant reads the relevant skill to understand how to approach the work.
-              </p>
-              <p
-                className="text-lg leading-relaxed mb-4"
-                style={{ color: 'var(--color-grey-200)' }}
-              >
-                Each skill contains structured instructions, examples, and best practices. Your AI uses this to provide more accurate and consistent help in that specific domain.
+                Skills go in your AI assistant's config directory. When you ask for help, your assistant reads the file.
               </p>
               <div className="command-box p-4 mt-6">
                 <code
@@ -269,7 +263,7 @@ export default function AboutClient() {
                 className="text-sm mt-3"
                 style={{ color: 'var(--color-grey-400)' }}
               >
-                Skills install into your assistant's config directory. Setup takes about five seconds.
+                Installs to your assistant's config directory.
               </p>
             </section>
 
@@ -328,15 +322,13 @@ export default function AboutClient() {
                 className="text-lg leading-relaxed"
                 style={{ color: 'var(--color-grey-200)' }}
               >
-                Ready to give your AI new capabilities?{' '}
                 <Link
                   href="/"
                   className="link-hover"
                   style={{ color: 'var(--color-white)' }}
                 >
-                  Browse the full catalog
-                </Link>{' '}
-                and start building.
+                  Browse the catalog
+                </Link>.
               </p>
             </section>
           </div>

@@ -3,7 +3,7 @@ import { skills } from '@/src/data/skills'
 
 export const runtime = 'edge'
 
-export const alt = 'n3wth/skills — AI Coding Assistant Skills'
+export const alt = 'n3wth/skills'
 export const size = {
   width: 1200,
   height: 630,
@@ -66,7 +66,7 @@ export default async function Image() {
               maxWidth: 800,
             }}
           >
-            AI Coding Assistant Skills for Gemini CLI, Cursor, and more
+            Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot
           </div>
 
           {/* Stats */}

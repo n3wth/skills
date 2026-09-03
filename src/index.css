@@ -424,6 +424,23 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Island nav - proper Gaussian blur */
+.island-nav {
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  isolation: isolate;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .island-nav {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #000000;
+  }
+}
+
 /* Search input focus ring */
 .search-focus-ring {
   transition: border-color 0.2s ease;
