@@ -1,9 +1,8 @@
 import { ImageResponse } from 'next/og'
-import { skills } from '@/src/data/skills'
 
 export const runtime = 'edge'
 
-export const alt = 'n3wth/skills — AI Coding Assistant Skills'
+export const alt = 'About n3wth/skills'
 export const size = {
   width: 1200,
   height: 630,
@@ -11,9 +10,6 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
-  const skillCount = skills.length
-  const categoryCount = new Set(skills.map(s => s.category)).size
-
   return new ImageResponse(
     (
       <div
@@ -47,71 +43,69 @@ export default async function Image() {
           {/* Title */}
           <div
             style={{
-              fontSize: 64,
+              fontSize: 56,
               fontWeight: 600,
               color: '#ffffff',
-              letterSpacing: '-0.03em',
+              letterSpacing: '-0.02em',
               textAlign: 'center',
             }}
           >
-            n3wth/skills
+            About n3wth/skills
           </div>
 
-          {/* Tagline */}
+          {/* Subtitle */}
           <div
             style={{
-              fontSize: 28,
+              fontSize: 26,
               color: '#86868b',
               textAlign: 'center',
               maxWidth: 800,
+              lineHeight: 1.5,
             }}
           >
-            AI Coding Assistant Skills for Gemini CLI, Cursor, and more
+            Building the ecosystem for AI coding assistant extensions
           </div>
 
-          {/* Stats */}
+          {/* Values */}
           <div
             style={{
               display: 'flex',
-              gap: 48,
+              gap: 32,
               marginTop: 24,
             }}
           >
             <div
               style={{
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                gap: 12,
+                gap: 8,
               }}
             >
-              <div
-                style={{
-                  fontSize: 48,
-                  fontWeight: 600,
-                  color: '#30d158',
-                }}
-              >
-                {skillCount}
-              </div>
-              <div style={{ fontSize: 20, color: '#86868b' }}>skills</div>
+              <div style={{ fontSize: 32, color: '#30d158' }}>◆</div>
+              <div style={{ fontSize: 16, color: '#86868b' }}>Open Source</div>
             </div>
             <div
               style={{
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                gap: 12,
+                gap: 8,
               }}
             >
-              <div
-                style={{
-                  fontSize: 48,
-                  fontWeight: 600,
-                  color: '#64d2ff',
-                }}
-              >
-                {categoryCount}
-              </div>
-              <div style={{ fontSize: 20, color: '#86868b' }}>categories</div>
+              <div style={{ fontSize: 32, color: '#64d2ff' }}>◇</div>
+              <div style={{ fontSize: 16, color: '#86868b' }}>Community</div>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <div style={{ fontSize: 32, color: '#a855f7' }}>◈</div>
+              <div style={{ fontSize: 16, color: '#86868b' }}>Quality</div>
             </div>
           </div>
         </div>

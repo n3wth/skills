@@ -1,9 +1,9 @@
 import { ImageResponse } from 'next/og'
-import { skills } from '@/src/data/skills'
+import { bundles } from '@/src/data/bundles'
 
 export const runtime = 'edge'
 
-export const alt = 'n3wth/skills — AI Coding Assistant Skills'
+export const alt = 'Curated Skill Bundles'
 export const size = {
   width: 1200,
   height: 630,
@@ -11,8 +11,7 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
-  const skillCount = skills.length
-  const categoryCount = new Set(skills.map(s => s.category)).size
+  const bundleCount = bundles.length
 
   return new ImageResponse(
     (
@@ -36,37 +35,36 @@ export default async function Image() {
             gap: 32,
           }}
         >
-          {/* n3wth mark */}
-          <svg width="64" height="64" viewBox="0 0 32 32">
-            <path
-              d="M9.4 6.6 25.2 14a1.5 1.5 0 0 1-.15 2.78l-6.1 1.78a2 2 0 0 0-1.32 1.24l-2.2 6.1c-.5 1.36-2.42 1.27-2.78-.15L8.0 8.2A1.6 1.6 0 0 1 9.4 6.6Z"
-              fill="#ffffff"
-            />
-          </svg>
+          {/* Icon row */}
+          <div style={{ display: 'flex', gap: 24, fontSize: 48 }}>
+            <span>📦</span>
+            <span>⚡</span>
+            <span>🎯</span>
+          </div>
 
           {/* Title */}
           <div
             style={{
-              fontSize: 64,
+              fontSize: 56,
               fontWeight: 600,
               color: '#ffffff',
-              letterSpacing: '-0.03em',
+              letterSpacing: '-0.02em',
               textAlign: 'center',
             }}
           >
-            n3wth/skills
+            Curated Skill Bundles
           </div>
 
-          {/* Tagline */}
+          {/* Subtitle */}
           <div
             style={{
-              fontSize: 28,
+              fontSize: 26,
               color: '#86868b',
               textAlign: 'center',
               maxWidth: 800,
             }}
           >
-            AI Coding Assistant Skills for Gemini CLI, Cursor, and more
+            Pre-built skill collections for every role
           </div>
 
           {/* Stats */}
@@ -88,30 +86,12 @@ export default async function Image() {
                 style={{
                   fontSize: 48,
                   fontWeight: 600,
-                  color: '#30d158',
+                  color: '#a855f7',
                 }}
               >
-                {skillCount}
+                {bundleCount}
               </div>
-              <div style={{ fontSize: 20, color: '#86868b' }}>skills</div>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 12,
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 48,
-                  fontWeight: 600,
-                  color: '#64d2ff',
-                }}
-              >
-                {categoryCount}
-              </div>
-              <div style={{ fontSize: 20, color: '#86868b' }}>categories</div>
+              <div style={{ fontSize: 20, color: '#86868b' }}>bundles</div>
             </div>
           </div>
         </div>
