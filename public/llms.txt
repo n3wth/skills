@@ -15,15 +15,15 @@ npx skills add <skill-id>
 ## Skills (46 total)
 
 ### Development
-- gsap-animations: Create production-ready GSAP animations with ScrollTrigger, SplitText, and other plugins.
+- gsap-animations: ScrollTrigger, SplitText, scroll effects, and text reveals with GSAP.
 - mcp-builder: Build MCP (Model Context Protocol) servers that let LLMs interact with external services.
 - monorepo-manager: Manage monorepo workspaces with Turborepo, Nx, or pnpm workspaces.
 - skill-creator: Guide for creating effective AI coding skills with specialized knowledge and workflows.
-- code-generation-pipeline: Streamline boilerplate and scaffold generation with automatic validation.
-- frontend-design: Create distinctive, production-grade frontend interfaces with high design quality.
+- code-generation-pipeline: Scaffold files, validate against project standards, auto-commit with attribution.
+- frontend-design: React components with intentional typography, spacing, and visual hierarchy.
 - webapp-testing: Interact with and test local web applications using Playwright.
 - canvas: Create a shareable interactive markdown canvas at canvas.n3wth.com.
-- git-workflow: Streamlined Git workflows for common development tasks.
+- git-workflow: Git branching strategies, commit conventions, and merge-conflict resolution.
 - sql-optimizer: Optimize SQL queries and database performance through execution-plan analysis.
 - api-docs-generator: Generate API documentation from code. Create OpenAPI/Swagger specs.
 - cicd-builder: Create CI/CD pipelines and automation workflows for GitHub Actions, GitLab CI.
@@ -54,7 +54,7 @@ npx skills add <skill-id>
 - business-panel: Multi-expert business strategy panel synthesizing Christensen, Porter, Drucker.
 - doc-coauthoring: Structured workflow for co-authoring documentation and proposals.
 - internal-comms: Write internal communications including status reports and newsletters.
-- copywriting: Write and improve marketing copy for landing pages and product pages.
+- copywriting: Landing-page copy. Headlines, pricing sections, CTAs. Bias to specific and short.
 
 ### Cursor Extensions
 - cursor-agent-orchestrator: Orchestrate multi-agent Cursor workflows.

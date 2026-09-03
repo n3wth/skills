@@ -1,8 +1,8 @@
 // Site-wide configuration
 export const siteConfig = {
   name: 'n3wth/skills',
-  description: 'Give your AI coding assistant practical skills it can use right away.',
-  tagline: 'Installs locally and works offline.',
+  description: 'Markdown skills for coding agents.',
+  tagline: 'One install, local, offline.',
   author: 'Oliver Newth',
   links: {
     about: 'https://n3wth.com',

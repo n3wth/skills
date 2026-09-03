@@ -6,19 +6,19 @@ import { skills } from '@/src/data/skills'
 export const metadata: Metadata = {
   title: 'n3wth/skills — AI Coding Assistant Skills',
   description:
-    'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, Windsurf, and Copilot. Install in seconds and work offline.',
+    'Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot. 46 skills. One install, works offline.',
   alternates: { canonical: 'https://skills.n3wth.com' },
   openGraph: {
     title: 'n3wth/skills — AI Coding Assistant Skills',
     description:
-      'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, Windsurf, and Copilot.',
+      'Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot. 46 skills. One install, works offline.',
     url: 'https://skills.n3wth.com',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'n3wth/skills — AI Coding Assistant Skills',
     description:
-      'Extend your AI coding assistant with ready-made skills. Install in seconds and work offline.',
+      'Markdown skills for coding agents. One install, works offline.',
   },
 }
 
@@ -29,7 +29,7 @@ export default function Home() {
     <>
       <ItemListJsonLd
         name="AI Coding Skills Catalog"
-        description="Curated skills for AI coding assistants including Gemini CLI, Cursor, Windsurf, and Copilot"
+        description="Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot"
         url="https://skills.n3wth.com"
         items={featuredSkills.map(skill => ({
           name: skill.name,

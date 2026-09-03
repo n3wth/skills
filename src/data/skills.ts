@@ -42,7 +42,7 @@ export const skills: Skill[] = [
   {
     id: 'gsap-animations',
     name: 'GSAP Animations',
-    description: 'ScrollTrigger, SplitText, scroll effects, text reveals, hero entrances, and micro-interactions with GSAP.',
+    description: 'ScrollTrigger, SplitText, scroll effects, and text reveals with GSAP.',
     longDescription: 'Build web animations with GSAP (GreenSock Animation Platform). Covers core concepts, timing functions, and the plugin ecosystem.',
     category: 'development',
     tags: ['animation', 'gsap', 'scrolltrigger', 'motion'],
@@ -305,8 +305,8 @@ export const skills: Skill[] = [
   {
     id: 'frontend-design',
     name: 'Frontend Design',
-    description: 'Create distinctive, production-grade frontend interfaces with high design quality. Generate creative, polished UI that avoids generic AI aesthetics.',
-    longDescription: 'Create visually distinctive frontend interfaces. The skill emphasizes design quality, creative UI patterns, and production-ready code with thoughtful typography, spacing, and visual hierarchy.',
+    description: 'React components with intentional typography, spacing, and visual hierarchy. Avoids generic patterns.',
+    longDescription: 'Frontend interfaces that don\'t look AI-generated. Covers component structure, layout, and styling decisions.',
     category: 'development',
     tags: ['ui', 'react', 'design', 'components'],
     icon: '□',
@@ -656,8 +656,8 @@ export const skills: Skill[] = [
   {
     id: 'copywriting',
     name: 'Copywriting',
-    description: 'Write and improve marketing copy for homepages, landing pages, pricing pages, feature pages, and product pages.',
-    longDescription: 'Create compelling copy that converts. Craft persuasive content for homepages, landing pages, pricing pages, feature pages, and product pages with attention to headlines, value propositions, and calls to action.',
+    description: 'Landing-page copy. Headlines, pricing sections, CTAs. Bias to specific and short.',
+    longDescription: 'Copy for product pages that says something concrete. Covers headlines, value props, and calls to action.',
     category: 'business',
     tags: ['marketing', 'copy', 'conversion'],
     icon: '◓',
@@ -1398,8 +1398,8 @@ export const skills: Skill[] = [
   {
     id: 'cursor-usage-analytics',
     name: 'Cursor Usage Analytics',
-    description: 'Track Cursor usage patterns, model preferences, and code-quality improvements. Optimize your AI-assisted development workflow through data-driven insights.',
-    longDescription: 'Understand how you use Cursor\'s AI features to optimize configuration, reduce costs, and improve code quality. Track agent modes, analyze code patterns, and measure the impact of AI assistance on your development workflow.',
+    description: 'Track which Cursor modes and models you use. Identify patterns, measure costs.',
+    longDescription: 'Understand how you use Cursor\'s AI features. Track agent modes, analyze patterns, measure costs.',
     category: 'development',
     tags: ['cursor', 'analytics', 'ai-coding', 'metrics', 'optimization'],
     featured: false,
