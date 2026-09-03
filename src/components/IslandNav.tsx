@@ -74,7 +74,7 @@ export function IslandNav() {
       }}
       aria-label="Main navigation"
     >
-      <div className="glass-pill flex items-center gap-1 px-2 py-1.5 rounded-full w-max">
+      <div className="island-nav flex items-center gap-1 px-2 py-1.5 rounded-full w-max">
         {/* Logo/Home */}
         <Link
           href="/"
