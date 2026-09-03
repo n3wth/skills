@@ -1,17 +1,43 @@
 import type { Metadata } from 'next'
 import HomeClient from './HomeClient'
+import { ItemListJsonLd } from '@/src/components/seo/JsonLd'
+import { skills } from '@/src/data/skills'
 
 export const metadata: Metadata = {
-title: 'n3wth/skills - AI Coding Assistant Skills',
-  description: 'Discover and install AI coding skills for Gemini CLI and other assistants. Browse community-built templates, workflows, and best practices that accelerate your development.',
-  alternates: { canonical: '/' },
+  title: 'n3wth/skills — AI Coding Assistant Skills',
+  description:
+    'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, Windsurf, and Copilot. Install in seconds and work offline.',
+  alternates: { canonical: 'https://skills.n3wth.com' },
   openGraph: {
-    title: 'n3wth/skills - AI Coding Assistant Skills',
-    description: 'Discover and install AI coding skills for Gemini CLI and other assistants. Browse community-built templates, workflows, and best practices that accelerate your development.',
+    title: 'n3wth/skills — AI Coding Assistant Skills',
+    description:
+      'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, Windsurf, and Copilot.',
     url: 'https://skills.n3wth.com',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'n3wth/skills — AI Coding Assistant Skills',
+    description:
+      'Extend your AI coding assistant with ready-made skills. Install in seconds and work offline.',
   },
 }
 
 export default function Home() {
-  return <HomeClient />
+  const featuredSkills = skills.filter(s => s.featured).slice(0, 12)
+
+  return (
+    <>
+      <ItemListJsonLd
+        name="AI Coding Skills Catalog"
+        description="Curated skills for AI coding assistants including Gemini CLI, Cursor, Windsurf, and Copilot"
+        url="https://skills.n3wth.com"
+        items={featuredSkills.map(skill => ({
+          name: skill.name,
+          url: `https://skills.n3wth.com/skill/${skill.id}`,
+          description: skill.description,
+        }))}
+      />
+      <HomeClient />
+    </>
+  )
 }

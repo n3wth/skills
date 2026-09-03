@@ -2,42 +2,62 @@ import type { Metadata, Viewport } from 'next'
 import { AxiomWebVitals } from 'next-axiom'
 import { Providers } from './providers'
 import { PostHogProvider } from '../src/components/PostHogProvider'
+import { WebSiteJsonLd } from '../src/components/seo/JsonLd'
 import '../src/index.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://skills.n3wth.com'),
   title: {
-    default: 'n3wth/skills - AI Coding Assistant Skills',
+    default: 'n3wth/skills — AI Coding Assistant Skills',
     template: '%s | n3wth/skills',
   },
   description:
-    'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, and more. Install in seconds and work offline.',
-  authors: [{ name: 'Oliver Newth' }],
-  creator: 'Oliver Newth',
-  robots: 'index, follow',
+    'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, Windsurf, and Copilot. Install in seconds and work offline.',
+  authors: [{ name: 'Oliver Newth', url: 'https://n3wth.com' }],
+  creator: 'n3wth',
+  publisher: 'n3wth',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://skills.n3wth.com',
     siteName: 'n3wth/skills',
-    title: 'n3wth/skills - AI Coding Assistant Skills',
+    title: 'n3wth/skills — AI Coding Assistant Skills',
     description:
-      'Markdown files that give Gemini CLI, Cursor, and other AI assistants new capabilities. Install in seconds and work offline.',
+      'Extend your AI coding assistant with ready-made skills. More than 50 curated skills for Gemini CLI, Cursor, Windsurf, and Copilot.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Skills for AI coding assistants',
+        alt: 'n3wth/skills — AI Coding Assistant Skills',
+        type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'n3wth/skills - AI Coding Assistant Skills',
+    title: 'n3wth/skills — AI Coding Assistant Skills',
     description:
-      'Markdown files that give Gemini CLI, Cursor, and other AI assistants new capabilities. Install in seconds and work offline.',
-    images: ['/og-image.png'],
+      'Extend your AI coding assistant with ready-made skills. Install in seconds and work offline.',
+    images: ['/twitter-image'],
+    creator: '@olivernewth',
+  },
+  alternates: {
+    canonical: 'https://skills.n3wth.com',
+  },
+  other: {
+    'msapplication-TileColor': '#000000',
   },
 }
 
@@ -63,11 +83,14 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="AI Skills" />
+        <WebSiteJsonLd />
       </head>
       <body>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
+          className="fixed -translate-y-full focus:translate-y-0 top-4 left-4 z-50 px-4 py-2 bg-white text-black rounded-md outline-none ring-2 ring-offset-2 transition-transform"
+          tabIndex={0}
+          data-nosnippet=""
         >
           Skip to main content
         </a>

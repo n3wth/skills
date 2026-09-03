@@ -1,68 +1,54 @@
 import { NextResponse } from 'next/server'
+import { skills } from '@/src/data/skills'
 
-const ORIGINAL_SKILLS = [
-  'ai-rules-manager',
-  'code-generation-pipeline',
-  'codebase-context-builder',
-  'cursor-agent-orchestrator',
-  'cursor-code-review',
-  'cursor-driven-refactoring',
-  'cursor-git-workflow',
-  'cursor-linear-bridge',
-  'cursor-project-bootstrapper',
-  'cursor-project-scanner',
-  'cursor-rules-generator',
-  'cursor-usage-analytics',
-  'extension-sync',
-  'git-workflow',
-  'monorepo-manager',
-  'settings-distribution-manager',
-  'vscode-cursor-sync',
-  'gsap-animations',
-  'typography-selector',
-  'business-panel',
-  'imessage',
-]
+export const dynamic = 'force-static'
+export const revalidate = 3600
 
 export async function GET() {
-  const skillsList = ORIGINAL_SKILLS.map(id => `- ${id}`).join('\n')
+  const skillsByCategory = skills.reduce((acc, skill) => {
+    if (!acc[skill.category]) acc[skill.category] = []
+    acc[skill.category].push(skill)
+    return acc
+  }, {} as Record<string, typeof skills>)
+
+  const categoryOrder = ['development', 'documents', 'creative', 'productivity', 'business']
+  
+  const skillsList = categoryOrder
+    .filter(cat => skillsByCategory[cat])
+    .map(cat => {
+      const catSkills = skillsByCategory[cat]
+      return `### ${cat.charAt(0).toUpperCase() + cat.slice(1)}\n${catSkills.map(s => `- ${s.id}: ${s.description}`).join('\n')}`
+    })
+    .join('\n\n')
 
   const content = `# n3wth/skills
 
-AI coding assistant skills for Gemini CLI, Cursor, Windsurf, and Copilot.
+> AI coding assistant skills for Gemini CLI, Cursor, Windsurf, and Copilot.
 
-## Install
+Website: https://skills.n3wth.com
+GitHub: https://github.com/n3wth/skills
+Contact: hey@n3wth.com
 
-\`\`\`bash
-npx skills add n3wth/skills
-\`\`\`
-
-Or install individual skills:
+## Quick Start
 
 \`\`\`bash
-curl -fsSL https://skills.n3wth.com/install.sh | bash -s -- <skill-id>
+npx skills add <skill-id>
 \`\`\`
 
-## Original Skills
+## Skills (${skills.length} total)
 
 ${skillsList}
 
-## Source
+## More Information
 
-- Website: https://skills.n3wth.com
-- GitHub: https://github.com/n3wth/skills
-
-## Categories
-
-- Development: Cursor workflows, code analysis, Git automation, CI/CD
-- Creative: GSAP animations, typography
-- Business: Strategy panels, iMessage automation
+For full skill details with features, use cases, and sample prompts:
+https://skills.n3wth.com/llms-full.txt
 `
 
   return new NextResponse(content, {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
     },
   })
 }
