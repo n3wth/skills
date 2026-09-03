@@ -29,26 +29,36 @@ function AnimatedStat({ value, label, suffix = '' }: StatProps) {
     }
 
     const counter = { value: 0 }
-    element.textContent = `0${suffix}`
 
-    ScrollTrigger.create({
-      trigger: element,
-      start: 'top 85%',
-      onEnter: () => {
-        if (hasAnimated.current) return
-        hasAnimated.current = true
+    const runAnimation = () => {
+      if (hasAnimated.current) return
+      hasAnimated.current = true
 
-        gsap.to(counter, {
-          value,
-          duration: 1.5,
-          ease: 'power2.out',
-          onUpdate: () => {
-            element.textContent = `${Math.round(counter.value)}${suffix}`
-          },
-        })
-      },
-      once: true,
-    })
+      gsap.to(counter, {
+        value,
+        duration: 1.5,
+        ease: 'power2.out',
+        onUpdate: () => {
+          element.textContent = `${Math.round(counter.value)}${suffix}`
+        },
+      })
+    }
+
+    const rect = element.getBoundingClientRect()
+    const isAlreadyInView = rect.top < window.innerHeight * 0.85
+
+    if (isAlreadyInView) {
+      element.textContent = `0${suffix}`
+      runAnimation()
+    } else {
+      element.textContent = `0${suffix}`
+      ScrollTrigger.create({
+        trigger: element,
+        start: 'top 85%',
+        onEnter: runAnimation,
+        once: true,
+      })
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
