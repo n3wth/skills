@@ -30,11 +30,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${skill.name} — AI Skill | n3wth/skills`,
       description,
       url: `https://skills.n3wth.com/skill/${skillId}`,
+      images: [
+        {
+          url: `/skill/${skillId}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${skill.name} — AI Skill`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${skill.name} — AI Skill`,
       description,
+      images: [`/skill/${skillId}/opengraph-image`],
     },
   }
 }
