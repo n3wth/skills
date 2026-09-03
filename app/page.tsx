@@ -4,19 +4,19 @@ import { ItemListJsonLd } from '@/src/components/seo/JsonLd'
 import { skills } from '@/src/data/skills'
 
 export const metadata: Metadata = {
-  title: 'n3wth/skills — AI Coding Assistant Skills',
+  title: 'n3wth/skills',
   description:
     'Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot. 46 skills. One install, works offline.',
   alternates: { canonical: 'https://skills.n3wth.com' },
   openGraph: {
-    title: 'n3wth/skills — AI Coding Assistant Skills',
+    title: 'n3wth/skills',
     description:
       'Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot. 46 skills. One install, works offline.',
     url: 'https://skills.n3wth.com',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'n3wth/skills — AI Coding Assistant Skills',
+    title: 'n3wth/skills',
     description:
       'Markdown skills for coding agents. One install, works offline.',
   },

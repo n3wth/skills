@@ -8,7 +8,7 @@ import '../src/index.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://skills.n3wth.com'),
   title: {
-    default: 'n3wth/skills — AI Coding Assistant Skills',
+    default: 'n3wth/skills',
     template: '%s | n3wth/skills',
   },
   description:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://skills.n3wth.com',
     siteName: 'n3wth/skills',
-    title: 'n3wth/skills — AI Coding Assistant Skills',
+    title: 'n3wth/skills',
     description:
       'Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot. 46 skills. One install, works offline.',
     images: [
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'n3wth/skills — AI Coding Assistant Skills',
+        alt: 'n3wth/skills',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'n3wth/skills — AI Coding Assistant Skills',
+    title: 'n3wth/skills',
     description:
       'Markdown skills for coding agents. One install, works offline.',
     images: ['/twitter-image'],

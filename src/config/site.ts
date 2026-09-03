@@ -11,7 +11,7 @@ export const siteConfig = {
     docs: 'https://github.com/n3wth/skills#readme',
   },
   hero: {
-    title: ['Extend', 'Your AI'],
+    title: ['Skills for', 'coding agents'],
   },
   sections: {
     install: {

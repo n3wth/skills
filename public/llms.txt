@@ -1,6 +1,6 @@
 # n3wth/skills
 
-> AI coding assistant skills for Gemini CLI, Cursor, Windsurf, and Copilot.
+> Markdown skills for Gemini CLI, Cursor, Windsurf, and Copilot.
 
 Website: https://skills.n3wth.com
 GitHub: https://github.com/n3wth/skills
@@ -61,10 +61,10 @@ npx skills add <skill-id>
 - cursor-rules-generator: Generate .cursor/rules files for project-specific AI guidance.
 - ai-rules-manager: Manage AI assistant rules across Cursor, Windsurf, and Copilot.
 - codebase-context-builder: Build comprehensive codebase context for AI assistants.
-- cursor-code-review: Perform AI-powered code reviews with Cursor.
+- cursor-code-review: Review code against team standards. Suggests rule improvements.
 - cursor-driven-refactoring: Refactor code systematically with Cursor AI.
-- cursor-git-workflow: Integrate Cursor with Git workflows.
-- cursor-linear-bridge: Connect Cursor to Linear for issue tracking.
+- cursor-git-workflow: Cursor + Git. Branch contexts, PR-based rules, pre-commit validation.
+- cursor-linear-bridge: Cursor workspaces from Linear issues. Bidirectional sync, auto-generated rules.
 - cursor-project-bootstrapper: Bootstrap new projects with Cursor.
 - cursor-project-scanner: Scan and analyze projects with Cursor.
 - cursor-usage-analytics: Track and analyze Cursor usage patterns.

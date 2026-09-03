@@ -1,11 +1,11 @@
 ---
 name: cursor-git-workflow
-description: Seamlessly integrate Cursor AI editor into git-based development workflows. Generate branch-specific contexts, create PR-based rules, validate code with git hooks, and manage experimental changes.
+description: Cursor + Git. Branch-specific contexts, PR-based rules, pre-commit validation, auto-stash for experiments.
 ---
 
 # Cursor ↔ Git Workflow
 
-Seamlessly integrate Cursor AI editor into git-based development workflows. Generate branch-specific contexts, create PR-based rules, validate code with git hooks, and manage experimental changes.
+Cursor + Git. Branch-specific contexts, PR-based rules, pre-commit validation, auto-stash for experiments.
 
 ## Triggers
 

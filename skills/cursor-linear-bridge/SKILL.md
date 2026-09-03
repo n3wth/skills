@@ -1,11 +1,11 @@
 ---
 name: cursor-linear-bridge
-description: Create Cursor workspaces from Linear issues with bidirectional sync. Connect issue tracking with development context for seamless workflow automation.
+description: Create Cursor workspaces from Linear issues. Bidirectional sync, auto-generated rules, progress comments.
 ---
 
 # Cursor ↔ Linear Bridge
 
-Create Cursor workspaces from Linear issues with bidirectional sync. Connect issue tracking with development context for seamless workflow automation.
+Create Cursor workspaces from Linear issues. Bidirectional sync, auto-generated rules, progress comments.
 
 ## Triggers
 

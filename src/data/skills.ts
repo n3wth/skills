@@ -1271,8 +1271,8 @@ export const skills: Skill[] = [
   {
     id: 'cursor-git-workflow',
     name: 'Cursor ↔ Git Workflow',
-    description: 'Integrate Cursor AI editor with Git workflows. Generate branch-specific contexts, create PR-based rules, validate with Git hooks, and auto-stash changes.',
-    longDescription: 'Integrate Cursor AI editor with Git-based development workflows. Generate branch-specific .cursorrules automatically, create context from PR changes, validate AI-generated code with pre-commit hooks, and manage experimental changes with auto-stash functionality.',
+    description: 'Cursor + Git. Branch-specific contexts, PR-based rules, pre-commit validation, auto-stash for experiments.',
+    longDescription: 'Cursor + Git. Branch-specific .cursorrules, PR-based context, pre-commit validation, auto-stash for experiments.',
     category: 'development',
     tags: ['cursor', 'git', 'workflow', 'automation', 'ai-editor'],
     icon: '⟲',
@@ -1303,8 +1303,8 @@ export const skills: Skill[] = [
   {
     id: 'cursor-linear-bridge',
     name: 'Cursor ↔ Linear Bridge',
-    description: 'Create Cursor workspaces from Linear issues with bidirectional sync. Connect issue tracking with development context.',
-    longDescription: 'Bridge Linear issue tracking with Cursor development environments. Generate workspaces from Linear issues automatically, create issue-specific .cursor/rules files, and maintain bidirectional sync with smart comments and status updates.',
+    description: 'Create Cursor workspaces from Linear issues. Bidirectional sync, auto-generated rules, progress comments.',
+    longDescription: 'Cursor workspaces from Linear issues. Bidirectional sync, auto-generated rules, progress comments.',
     category: 'development',
     tags: ['cursor', 'linear', 'workflow', 'automation', 'integration'],
     icon: '↔',

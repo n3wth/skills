@@ -43,8 +43,8 @@ export const bundles: Bundle[] = [
   {
     id: 'backend-builder',
     name: 'Backend Builder',
-    description: 'Build robust APIs, microservices, and server infrastructure with confidence',
-    longDescription: 'Engineer scalable backend systems with AI-powered assistance. Create MCP servers, optimize SQL queries, design APIs, implement CI/CD pipelines, and manage infrastructure. Ideal for full-stack and backend engineers.',
+    description: 'APIs, microservices, and server infrastructure. MCP servers, SQL, CI/CD.',
+    longDescription: 'Backend systems: MCP servers, SQL optimization, API design, CI/CD pipelines, infrastructure. For full-stack and backend engineers.',
     skillIds: [
       'mcp-builder',
       'sql-optimizer',
