@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { AxiomWebVitals } from 'next-axiom'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Providers } from './providers'
 import { PostHogProvider } from '../src/components/PostHogProvider'
 import { WebSiteJsonLd } from '../src/components/seo/JsonLd'
@@ -98,6 +99,7 @@ export default function RootLayout({
           <Providers>{children}</Providers>
         </PostHogProvider>
       </body>
+      <GoogleAnalytics gaId="G-4QRMSG5HXK" />
     </html>
   )
 }

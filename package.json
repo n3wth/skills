@@ -41,6 +41,7 @@
     "@gsap/react": "^2.1.2",
     "@n3wth/ui": "^0.6.1",
     "@neondatabase/serverless": "^1.0.2",
+    "@next/third-parties": "^16.3.4",
     "@sentry/react": "^10.36.0",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.95.3",
