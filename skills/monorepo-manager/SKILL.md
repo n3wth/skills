@@ -41,20 +41,22 @@ monorepo/
 
 ### Turborepo Setup
 
+These examples target Turborepo 2.x.
+
 ```bash
 # Create new Turborepo monorepo
-npx create-turbo@latest
+npx create-turbo@2
 
 # Or add to existing repo
-npm install turbo --save-dev
+npm install turbo@2 --save-dev
 ```
 
 ```json
 // turbo.json
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "build/**"]
@@ -106,7 +108,7 @@ packages:
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
-    "turbo": "^1.11.0"
+    "turbo": "^2.0.0"
   },
   "packageManager": "pnpm@8.15.0"
 }
@@ -391,7 +393,7 @@ pnpm install --strict-peer-dependencies
 
 ```bash
 # Turborepo
-pnpm add -Dw turbo
+pnpm add -Dw turbo@2
 
 # pnpm (package manager)
 npm install -g pnpm
@@ -405,7 +407,7 @@ pnpm add -Dw @changesets/cli
 
 ## References
 
-- [Turborepo Documentation](https://turbo.build/repo/docs)
+- [Turborepo Documentation](https://turborepo.dev/docs)
 - [pnpm Workspaces](https://pnpm.io/workspaces)
 - [Nx Documentation](https://nx.dev/)
 - [Changesets](https://github.com/changesets/changesets)
